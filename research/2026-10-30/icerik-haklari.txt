@@ -1,0 +1,505 @@
+ADVENTCODENDAR — İÇERİK HAKLARI, ATIF VE TOPLULUK KATKISI
+30.10.2026 · araştırma notu · avukat görüşü DEĞİLDİR
+
+Etiketler
+[BELGELENEN]   Kaynağı 30.10.2026'da bizzat açtım, link yanında.
+[ÇIKARIM]      Belgelenen kaynaklardan benim vardığım sonuç. Hukuki kesinlik iddiası yok.
+[DOĞRULANMADI] Sayfa açılmadı (Cloudflare/403); yalnız arama motoru özeti var. Karar dayanağı yapma.
+
+
+EN ÖNEMLİ ÜÇ BULGU
+
+1. Kaynak linki hak vermez; kaynağın sözleşmesi verir. Devpost'ta hackathon metninin
+   (problem tanımı dahil) tüm hakları ilan sahibinde kalır, siteyi otomatik taramak yasak.
+   Kattis'in formatında lisansı bilinmeyen problem "pratikte kullanılamaz" sayılır.
+   FSEK'te başkasının eserini "kısaltmak" işlenme sayılır, yani "derleyip özetledik" de izin ister.
+
+2. Türk kurumsal etkinliklerinde problem ve veri sıkı bağlı. Akbank LAB sözleşmesinde katılımcı,
+   değerlendirme için Akbank'ın kendisine ilettiği her bilgiyi gizli tutmayı taahhüt ediyor.
+   Bursa Akıllı Şehir Hackathonu verisi yalnız o etkinlikte kullanılabiliyor.
+   Üyenin "Akbank'ta çözdüğüm case" diye yüklediği metin, üyenin kendi sözleşmesini ihlal ediyor olabilir.
+
+3. Kısa satır, KREDİ olarak yeter ama HAK KAYDI olarak yetmez. Satır uzamadan çözüm,
+   Kattis ve Exercism'deki gibi her case'e ayrı makine-okur hak alanları
+   (lisans, hak sahibi, yazar/derleyen ayrımı, kaynak linki) ve satırdan açılan bir
+   "kaynak ve lisans" sayfası. CC BY 4.0 bunu açıkça kabul ediyor
+   (gerekli bilgiyi içeren bir sayfaya link vermek yeterli).
+
+
+=====================================================================
+1. ÜÇ CASE TÜRÜ — HUKUKİ VE ETİK FARK
+=====================================================================
+
+1.1 Fikir serbest, ifade korunur
+
+[BELGELENEN] ABD 17 U.S.C. §102(b): telif koruması "any idea, procedure, process, system,
+method of operation, concept, principle, or discovery" kapsamına hiçbir durumda uzanmaz.
+https://www.law.cornell.edu/uscode/text/17/102
+
+[BELGELENEN] ABD Telif Ofisi Circular 33: Ofis bir sistemin yazılı açıklamasını tescil edebilir,
+"However, copyright protection will extend only to the original expression in that work and not
+to the underlying idea, methods, or systems described or explained."
+https://www.copyright.gov/circs/circ33.pdf
+
+[BELGELENEN] TRIPS md. 9(2) (AB ve Türkiye dahil DTÖ üyelerini bağlar): "Copyright protection
+shall extend to expressions and not to ideas, procedures, methods of operation or mathematical
+concepts as such."
+https://www.wto.org/english/docs_e/legal_e/27-trips_04_e.htm
+
+[BELGELENEN] AB 2009/24 Yazılım Direktifi md. 1(2): bilgisayar programının herhangi bir öğesinin
+altındaki fikir ve ilkeler telifle korunmaz.
+https://www.legislation.gov.uk/eudr/2009/24/article/1
+
+[BELGELENEN] FSEK md. 1/B(a): eser, "Sahibinin hususiyetini taşıyan" fikir ve sanat ürünü.
+FSEK md. 2 son fıkra: "bir bilgisayar programının herhangi bir ögesine temel oluşturan düşünce
+ve ilkeler eser sayılmazlar."
+https://www.mevzuat.gov.tr/mevzuatmetin/1.3.5846.pdf
+
+[ÇIKARIM] FSEK, fikir/ifade ayrımını genel kural olarak yalnız yazılım için açıkça yazıyor.
+Genel ilke Türkiye'de TRIPS md. 9(2), md. 1/B'deki "hususiyet" şartı ve doktrin/Yargıtay
+uygulamasından geliyor. Yargıtay kararını tam metinden okuyamadım.
+
+1.2 Özet ve uyarlama da izin ister
+
+[BELGELENEN] FSEK md. 6, işlenme (türev eser) sayılanlar arasında: "9. Başkasına ait bir eserin
+izah veya şerhi yahut kısaltılması." Aynı kaynak.
+
+[BELGELENEN] FSEK md. 16: eser sahibinin izni olmadıkça eserde "kısaltmalar, ekleme ve başka
+değiştirmeler yapılamaz." Aynı kaynak.
+
+[BELGELENEN] FSEK md. 35 (iktibas): alıntı yalnız sayılan hallerde ve "İktibasın belli olacak
+şekilde yapılması lazımdır." Bağımsız bir eser içinde bazı cümlelerle sınırlı. Aynı kaynak.
+
+[ÇIKARIM] "Kaynaktan derlenen case" (kurumun metnini kısaltıp düzenlemek) Türkiye'de işlenme.
+FSEK md. 35 bütün bir problem metnini kapsamaz. ABD'de fair use tartışılabilir ama ticari ve
+ikame edici kullanımda zayıf. Bu yüzden "derlenen case" ancak açık lisans (CC BY vb.) ya da
+yazılı izinle yapılabilir.
+
+1.3 Veri ve veri tabanı
+
+[BELGELENEN] Feist v. Rural (ABD Yüksek Mahkemesi, 1991): "No one may claim originality as to
+facts." Derlemede koruma yalnız özgün seçim ve düzenlemeye uzanır.
+https://www.law.cornell.edu/supremecourt/text/499/340
+
+[BELGELENEN] AB 96/9 Veri Tabanı Direktifi md. 3(2): veri tabanının telif koruması "shall not
+extend to their contents"; md. 7(1): esaslı yatırım yapan yapımcıya, içeriğin tamamının veya
+esaslı bir kısmının aktarılması/yeniden kullanılmasını engelleme hakkı (sui generis).
+https://www.legislation.gov.uk/eudr/1996/9/article/3
+https://www.legislation.gov.uk/eudr/1996/9/article/7
+
+[BELGELENEN] FSEK Ek md. 8: esaslı yatırım yapan veri tabanı yapımcısı, içeriğin "önemli bir
+kısmının veya tamamının" aktarılması ve dağıtılmasında izin verme/yasaklama hakkına sahip;
+koruma 15 yıl. FSEK md. 6/11: veri tabanı koruması "veri tabanı içinde bulunan veri ve materyalin
+korunması için genişletilemez."
+https://www.mevzuat.gov.tr/mevzuatmetin/1.3.5846.pdf
+
+[ÇIKARIM] Tek bir gerçek (ör. "bankanın 2025'te KOBİ tahsilatı sorunu var") serbest. Kurumun
+etkinlikte verdiği veri seti ise ABD'de çoğunlukla sözleşmeyle, AB ve Türkiye'de ayrıca
+sui generis hakla korunuyor. Veri seti için kaynak linki yetmez.
+
+1.4 Kurum adı, marka ve onay imâsı
+
+[BELGELENEN] SMK (6769) md. 7(2)(b): halk tarafından "tescilli marka ile ilişkilendirilme
+ihtimali de dâhil karıştırılma ihtimali" olan kullanım engellenebilir. md. 7(3)(ç): işaretin
+"iş evrakı ve reklamlarında kullanılması" yasaklanabilir. md. 7(5)(b): dürüst ve ticari hayatın
+olağan akışında, hizmetin niteliğine ilişkin açıklama yapılması engellenemez.
+https://www.mevzuat.gov.tr/mevzuatmetin/1.5.6769.pdf
+
+[BELGELENEN] ABD Lanham Act 15 U.S.C. §1125(a)(1)(A): başkasıyla "affiliation, connection, or
+association" ya da "sponsorship, or approval" konusunda karışıklık yaratması muhtemel kullanım
+sorumluluk doğurur.
+https://www.law.cornell.edu/uscode/text/15/1125
+
+[BELGELENEN] CC BY 4.0 md. 2(a)(6): lisans, lisans verenle bağlantı, sponsorluk, onay ya da resmi
+statü iddia etme veya ima etme izni vermez.
+https://creativecommons.org/licenses/by/4.0/legalcode.en
+
+[ÇIKARIM] "Akbank, 2025" yazmak kendi başına bir gerçeği belirtmek ve muhtemelen dürüst
+kullanım. Risk, logo, kurum renkleri, "Akbank case'i" başlığı ya da paylaşım görselinde kurum
+adının ürün adı gibi büyütülmesiyle doğar. AB marka tüzüğünün sınırlama maddesini (2017/1001
+md. 14) açamadım. AB için ayrı doğrulama gerek.
+
+1.5 Üç türün karşılaştırması
+
+(A) "İlham alınan" (bizim yeniden yazdığımız, kurumun yalnız fikri/teması kullanıldı)
+    Telif: fikir serbest. Kendi metnimiz, kendi örnek verimiz, kendi isimlerimiz.
+    Atıf: hukuken zorunlu değil; etik olarak köken satırı doğru.
+    Risk: onay imâsı (marka) ve "yeniden yazım" diye kaynağın yapısını, sırasını ve örneklerini
+    birebir taşımak. O zaman fiilen işlenme olur. [ÇIKARIM]
+
+(B) "Kaynağından derlenen" (kurumun metni/verisi kısaltılıp düzenlendi)
+    Telif: FSEK md. 6/9 işlenme. Kaynak açık lisanslı değilse izin şart.
+    Atıf: lisans varsa lisansın istediği biçimde (CC'de yazar, lisans, link, değişiklik notu).
+    Risk: en yüksek. Devpost/Akbank/Bursa örneklerinde hak ve veri organizatörde (bkz. 2.5–2.7).
+
+(C) "Bizim/üyenin yazdığı" (günlük ihtiyaçtan özgün problem)
+    Telif: yazana ait. Platformun yayımlayabilmesi için kullanım koşullarında açık lisans gerek.
+    Türkiye'de mali haklara dair sözleşme yazılı olmalı ve haklar ayrı ayrı sayılmalı
+    [BELGELENEN FSEK md. 52: "Mali haklara dair sözleşme ve tasarrufların yazılı olması ve
+    konuları olan hakların ayrı ayrı gösterilmesi şarttır."]. Tıkla-kabulün bu şartı karşılayıp
+    karşılamadığı avukata sorulmalı. [ÇIKARIM]
+
+
+=====================================================================
+2. PLATFORMLAR İÇERİK HAKKINI NASIL YÖNETİYOR
+=====================================================================
+
+2.1 Advent of Code
+[BELGELENEN] https://adventofcode.com/2025/about
+- Kopyalama: "Please don't. Advent of Code is free to use, not free to copy. If you're posting a
+  code repository somewhere, please don't include parts of Advent of Code like the puzzle text
+  or your inputs."
+- Link: "You may link to or reference puzzles from Advent of Code in discussions, classes,
+  source code, printed material, etc., even in commercial contexts."
+- Çözümler: "Advent of Code does not claim ownership or copyright over your solution
+  implementation."
+- Fikir kabulü: "Because of legal issues like copyright and attribution, I don't accept puzzle
+  ideas, and I won't even read your email if it looks like one just in case I use parts of it
+  by accident."
+- Benzer site: "If you're making a website, please don't make it look like Advent of Code or
+  name it something similar."
+- Yasal not: "Advent of Code is a registered trademark in the United States." Tasarım, dil, stil
+  ve "concept" için izinsiz kullanılamaz ifadesi var.
+[ÇIKARIM] "Concept" iddiası telif açısından §102(b) ile sınırlı; marka ve ticari görünüm açısından
+ciddiye alınmalı. Ayrıca AoC, topluluk fikri kabul etmeyi telif ve atıf riski yüzünden
+reddediyor. Bizim üçüncü kaynak (üye önerisi) tam bu riski taşıyor.
+
+2.2 Project Euler
+[BELGELENEN] https://projecteuler.net/copyright
+Problem içeriği CC BY-NC-SA 4.0. Atıf zorunlu ("The following problem is taken from Project
+Euler" ya da değişiklikte "problem {id} at Project Euler" önerisi). Ticari kullanım yasak,
+türev eser aynı lisansla. Bonus problemler, istatistikler ve forum standart telif altında.
+
+2.3 Kattis ve problem paketi formatı
+[BELGELENEN] https://www.kattis.com/problem-package-format/spec/legacy
+             https://www.kattis.com/problem-package-format/spec/2025-09.html
+- license değerleri: unknown ("In practice means that the problem can not be used."),
+  public domain, cc0, cc by, cc by-sa, educational,
+  permission ("The rights owner must be contacted for every additional use.").
+- rights_owner: lisans unknown ya da public domain değilse zorunlu.
+- 2025-09 sürümünde credits rolleri ayrı: authors (problemi tasarlayan), contributors (paketi
+  geliştiren), testers, translators, packagers (mevcut bir problemden paket yapan),
+  acknowledgements. source: ad + url.
+[BELGELENEN] https://open.kattis.com/problems/hello sayfasında "Source & License" satırı,
+kaynak (Kattis) ve Public Domain işaretiyle görünüyor.
+[ÇIKARIM] Bizim üç türün hukuki ayrımını en temiz kodlayan örnek bu. "Derlenen case"i öneren
+üye, Kattis dilinde author değil packager.
+
+2.4 ICPC
+[BELGELENEN] Bölgesel setler kendi lisansını yazıyor:
+- NCPC 2017: "All material are copyright 2017 by the NCPC 2017 jury. They are licensed under the
+  Creative Commons BY-SA v3.0 license." https://nordic.icpc.io/ncpc2017/
+- ICPC Greater New York 2021: problemler, çözümler ve veri CC BY-NC-SA 3.0 Unported.
+  http://acmgnyr.org/year2021/problems_2021.shtml
+[DOĞRULANMADI] World Finals arşivi için resmi lisans metni bulamadım. icpc.global/compete/problems
+sayfası içerik döndürmedi.
+[ÇIKARIM] "ICPC" tek bir lisans değil. Her yarışma ve yıl ayrı kontrol edilmeli.
+
+2.5 Exercism problem-specifications
+[BELGELENEN] Lisans MIT ("Copyright (c) 2014, 2019, 2021 Exercism").
+https://github.com/exercism/problem-specifications/blob/main/LICENSE
+[BELGELENEN] Her alıştırmanın metadata.toml'unda kısa köken alanı var. Örnek (bob):
+source = "Inspired by the 'Deaf Grandma' exercise in Chris Pine's Learn to Program tutorial."
+source_url = "https://pine.fm/LearnToProgram/chap_06.html"
+(gh api ile okundu: exercises/bob, pig-latin, two-fer)
+[ÇIKARIM] Bizim "ilham alınan" türünün yerleşik karşılığı bu. Tek satır "Inspired by" + link,
+metin baştan yazılmış.
+
+2.6 Codewars
+[BELGELENEN] Kullanım Koşulları, son güncelleme 6 Ekim 2025.
+https://www.codewars.com/about/terms-of-service
+- md. 5: Kata Data olarak gönderilen içerik FreeBSD 2-Clause lisansıyla lisanslanır.
+- md. 6: kullanıcı, kata çözümleri dahil katkıları için şirkete "perpetual, worldwide,
+  non-exclusive, no charge, royalty-free, irrevocable, sublicensable and transferable license"
+  verir. Şirket Kata Data'yı yapay zekâ model sağlayıcılarına ticari olarak verebilir. Hesap
+  ayarlarından eğitim kullanımından çıkılabilir.
+- md. 4: kullanıcı, sahibi olmadığı içeriği izinsiz kopyalamamayı taahhüt eder.
+
+2.7 LeetCode
+[DOĞRULANMADI] https://leetcode.com/terms/ Cloudflare 403 verdi, okuyamadım. Arama özetine göre
+LeetCode soruları ve çözümleri kendi "sole and exclusive property"si sayıyor; kullanıcı içeriği
+için dünya çapında, süresiz, geri alınamaz lisans alıyor. Karar dayanağı yapmadan önce tarayıcıdan
+okunmalı.
+
+2.8 Devpost (dünya çapındaki hackathon'ların ana vitrini)
+[BELGELENEN] Kullanım Koşulları, son güncelleme 5 Aralık 2025. https://info.devpost.com/terms
+- Tanım: "Hackathon Content" ilan sahibinin (Poster) yayımladığı içerik; "the description and
+  request for Submissions, terms and conditions, copyrighted material, trademarks ..." dahil.
+- md. 7.B(ii): "Posters have and shall retain sole and exclusive title and ownership of all
+  Hackathon Content and all Intellectual Property Rights relating thereto."
+- md. 7.A: Devpost Content'ten türev eser yapılamaz; yazılı izin olmadan kopyalama yasak.
+- Yasak davranışlar: siteyi ve ilgili veriyi "scrape", "crawl" veya "spider" etmek.
+- md. 7.B(iii): katılımcı (Maker) gönderisinin sahibi olarak kalır. İstisna: resmi kurallar
+  devri açıkça şart koşar VE ödül verilirse. md. 5: resmi kurallar o hackathon için ToS'a
+  üstün gelir.
+[BELGELENEN] Üç resmi kural örneği (curl ile okundu):
+- OpenAI Build Week md. 8: gönderiler geliştirenin malı; sponsora değerlendirme için münhasır
+  olmayan lisans. https://openai.devpost.com/rules
+- Hack Reddit md. 7: aynı, Reddit'in Developer Terms'teki malzemeleri saklı.
+  https://hackreddit.devpost.com/rules
+- GitLab AI Hackathon md. 7: sahiplik katılımcıda ama sponsora "perpetual, worldwide,
+  non-exclusive, royalty-free" lisans ve "Sponsor may use the Submission to develop, market,
+  and commercialize products and services." https://gitlab.devpost.com/rules
+[ÇIKARIM] Dünya çapındaki hackathon'ların problem metni, Devpost'ta hukuken ilan veren kurumun.
+Devpost'tan otomatik toplama ayrıca ToS ihlali. Bizim için güvenli olan, olgu düzeyinde kayıt
+(kurum, yıl, tema, link) ve kendi yazdığımız problem.
+
+2.9 Kaggle
+[DOĞRULANMADI] Yarışma kural sayfaları JS ile açılıyor, okuyamadım. Arama özetine göre veri
+kullanımı yarışmaya göre değişiyor; "Open Source" kazanan lisansında kazanan kodu OSI onaylı
+lisansla açıyor. Tek tek yarışma sayfasından okunmalı.
+
+2.10 Türk kurumsal örnekleri
+Akbank
+[BELGELENEN] Akbank LAB Kullanıcı Sözleşmesi (TR /kullanim-kosullari 404 verdi; aynı Türkçe
+metin https://www.akbanklab.com/en/terms-of-use adresinde):
+- Gizlilik: "Akbank tarafından tarafıma iletilen her türlü bilgiyi gizli tutmayı ... kabul ve
+  taahhüt ederim."
+- Hak devri: platformdan iletilen ürünler üzerinde "süresiz, bedelsiz, tüm dünyada geçerli
+  olmak üzere; İşleme, Çoğaltma, Yayma, Temsil ve ... Umuma İletimine ilişkin haklarımı
+  AKBANK'a devrettiğimi" ve lisansa tabi ürünler için münhasır lisans verdiğimi.
+- Ters yönde: başvuruda verdiği bilgilerin gizliliği konusunda Akbank'ın sorumluluk taşımadığını
+  kabul.
+[BELGELENEN] Akbank Hackathon DisasterTech sayfasında şartname veya IP maddesi yok; başvuru ReFi
+Türkiye platformuna yönleniyor. https://www.akbanklab.com/tr/akbank-hackathon-disastertech
+[BELGELENEN] Akbank Case Maratonu sayfasında case'i kimin hazırladığı ve IP/gizlilik metni yok;
+yalnız KVKK ve açık rıza metinlerine atıf var.
+https://www.akbankgenclikakademisi.com/akbank-case-maratonu
+[DOĞRULANMADI] Belirli bir Akbank hackathon'unun (ReFi, DisasterTech) kendi şartnamesini bulamadım.
+
+Turkish Airlines & Turkish Technology Fintech Ideathon 2023 (Teknofest)
+[BELGELENEN] https://cdn.teknofest.org/media/upload/userFormUpload/FINTECH_IDEATHON_2023_YARI%C5%9EMA_%C5%9EARTNAMES%C4%B0_mYPdx.pdf
+- "Katılımcılar, Ideathon esnasında paylaştıkları tüm bilgilerin kamunun bilgisi dâhilinde
+  olduğunu ve gizliliğe tabi olmadığını kabul eder."
+- "Turkish Airlines ve Turkish Technology, Ideathon süresince takımların geliştirdiği projeleri
+  kullanma hakkını saklı tutar."
+- T3 Vakfı maddesi: yarışmacı işleme, yayma, çoğaltma, temsil ve umuma iletim mali haklarını
+  "herhangi bir süre kısıtlaması olmaksızın" T3 Vakfı/TEKNOFEST'e devreder. Açık kaynak
+  politikası çerçevesinde "atıf yapılmak suretiyle" kullanılmasına rıza gösterir.
+- "Danışman eser sahibi olarak kabul edilmeyecektir." Eser sahibi takım.
+
+Bursa Büyükşehir Akıllı Şehir Hackathonu
+[BELGELENEN] https://bursahackathon.com/sartlar-ve-kosullar/
+- 9.1.1: katılımcılara verilen tüm Veriler belediyenin mülkü olarak kalır; "Paylaşılan
+  Veriler'i kısmen veya tamamen, benzerini, aynısını, farklı versiyonları hiçbir şekil ve
+  şartta kullanmayacaklardır." Hackathon dışı kullanım yazılı izinle.
+- 9.2.1: proje özgün olmalı, üçüncü kişi hakkı ihlal edilmemeli, tazmin yükümlülüğü.
+- 10.3: ekip, projeyi üçüncü kişilere pazarlamadan önce belediyeye başvurup ilgilenmediğine
+  dair yazılı bildirim almak zorunda.
+
+BTK Akademi Hackathon 2024
+[BELGELENEN] Kural belgesinde fikri mülkiyet maddesi yok.
+https://www.btkakademi.gov.tr/api/service/v1/public/51/documents/download/10203
+
+[ÇIKARIM] Türk kurumsal etkinliklerinde üç ayrı rejim var: (i) katılımcının çözümü kurumda
+(Akbank LAB devri, T3 mali hak devri), (ii) çözüm katılımcıda ama kurumun kullanım hakkı var
+(THY), (iii) kurumun verisi ve bilgisi gizli ya da etkinlikle sınırlı (Akbank gizlilik, Bursa veri).
+Hiçbir örnekte problem metninin üçüncü kişilere yeniden yayın lisansı yok.
+
+
+=====================================================================
+3. TOPLULUK KATKISI VE MODERASYON MODELLERİ
+=====================================================================
+
+3.1 Codewars beta süreci
+[BELGELENEN] https://docs.codewars.com/curation/kata/
+             https://docs.codewars.com/curation/references/approval-retirement-criteria/
+             https://docs.codewars.com/gamification/privileges/
+- Yayımlanan kata önce beta'ya girer. Topluluk çözer, memnuniyet oyu ve zorluk (rank) oyu verir.
+- "issue" etiketli iki gönderi alan beta kata otomatik olarak taslağa döner. Çözülmemiş issue
+  varken yeniden yayımlanamaz.
+- Onay eşiği: memnuniyet beyaz/sarı rank için 80+, mavi 75+, mor 70+. Gereken oy sayısı yazarın
+  onaylı kata sayısına göre değişir (10'dan az onaylı yazar için 12/10/8/5; 30+ için 6/5/4/3).
+- Otomatik emeklilik: 4+ oy ve %0 memnuniyet; ya da yeterli oy varken memnuniyet gerekenin
+  yarısı veya altı.
+- Yetki eşikleri (honor puanı): kata yazma 300, beta oyu 25, rank değerlendirme 100,
+  ortak yazarlık/düzenleme 4.000, onaylama 6.000.
+- Emekliye ayrılan onaylı katada çözenlerin puanı, rank ve honor'u korunur.
+
+3.2 Exercism
+[BELGELENEN] README: "Pull Requests to this repo require three approving reviews to be merged."
+https://github.com/exercism/problem-specifications
+[BELGELENEN] Organizasyon üyesi olmayanların açtığı her issue ve PR otomatik kapatılıyor.
+Tartışma önce forumda yapılıyor, uygun görülürse PR yeniden açılıyor (Kasım 2023 politikası).
+Kaynak: .github/workflows/pause-community-contributions.yml ve
+exercism/github-actions/.github/workflows/community-contributions.yml (gh api ile okundu).
+[BELGELENEN] Test vakaları değişmez, her birinin UUID'si var. Aynı README.
+
+3.3 LeetCode
+[DOĞRULANMADI] Resmi katkı sayfası açılmadı. LeetCode Discuss'taki kullanıcı yazılarına göre
+onaylanan soru katkısı 1000 LeetCoin, onaylanan test vakası 100 LeetCoin. Resmi kaynak değil.
+
+3.4 Codeforces / Polygon
+[DOĞRULANMADI] codeforces.com 403 verdi. Arama özetine göre yazar problemi (metin, kısıtlar,
+çözüm taslağı) koordinatöre gönderiyor, koordinatör kabul veya ret veriyor. Polygon'da üretici
+(generator), doğrulayıcı (validator), denetleyici (checker) ve tester çözümleriyle paket
+hazırlanıyor.
+
+3.5 Kattis
+[BELGELENEN] Paket formatı hak alanlarını ve rolleri zorunlu kılıyor (bkz. 2.3). problemtools
+paketi verifyproblem ile doğruluyor. https://github.com/Kattis/problemtools
+
+3.6 Katkı lisansı: CLA, DCO, inbound=outbound, açık içerik lisansı
+[BELGELENEN] DCO 1.1: katkıcı, katkıyı kendisinin oluşturduğunu ya da uygun açık lisanslı bir
+çalışmaya dayandığını ve gönderme hakkı olduğunu beyan eder (a–c). (d): katkının ve kişisel
+bilgilerin kaydının süresiz tutulup yeniden dağıtılabileceğini kabul eder.
+https://developercertificate.org/
+[BELGELENEN] Apache ICLA: ASF'ye dağıtma ve üzerine inşa hakkı verir; "contributors retain full
+rights to use their original contributions for any other purpose outside of Apache."
+https://www.apache.org/licenses/contributor-agreements.html
+[BELGELENEN] GitHub ToS D.6: lisans bildirimi olan bir depoya içerik ekleyen, içeriği aynı
+koşullarla lisanslamış ve bunu yapma hakkı olduğunu kabul etmiş sayılır (inbound=outbound).
+https://docs.github.com/en/site-policy/github-terms/github-terms-of-service
+[ÇIKARIM] Karşılaştırma:
+- CLA: platforma geniş hak verir, sonradan lisans değişikliğine izin verir; katkıcıyı caydırır,
+  her katkıcıdan ayrı imza ister.
+- DCO: hafif (commit'te Signed-off-by); git tabanlı akışa uygun, web formuna doğrudan uymaz.
+  "Hakkım var" beyanı tam bizim riskimizi (üyenin başkasının case'ini getirmesi) hedefliyor.
+- inbound=outbound + CC BY-SA 4.0 (metin) / MIT (test, kod): açık kaynak ruhuna en yakın.
+  ShareAlike, kurumların case'i kendi kapalı materyallerinde kullanmasını zorlaştırabilir.
+  CC BY 4.0 bu açıdan daha esnek.
+- Codewars modeli (BSD-2 + şirkete geri alınamaz alt lisanslanabilir lisans + yapay zekâ eğitimi
+  satışı, opt-out ile) açık kaynak görünüp ticari hakkı şirkette toplar. "Topluluk katkısı ve açık
+  kaynak önemli" hedefiyle gerilim yaratır.
+- Türkiye için FSEK md. 52 (yazılı ve hakları ayrı ayrı sayan sözleşme) web formu katkılarında
+  avukata sorulacak tek net soru.
+
+
+=====================================================================
+4. KISA ATIF SATIRI (kim · tarih · konu) NE ZAMAN YETER
+=====================================================================
+
+Satır şu haliyle kalıyor: "damumya · 29.10.2026 · sewing engine". Aşağıdakiler satırı uzatmadan
+satırın arkasına konacak bilgiler.
+
+YETER
+- Ekibin özgün yazdığı problem. Atıf zorunluluğu yok; satır kredi. [ÇIKARIM]
+- Üyenin özgün yazdığı problem. Kullanım koşullarında lisans açıkça alınmışsa yeter. FSEK md. 15
+  eser sahibine adla, takma adla ya da adsız yayın kararını veriyor; "damumya" gibi kullanıcı
+  adını kendisi seçmişse uygun. [BELGELENEN FSEK md. 15 + ÇIKARIM]
+- "İlham alınan" problem (Akbank, 2025 teması; metin bizim). Satırın konu/köken kısmında kurum
+  ve yıl, link ayrıntıda. Etik olarak yeter. Onay olmadığını belirten tek cümle satırda değil,
+  kaynak sayfasında ya da altbilgide. [ÇIKARIM]
+- Kamu malı ya da CC0 problem. Yasal zorunluluk yok. [BELGELENEN Kattis tanımları]
+
+YETMEZ (satır doğru kalır ama hak kaydı başka yerde olmalı)
+- CC BY / CC BY-SA kaynaklı problem. Lisans yazar, telif bildirimi, lisans bildirimi, link ve
+  değişiklik notu istiyor (md. 3(a)(1)). Ama md. 3(a)(2) bunları "a URI or hyperlink to a resource
+  that includes the required information" ile karşılamaya izin veriyor. Satırdaki tarih ya da konu
+  bu sayfaya link olursa satır uzamadan uyum sağlanabilir. [BELGELENEN CC BY 4.0 + ÇIKARIM]
+  CC'nin önerdiği tam biçim TASL: Title, Author, Source, License.
+  https://wiki.creativecommons.org/wiki/Recommended_practices_for_attribution
+- CC BY-NC-SA (Project Euler, ICPC GNYR). Atıf tek başına yetmez. NC, ücretli katmanla çakışabilir;
+  SA, türev case'in lisansını belirler. [BELGELENEN + ÇIKARIM]
+- Lisansı belirsiz ya da tüm hakları saklı kaynaktan derlenen metin/veri (Devpost ilanı, Akbank,
+  Bursa). Hiçbir atıf satırı izin yerine geçmez. Kattis bunu "unknown = kullanılamaz" diye
+  kodluyor. [BELGELENEN Kattis, Devpost 7.B(ii), FSEK md. 6/9]
+- AoC metni ya da input'u. Atıfla da olmaz; yalnız link. [BELGELENEN AoC about]
+- Öneren üye yazar değilse (başkasının case'ini getirdiyse). Satırdaki ad yazar sanılır. Satırın
+  "kim" kısmı kaynağa (ör. "Akbank · 2025 · KOBİ tahsilat") ait olmalı. Getiren üye ayrıntıda
+  "derleyen" rolüyle anılır (Kattis'te packager). [ÇIKARIM]
+
+UZUN BİLGİ NEREYE (satır uzamadan)
+1. Her case'in yanında makine-okur hak kaydı (Kattis problem.yaml / Exercism metadata.toml benzeri)
+   - tür: ilham | derleme | özgün
+   - license: unknown | cc0 | cc-by-4.0 | cc-by-sa-4.0 | permission | own
+   - rights_owner
+   - credits: author, packager (derleyen), testers
+   - source: ad + url + yıl
+   - permission_ref: izin yazısının tarihi/yeri (yalnız "permission" türünde)
+   Kural: license=unknown olan case yayına çıkmaz.
+2. Satırdan açılan "kaynak ve lisans" sayfası. CC'nin URI ile atıf izni bunu kapsıyor.
+3. Site altbilgisinde tek cümle: kurum adları kökeni gösterir, kurumların onayı anlamına gelmez.
+4. Açık kaynak depo varsa CONTRIBUTING + LICENSE (metin CC BY 4.0 ya da CC BY-SA 4.0, test/kod MIT).
+   Katkıda DCO sign-off, web formunda aynı beyanı taşıyan onay kutusu.
+[ÇIKARIM] Bu dört yer satırın üç parçasını değiştirmiyor.
+
+Kişisel veri notu [ÇIKARIM]: satır kalıcı ve herkese açık. DCO (d) maddesi gibi, katkı kaydının
+süresiz tutulacağı katkı anında söylenmeli. Hesap silinirse satırın ne olacağı (ör. "silinmiş
+üye") önceden yazılmalı.
+
+
+=====================================================================
+5. ADVENTCODENDAR İÇİN YANLIŞ TEMEL ADAYLARI
+=====================================================================
+
+1. Karar: "Kaynak linkini koyarsak kurumun problem metnini aynen ya da özetleyerek yayımlarız."
+   Neden kötü: Devpost'ta problem metni dahil Hackathon Content'in tüm hakları ilan sahibinde
+   (ToS 7.B(ii)). FSEK md. 6/9'a göre kısaltma işlenme, md. 16'ya göre izinsiz kısaltma yasak.
+   Kattis, lisansı bilinmeyen problemi kullanılamaz sayıyor.
+   Üründe: takvimin 3. günü "Akbank, 2025" satırıyla Akbank'ın challenge metninin üç paragraflık
+   özeti; ilk itirazda arşivden kaldırmak, o case'teki tüm çözüm geçmişini ve seriyi bozar.
+
+2. Karar: "Dünya çapındaki hackathon'ları Devpost/Kaggle'dan otomatik toplayıp takvimi doldururuz."
+   Neden kötü: Devpost ToS siteyi ve verisini scrape/crawl etmeyi yasaklıyor. Toplanan metin
+   zaten ilan sahibinin.
+   Üründe: "global arşiv" botunun her gece Devpost'tan başlık ve açıklama çekmesi.
+
+3. Karar: "Kurum adını ve logosunu öne çıkarırız, güven verir."
+   Neden kötü: SMK md. 7(2)(b) ilişkilendirme ihtimali, md. 7(3)(ç) reklamda kullanım. Lanham
+   §1125(a) sponsorluk/onay karışıklığı. CC BY bile onay ima etmeye izin vermiyor (md. 2(a)(6)).
+   Üründe: hediye kutusunda Akbank logosu, "Akbank case'i" başlığı, Instagram paylaşım kartında
+   kurum adının büyük puntoyla görünmesi.
+
+4. Karar: "Case'e kurumun verdiği veri setini de koyarız, gerçekçi olur."
+   Neden kötü: Bursa hackathonunda veri belediyenin, kullanım etkinlikle sınırlı, "benzerini"
+   bile kullanmak yasak (9.1.1). Veri tabanına AB 96/9 md. 7 ve FSEK Ek md. 8 ile ayrı hak var.
+   Üründe: "akıllı şehir trafik" case'ine Bursa hackathonunda dağıtılan CSV'nin eklenmesi.
+
+5. Karar: "Üye önerisini, metnin nereden geldiğini sormadan kabul ederiz."
+   Neden kötü: Akbank LAB sözleşmesinde katılımcı, Akbank'ın ilettiği her bilgiyi gizli tutmayı
+   taahhüt ediyor. AoC, aynı risk yüzünden topluluk fikri kabul etmiyor. DCO'nun (a)–(c)
+   maddeleri bu beyanı katkıcıdan almak için var.
+   Üründe: PoChallenge'a katılmış bir üyenin kendisine gelen problem dokümanını "öneri" olarak
+   yüklemesi; sorumluluk zinciri Adventcodendar'da kalır.
+
+6. Karar: "Kısa satır hem kredi hem hak kaydıdır, ayrı alan gerekmez."
+   Neden kötü: CC BY lisans bildirimi, link ve değişiklik notu istiyor (md. 3(a)(1)). Kattis ve
+   Exercism lisans/kaynak/rolleri ayrı alanda tutuyor. FSEK md. 52 hakların ayrı ayrı yazılmasını
+   şart koşuyor. Satır tek kayıtsa itirazda hangi case'in hangi hakla yayımlandığı gösterilemez.
+   Üründe: Project Euler'den uyarlanan bir case'in yalnız "projecteuler · 2026 · primes" ile
+   yayımlanması; lisans bildirimi yok, NC ihlal riski var.
+
+7. Karar: "Case'i getiren üye satırda yazar olarak görünür."
+   Neden kötü: Kattis yazar (authors) ile derleyeni (packagers) ayırıyor. FSEK md. 15–16 adın
+   belirtilmesini eser sahibine bağlıyor. THY şartnamesi bile eser sahibini fiilen üreten
+   takımla sınırlıyor (danışman eser sahibi değil).
+   Üründe: damumya'nın Akbank 2025 case'ini getirmesi, satırda "damumya · 30.10.2026 · KOBİ
+   tahsilat" görünmesi; Akbank'ın eseri bir üyenin eseri gibi görünür.
+
+8. Karar: "Tüm case'ler tek lisansla (ör. hepsi CC BY-SA ya da hepsi 'bizim') yayımlanır."
+   Neden kötü: kaynakların lisansları karışık. Project Euler ve ICPC GNYR CC BY-NC-SA, NCPC
+   CC BY-SA 3.0, Exercism MIT, Kattis'te "permission". NC lisanslı içerik, kararlar.json'da
+   açık duran ücretli katmanla çakışabilir.
+   Üründe: ücretli üyelik açıldığında arşivdeki Project Euler türevi case'lerin ücretli alanda
+   kalması.
+
+9. Karar: "Topluluk önerisi tek admin onayıyla doğrudan takvime düşer."
+   Neden kötü: oturmuş platformların hepsi çok aşamalı. Codewars'ta beta, oy ve memnuniyet eşiği,
+   2 issue'da otomatik geri çekme, onay için 6.000 honor. Exercism'de 3 onay ve önce forum.
+   Codeforces'ta koordinatör. Hak kontrolü (madde 5) ve kalite kontrolü aynı kuyrukta yapılmazsa
+   hatalı ya da hak sorunlu case, çözüm geçmişi biriktikten sonra fark edilir.
+   Üründe: bir üyenin önerdiği case'in çözülemez test verisiyle 1 Aralık kutusuna düşmesi ve
+   seriyi bozması.
+
+10. Karar: "Advent of Code'a benzeyen ad ve takvim görünümü sorun değil, kavram serbest."
+    Neden kötü: telif açısından kavram serbest (§102(b)). Ama AoC ABD'de tescilli marka ve about
+    sayfasında açıkça "please don't make it look like Advent of Code or name it something
+    similar" diyor. Bu konu bu notun dar kapsamı dışında, ayrı marka araştırması gerekiyor.
+    Üründe: "Adventcodendar" adı, aralık takvimi, kutu açma ve AoC'ye yakın renk/tipografinin
+    birlikte kullanılması.
+
+
+=====================================================================
+6. ERİŞEMEDİĞİM / DOĞRULAYAMADIĞIM KAYNAKLAR
+=====================================================================
+- LeetCode ToS ve katkı sayfası: Cloudflare 403 (WebFetch ve curl). Arşiv.org da engelli.
+- Codeforces / Polygon belgeleri: 403.
+- EUR-Lex ve CURIA (SAS Institute C-406/10, AB marka tüzüğü md. 14): JS/WAF koruması, boş döndü.
+  AB metinleri legislation.gov.uk'deki AB kökenli kopyalardan okundu (96/9, 2009/24).
+- Kaggle yarışma kuralları: JS, okunamadı.
+- ICPC World Finals arşiv lisansı: resmi metin bulunamadı.
+- Akbank'a ait belirli bir hackathon şartnamesi (ReFi, DisasterTech, Case Maratonu): bulunamadı;
+  yalnız Akbank LAB genel kullanıcı sözleşmesi okundu.
+- Stack Overflow lisans sayfası: araç engelli.
+- Feist kararı: Cornell sayfası araç özetiyle okundu; tam metin alıntısı kısa tutuldu.
