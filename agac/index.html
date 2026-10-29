@@ -8,140 +8,104 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Recursive:wght,CASL,MONO@300..900,0..1,0..1&family=Sono:wght,MONO@300..800,0..1&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono/400.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono/600.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono/700.css" rel="stylesheet">
 <style>
+  /* Her şey karakter ızgarasında. Ağacın en geniş satırı 34 karakter (7 kutu × 4 + 6 boşluk);
+     yazı boyu ekrana göre ağacın sığacağı en büyük değer. */
   :root {
-    --gutter: clamp(16px, 3vw, 40px);
-    --b: clamp(38px, min(11.2vw, 6.6vh), 74px);
-    --gap: calc(var(--b) * 0.16);
-    --t-body: clamp(17px, 1.4vw, 20px);
-    --t-small: clamp(14px, 1.1vw, 16px);
+    --gutter: 16px;
+    --fs: clamp(14px, min(calc((100vw - 2 * var(--gutter)) / 21.6), calc(100svh / 41)), 30px);
+    --lh: 1.12;
   }
   [data-yon="gece"] {
-    --bg1: #2a1d3d; --bg2: #3b2a55;
-    --ink: #f6ecdf; --muted: #b8a9cc;
-    --g1: #9fd8b9; --g2: #7cc4a4; --g3: #bfe8cf;
-    --a1: #f7b8c8; --a2: #f8e0a0; --a3: #cdbdf2;
-    --trunk: #c9a07f; --no: #2a1d3d; --hole: #1b1226;
-    --star: #ffd98a; --snow: 233, 226, 245; --bank: rgba(233, 226, 245, .10);
-    --wire: #18101f;
-    --font: "Recursive", ui-monospace, monospace;
-    --fvs: "MONO" 1, "CASL" 1;
+    --bg1: #2a1d3d; --bg2: #382851;
+    --ink: #f6ecdf; --muted: #a998bf; --wire: #6c5a86;
+    --g1: #9fd8b9; --g2: #7cc4a4; --g3: #c6ecd5;
+    --a1: #f7a8bd; --a2: #f8dc94; --a3: #c9b6f5;
+    --trunk: #d1a582; --star: #ffd98a; --snow: 233, 226, 245;
+    --font: "Recursive", ui-monospace, monospace; --fvs: "MONO" 1, "CASL" 1;
   }
   [data-yon="kar"] {
-    --bg1: #f6f3fb; --bg2: #e6ecf7;
-    --ink: #3b2f4a; --muted: #7d7192;
-    --g1: #8fd3b8; --g2: #6fbf9f; --g3: #b5e3cc;
-    --a1: #f29bb2; --a2: #f3cf72; --a3: #b49ee8;
-    --trunk: #c4987a; --no: #3b2f4a; --hole: #6d6488;
-    --star: #f2b84b; --snow: 150, 140, 190; --bank: rgba(255, 255, 255, .85);
-    --wire: #6b5f80;
-    --font: "Maple Mono", ui-monospace, monospace;
-    --fvs: normal;
+    --bg1: #f7f4fb; --bg2: #e7edf8;
+    --ink: #3b2f4a; --muted: #85799a; --wire: #a79cbd;
+    --g1: #3f9f7b; --g2: #2f8566; --g3: #5ab892;
+    --a1: #de6488; --a2: #cf9a1e; --a3: #8a6fd3;
+    --trunk: #a8744f; --star: #e8a72e; --snow: 150, 140, 190;
+    --font: "Maple Mono", ui-monospace, monospace; --fvs: normal;
   }
   [data-yon="pembe"] {
-    --bg1: #fde9ee; --bg2: #f8d2dd;
-    --ink: #5a2a3c; --muted: #a0687c;
-    --g1: #bfe9d6; --g2: #9ad7bd; --g3: #d6f2e4;
-    --a1: #f58fa9; --a2: #ffe29a; --a3: #fffaf3;
-    --trunk: #d8a88c; --no: #5a2a3c; --hole: #7a3d55;
-    --star: #ffc94d; --snow: 205, 120, 150; --bank: rgba(255, 255, 255, .7);
-    --wire: #8a5468;
-    --font: "Sono", ui-monospace, monospace;
-    --fvs: "MONO" 1;
+    --bg1: #fdeaef; --bg2: #f8d5df;
+    --ink: #5a2a3c; --muted: #a46a80; --wire: #c98ea3;
+    --g1: #3f9c7a; --g2: #2e8063; --g3: #5ab08e;
+    --a1: #e0557c; --a2: #cf9a1e; --a3: #8a6fd3;
+    --trunk: #b07a5c; --star: #f2b230; --snow: 205, 120, 150;
+    --font: "Sono", ui-monospace, monospace; --fvs: "MONO" 1;
   }
 
   * { box-sizing: border-box; }
-  html, body { margin: 0; height: 100%; }
+  html, body { margin: 0; }
   body {
     min-height: 100svh; display: flex; flex-direction: column;
     background: linear-gradient(180deg, var(--bg1), var(--bg2));
     color: var(--ink);
-    font-family: var(--font);
-    font-variation-settings: var(--fvs);
-    font-size: var(--t-body);
+    font-family: var(--font); font-variation-settings: var(--fvs);
+    font-size: var(--fs); line-height: var(--lh);
     overflow-x: hidden;
-    transition: background .4s ease, color .4s ease;
   }
+  .ch { display: inline-block; width: 1ch; text-align: center; }
 
   #kar { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
 
   header {
     position: relative; z-index: 3;
-    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-    padding: 18px var(--gutter) 0;
+    display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .3em 1ch;
+    padding: 14px var(--gutter) 0;
+    font-size: max(15px, calc(var(--fs) * .78));
   }
-  .ad { font-weight: 600; letter-spacing: .01em; }
-  .yon { display: flex; align-items: center; gap: 4px; font-size: var(--t-small); color: var(--muted); }
+  .ad { font-weight: 700; }
+  .yon { color: var(--muted); white-space: nowrap; }
   .yon button {
     font: inherit; font-variation-settings: inherit; color: inherit;
-    background: none; border: 0; padding: 6px 10px; border-radius: 8px; cursor: pointer;
+    background: none; border: 0; padding: 0 .5ch; cursor: pointer;
   }
-  .yon button[aria-pressed="true"] { color: var(--ink); background: rgba(127, 127, 127, .16); }
+  .yon button[aria-pressed="true"] { background: var(--ink); color: var(--bg1); }
 
-  #isiklar { position: relative; z-index: 2; display: block; width: 100%; height: 84px; margin-top: 6px; overflow: visible; }
-  #isiklar path { fill: none; stroke: var(--wire); stroke-width: 1.6; }
-  .ampul { animation: yan var(--d, 2.4s) ease-in-out var(--g, 0s) infinite; }
-  .ampul .cam { fill: currentColor; filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 10px currentColor); }
-  .ampul .sapka { fill: var(--wire); }
-  @keyframes yan { 0%, 100% { opacity: 1; } 50% { opacity: .22; } }
+  .isiklar, .zemin { position: relative; z-index: 2; white-space: pre; overflow: hidden; }
+  .isiklar { margin-top: .5em; color: var(--wire); }
+  .ampul { animation: yan var(--d, 2.4s) ease-in-out var(--g, 0s) infinite; text-shadow: 0 0 .35em currentColor, 0 0 .8em currentColor; }
+  @keyframes yan { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
 
-  main {
-    position: relative; z-index: 1; flex: 1;
-    display: grid; justify-items: center;
-    padding: 0 var(--gutter) 0;
-  }
-  .agac { display: grid; justify-items: center; gap: var(--gap); }
-  .yildiz { width: calc(var(--b) * 1.05); height: calc(var(--b) * 1.05); margin-bottom: calc(var(--gap) * .3); }
-  .yildiz path { fill: var(--star); filter: drop-shadow(0 0 10px var(--star)); }
-  .sira { display: flex; gap: var(--gap); }
-  .govde { margin-top: calc(var(--gap) * .4); }
+  main { position: relative; z-index: 1; flex: 1; display: grid; justify-items: center; align-content: center; padding: .6em var(--gutter) 0; }
+  .agac { display: grid; justify-items: center; white-space: pre; }
+  .yildiz { color: var(--star); text-align: center; }
+  .yildiz .isin { animation: yan 3.2s ease-in-out infinite; }
+  .yildiz .isin:nth-child(2n) { animation-delay: -1.6s; }
+  .yildiz .ch.oz { text-shadow: 0 0 .4em var(--star); font-family: "Apple Symbols", "Segoe UI Symbol", sans-serif; font-size: 1.35em; line-height: .8; }
+  .sira { display: flex; gap: 1ch; }
+  .sira + .sira { margin-top: -.3em; }
 
   .kutu {
-    position: relative; width: var(--b); height: var(--b);
-    padding: 0; border: 0; background: none; cursor: pointer;
-    font: inherit; font-variation-settings: inherit; color: inherit;
-    perspective: 420px; border-radius: calc(var(--b) * .14);
-    transition: transform .18s ease;
+    display: grid; padding: 0; border: 0; background: none; cursor: pointer;
+    font: inherit; font-variation-settings: inherit; line-height: inherit;
+    color: var(--c); white-space: pre; position: relative; font-weight: 700;
+    transition: transform .15s ease;
   }
-  .kutu:hover { transform: translateY(-3px); }
-  .kutu:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-  .ic, .kapak {
-    position: absolute; inset: 0; border-radius: inherit;
-    display: grid; place-items: center;
-  }
-  .ic {
-    background: color-mix(in oklab, var(--c) 40%, var(--hole));
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, .3);
-    color: var(--star); font-size: calc(var(--b) * .38);
-    align-content: center; gap: 0; line-height: 1;
-  }
-  .ic small { font-size: calc(var(--b) * .2); color: #fff; opacity: 0; transition: opacity .25s ease .3s; }
-  .kutu.acik .ic small { opacity: .8; }
-  .ic span { opacity: 0; transform: scale(.4); transition: opacity .25s ease .25s, transform .35s cubic-bezier(.3, 1.6, .5, 1) .25s; }
-  .kapak {
-    background: var(--c); color: var(--no);
-    font-size: calc(var(--b) * .42); font-weight: 600;
-    box-shadow: 0 3px 0 color-mix(in oklab, var(--c) 72%, #000), 0 6px 14px rgba(0, 0, 0, .18);
-    transform-origin: left center;
-    transition: transform .55s cubic-bezier(.45, .05, .25, 1), box-shadow .3s ease;
-    backface-visibility: hidden;
-  }
-  .kutu.acik .kapak { transform: rotateY(-112deg); box-shadow: none; }
-  .kutu.acik .ic span { opacity: 1; transform: scale(1); }
+  .kutu > span { display: block; }
+  .kutu .no { font-weight: 700; }
+  .kutu .no b { color: var(--ink); transition: color .3s ease, text-shadow .3s ease; }
+  .kutu .kapak i { font-style: normal; display: inline-block; transition: transform .5s cubic-bezier(.3, 1.4, .5, 1), opacity .5s ease; }
+  .kutu:hover { transform: translateY(-.12em); }
+  .kutu:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .kutu.acik .kapak i { transform: translateY(-.7em); opacity: 0; }
+  .kutu.acik .no b { color: var(--star); text-shadow: 0 0 .45em var(--star); }
   .kutu.acik:hover { transform: none; }
 
-  .ipucu { margin: calc(var(--gap) * 2.2) 0 0; font-size: var(--t-small); color: var(--muted); text-align: center; }
-
-  .kartopu {
-    position: relative; z-index: 1; display: block; width: 100%; height: clamp(60px, 9vh, 110px);
-    margin-top: calc(var(--gap) * -1.5); flex: none;
-  }
-  .kartopu path { fill: var(--bank); }
+  .ipucu { margin: .9em 0 0; color: var(--muted); font-size: max(14px, calc(var(--fs) * .7)); }
+  .zemin { color: rgb(var(--snow)); opacity: .85; flex: none; margin-top: .4em; }
 
   @media (prefers-reduced-motion: reduce) {
-    .ampul { animation: none; }
-    .kapak, .ic span, .kutu { transition: none; }
+    .ampul, .yildiz .isin { animation: none; }
+    .kutu, .kutu .kapak i, .kutu .no b { transition: none; }
   }
 </style>
 </head>
@@ -150,42 +114,35 @@
 
 <header>
   <div class="ad">adventcodendar</div>
-  <div class="yon" role="group" aria-label="prototip yönü">
-    <span>yön:</span>
-    <button data-v="gece" aria-pressed="true">gece</button>
-    <button data-v="kar" aria-pressed="false">kar</button>
-    <button data-v="pembe" aria-pressed="false">pembe</button>
-  </div>
+  <div class="yon" role="group" aria-label="prototip yönü">yön <button data-v="gece" aria-pressed="true">gece</button> <button data-v="kar" aria-pressed="false">kar</button> <button data-v="pembe" aria-pressed="false">pembe</button></div>
 </header>
 
-<svg id="isiklar" aria-hidden="true"></svg>
+<div class="isiklar" id="isiklar" aria-hidden="true"></div>
 
 <main>
-  <div class="agac" id="agac">
-    <svg class="yildiz" viewBox="0 0 100 100" aria-hidden="true">
-      <path d="M50 6 L61.8 37.6 L95.1 38.2 L69 59 L78.5 91 L50 72.2 L21.5 91 L31 59 L4.9 38.2 L38.2 37.6 Z" stroke-linejoin="round"/>
-    </svg>
-  </div>
+  <div class="agac" id="agac"></div>
   <p class="ipucu">tap a box to open it</p>
 </main>
 
-<svg class="kartopu" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
-  <path d="M0 60 C 160 20, 330 18, 500 34 C 680 50, 840 14, 1000 40 L1000 100 L0 100 Z"/>
-</svg>
+<div class="zemin" id="zemin" aria-hidden="true"></div>
 
 <script>
 (() => {
   const body = document.body;
   const azHareket = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // 30 kutu: 7 sıralık taç (1+2+…+7 = 28) ve 2 kutuluk gövde. Numaralar gerçek advent takvimleri gibi karışık.
+  // Yıldız: ortada tek karakter, çevresinde yavaşça yanıp sönen ışınlar.
+  const agac = document.getElementById('agac');
+  agac.innerHTML = `<div class="yildiz" aria-hidden="true"><span class="isin">\\ | /</span>
+<span class="isin">--</span> <span class="ch oz">★</span> <span class="isin">--</span>
+<span class="isin">/ | \\</span></div>`;
+
+  // 30 kutu: 7 sıralık taç (28) + 2 kutuluk gövde. Numaralar advent takvimi gibi karışık.
   const numaralar = [17, 4, 26, 11, 29, 2, 21, 8, 14, 30, 6, 19, 1, 24, 12, 27, 9, 16, 3, 22, 13, 28, 7, 18, 25, 5, 20, 10, 15, 23];
   const yesil = ['--g1', '--g2', '--g3'], sus = ['--a1', '--a2', '--a3'];
-  // Yeşiller ağacı okutur; renkli kutular çapraz bir süs dizisi gibi iner.
+  // Yeşil kutular ağacı okutur; renkli olanlar çapraz bir süs dizisi gibi iner.
   const renkSec = (s, i) => ((s - i) % 3 === 0 ? sus[i % 3] : yesil[(s + i) % 3]);
-  const agac = document.getElementById('agac');
   let k = 0;
-
   const kutuYap = (renk) => {
     const no = numaralar[k++];
     const b = document.createElement('button');
@@ -193,14 +150,10 @@
     b.style.setProperty('--c', `var(${renk})`);
     b.setAttribute('aria-label', `box ${no}`);
     b.setAttribute('aria-pressed', 'false');
-    b.innerHTML = `<span class="ic"><span>✦</span><small>${no}</small></span><span class="kapak">${no}</span>`;
-    b.addEventListener('click', () => {
-      const acik = b.classList.toggle('acik');
-      b.setAttribute('aria-pressed', String(acik));
-    });
+    b.innerHTML = `<span class="kapak">.<i>--</i>.</span><span class="no">|<b>${String(no).padStart(2, '0')}</b>|</span><span>'--'</span>`;
+    b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.classList.toggle('acik'))));
     return b;
   };
-
   for (let s = 1; s <= 7; s++) {
     const sira = document.createElement('div');
     sira.className = 'sira';
@@ -208,87 +161,96 @@
     agac.appendChild(sira);
   }
   const govde = document.createElement('div');
-  govde.className = 'sira govde';
-  govde.appendChild(kutuYap('--trunk'));
-  govde.appendChild(kutuYap('--trunk'));
+  govde.className = 'sira';
+  govde.append(kutuYap('--trunk'), kutuYap('--trunk'));
   agac.appendChild(govde);
 
-  // Yön seçici: palet ve font karşılaştırması için, ürün kontrolü değil.
-  document.querySelectorAll('.yon button').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      body.dataset.yon = btn.dataset.v;
-      document.querySelectorAll('.yon button').forEach((x) => x.setAttribute('aria-pressed', String(x === btn)));
-    });
-  });
-  const istenen = new URLSearchParams(location.search).get('yon');
-  if (istenen) document.querySelector(`.yon button[data-v="${istenen}"]`)?.click();
-
-  // LED dizisi: sayfa genişliğinde sarkan teller, ampuller kendi temposunda yanıp söner.
-  const svg = document.getElementById('isiklar');
-  const ledRenk = ['#ff8fab', '#ffd166', '#8ce0c0', '#9cc7ff', '#d6a8ff', '#ffb38a'];
-  const isiklariCiz = () => {
-    const w = svg.clientWidth;
-    const n = Math.max(2, Math.round(w / 280));
-    const genis = w / n;
-    let html = '';
-    let r = 0;
-    for (let i = 0; i < n; i++) {
-      const x0 = i * genis, x1 = x0 + genis, cx = x0 + genis / 2;
-      html += `<path d="M${x0} 6 Q${cx} 74 ${x1} 6"/>`;
-      for (let j = 1; j <= 5; j++) {
-        const t = j / 6;
-        const x = (1 - t) * (1 - t) * x0 + 2 * (1 - t) * t * cx + t * t * x1;
-        const y = (1 - t) * (1 - t) * 6 + 2 * (1 - t) * t * 74 + t * t * 6;
-        const renk = ledRenk[r++ % ledRenk.length];
-        const d = (1.6 + ((r * 37) % 17) / 10).toFixed(2);
-        const g = (((r * 53) % 23) / 10).toFixed(2);
-        html += `<g class="ampul" style="color:${renk};--d:${d}s;--g:-${g}s" transform="translate(${x.toFixed(1)} ${y.toFixed(1)})">
-          <rect class="sapka" x="-3" y="-2" width="6" height="5" rx="1.5"/>
-          <ellipse class="cam" cx="0" cy="9" rx="4.6" ry="7"/></g>`;
-      }
-    }
-    svg.innerHTML = html;
+  // Ekran genişliğini karakter sayısına çevirir.
+  const sutun = (el) => {
+    const olcu = document.createElement('span');
+    olcu.className = 'ch'; olcu.textContent = 'x'; olcu.style.cssText = 'position:absolute;visibility:hidden';
+    el.appendChild(olcu);
+    const w = olcu.getBoundingClientRect().width;
+    olcu.remove();
+    return Math.ceil(el.clientWidth / w) + 1;
   };
-  isiklariCiz();
-  addEventListener('resize', isiklariCiz);
+
+  // LED dizisi: düz tel, farklı boyda sarkan ampuller (8 karakterlik desen).
+  const ledRenk = ['#ff8fab', '#ffd166', '#8ce0c0', '#9cc7ff', '#d6a8ff', '#ffb38a'];
+  const isiklar = document.getElementById('isiklar');
+  const isiklariCiz = () => {
+    const n = sutun(isiklar);
+    let r0 = '', r1 = '', r2 = '', a = 0;
+    const ampul = () => {
+      a++;
+      const d = (1.5 + ((a * 37) % 19) / 10).toFixed(2), g = (((a * 53) % 29) / 10).toFixed(2);
+      return `<span class="ch ampul" style="color:${ledRenk[a % ledRenk.length]};--d:${d}s;--g:-${g}s">●</span>`;
+    };
+    for (let x = 0; x < n; x++) {
+      const p = x % 8;
+      r0 += p === 2 || p === 6 ? '.' : '-';
+      r1 += p === 2 ? ampul() : p === 6 ? '|' : ' ';
+      r2 += p === 6 ? ampul() : ' ';
+    }
+    isiklar.innerHTML = `${r0}\n${r1}\n${r2}`;
+  };
+
+  // Kar zemini: iki satır tepe ve bir satır doku.
+  const zemin = document.getElementById('zemin');
+  const zeminiCiz = () => {
+    const n = sutun(zemin);
+    const d0 = "    _.--._          _.-'''-._      ";
+    const d1 = "_.-'      '-.__.--''         ''--._";
+    const d2 = " .  '  .   .   '  .  .   '  .   . ";
+    const uzat = (d) => d.repeat(Math.ceil(n / d.length) + 1).slice(0, n);
+    zemin.textContent = `${uzat(d0)}\n${uzat(d1)}\n${uzat(d2)}`;
+  };
+  const yerlesim = () => { isiklariCiz(); zeminiCiz(); };
+
+  // Yön seçici: palet ve font karşılaştırması için, ürün kontrolü değil.
+  const yonler = document.querySelectorAll('.yon button');
+  yonler.forEach((btn) => btn.addEventListener('click', () => {
+    body.dataset.yon = btn.dataset.v;
+    yonler.forEach((x) => x.setAttribute('aria-pressed', String(x === btn)));
+    requestAnimationFrame(yerlesim);
+  }));
+  const istenen = new URLSearchParams(location.search).get('yon');
+  [...yonler].find((b) => b.dataset.v === istenen)?.click();
+  yerlesim();
+  document.fonts.ready.then(yerlesim);
+  addEventListener('resize', yerlesim);
 
   // Kar: * - · + karakterleri, ağacın arkasında yavaşça yağar.
   const cv = document.getElementById('kar');
   const cx = cv.getContext('2d');
   const isaretler = ['*', '-', '*', '·', '+', '-', '*'];
-  let taneler = [], W = 0, H = 0, dpr = 1;
+  let taneler = [], W = 0, H = 0;
   const yeni = (ust) => ({
-    x: Math.random() * W,
-    y: ust ? -20 : Math.random() * H,
-    hiz: .25 + Math.random() * .8,
-    boy: 11 + Math.random() * 12,
-    salin: Math.random() * Math.PI * 2,
-    a: .3 + Math.random() * .55,
+    x: Math.random() * W, y: ust ? -20 : Math.random() * H,
+    hiz: .25 + Math.random() * .8, boy: 11 + Math.random() * 12,
+    salin: Math.random() * Math.PI * 2, a: .3 + Math.random() * .55,
     c: isaretler[(Math.random() * isaretler.length) | 0],
   });
   const boyutla = () => {
-    dpr = Math.min(2, devicePixelRatio || 1);
+    const dpr = Math.min(2, devicePixelRatio || 1);
     W = innerWidth; H = innerHeight;
     cv.width = W * dpr; cv.height = H * dpr;
     cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const adet = Math.min(110, Math.round((W * H) / 15000));
-    taneler = Array.from({ length: adet }, () => yeni(false));
+    taneler = Array.from({ length: Math.min(110, Math.round((W * H) / 15000)) }, () => yeni(false));
   };
   const ciz = () => {
-    const renk = getComputedStyle(body).getPropertyValue('--snow').trim();
-    const font = getComputedStyle(body).fontFamily;
+    const st = getComputedStyle(body);
+    const renk = st.getPropertyValue('--snow').trim();
     cx.clearRect(0, 0, W, H);
     for (const t of taneler) {
       cx.fillStyle = `rgba(${renk}, ${t.a})`;
-      cx.font = `${t.boy}px ${font}`;
+      cx.font = `${t.boy}px ${st.fontFamily}`;
       cx.fillText(t.c, t.x, t.y);
     }
   };
   const akit = () => {
     for (const t of taneler) {
-      t.salin += .012;
-      t.y += t.hiz;
-      t.x += Math.sin(t.salin) * .35;
+      t.salin += .012; t.y += t.hiz; t.x += Math.sin(t.salin) * .35;
       if (t.y > H + 20) Object.assign(t, yeni(true));
     }
     ciz();
@@ -296,12 +258,8 @@
   };
   boyutla();
   addEventListener('resize', boyutla);
-  if (azHareket) {
-    ciz();
-    document.querySelectorAll('.yon button').forEach((b) => b.addEventListener('click', () => requestAnimationFrame(ciz)));
-  } else {
-    requestAnimationFrame(akit);
-  }
+  if (azHareket) { ciz(); yonler.forEach((b) => b.addEventListener('click', () => requestAnimationFrame(ciz))); }
+  else requestAnimationFrame(akit);
 })();
 </script>
 </body>

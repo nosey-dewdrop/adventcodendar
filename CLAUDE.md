@@ -3,8 +3,9 @@
 Ürün tanımı: PROJECT.md. Geçmiş: REPORTS.md. Gerekçeli yapılmayacaklar: YAPILMAYACAKLAR.md.
 
 ## Faz
-Araştırma + ağaç prototipi (`agac/index.html`, tek dosya; 30 kutu, LED, `* -` kar,
-gece/kar/pembe yön seçici). Palet ve font Damla seçmedi. Kutu içi yalnız ✦ + numara:
+Araştırma + ağaç prototipi (`agac/index.html`, tek dosya). Her şey monospace karakter
+ızgarasında (Damla 30.10): 30 ASCII kutu `.--.`/`|17|`/`'--'`, LED dizisi, `* -` kar, ASCII zemin;
+gece/kar/pembe yön seçici. Kutu çizgisi karakterleri (╭─) fontsource latin alt kümesinde yok, kullanma. Palet ve font Damla seçmedi. Kutu içi yalnız ✦ + numara:
 hediye/case içeriği yok (hediye tasarımı ağaç çekiminden sonra).
 
 ## Kesin sınırlar (Damla'nın sözü)
