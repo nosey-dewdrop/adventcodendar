@@ -7,7 +7,7 @@ Araştırma + ağaç prototipi (`agac/index.html`, tek dosya). Sayfanın tamamı
 karakter tuvali (Damla 30.10: "hepsi monospace, AoC'yi çalmıyoruz, ilham alıyoruz"):
 farklı boyda tuğlalar ortak duvarlarla lego gibi geniş ağaç, kavisli girland + sarkan ışık
 dizileri + dal ucu ampulleri (tek çizgi değil), karakter yıldız, ızgarada düşen kar, ASCII zemin.
-Kutu çizgisi karakterleri (╭─) fontsource latin alt kümesinde yok, kullanma. Palet/font seçilmedi. Kutu içi yalnız parıltı + numara:
+Kutu çizgisi karakterleri (╭─) fontsource latin alt kümesinde yok, kullanma. Kutu içi yalnız parıltı + numara:
 hediye/case içeriği yok (hediye tasarımı ağaç çekiminden sonra).
 
 ## Kesin sınırlar (Damla'nın sözü)
