@@ -1,0 +1,468 @@
+YARGIÇ SİSTEMLERİNİN GERÇEK ÇALIŞMA SÖZLEŞMELERİ
+Advent of Code, LeetCode, Codeforces/Polygon, ICPC/Kattis, CMS/IOI, DMOJ, Judge0, HackerRank
+Araştırma tarihi 30 Ekim 2026. Adventcodendar / Ladybug için.
+
+ETİKETLER
+[BELGELENEN] = kaynağı açtım, metni gördüm, link yanında. "(ikincil)" yazıyorsa kaynak resmi değil.
+[ÇIKARIM]    = benim yorumum. Kaynakta yazmıyor.
+"Erişilemedi" = sayfayı açamadım. Bu durumda içerik iddiası yok.
+
+Eric Wastl konuşmalarının metni YouTube otomatik altyazısından (yt-dlp) çıkarıldı. Alıntılar
+altyazıdan, dakika damgasıyla. Otomatik altyazı kelime hatası içerebilir; anlam kontrol edildi.
+  GT21 = "Advent of Code: Behind the Scenes", Google TechTalks, yüklenme 11 May 2021
+         https://www.youtube.com/watch?v=Mb8WwKS6ajk
+  T37  = "Eric Wastl – Advent of Code: Behind the Scenes", tretton37, yüklenme 7 Eyl 2023
+         https://www.youtube.com/watch?v=_oNOTknRTSU
+
+
+======================================================================
+1. ADVENT OF CODE NEYİ DOĞRULUYOR?
+======================================================================
+
+1.1 Kod değil, cevap.
+[BELGELENEN] Eric (GT21, 17:00-18:00) "any language can be used so i can't take your code and
+run it in a virtual machine in a container in a cloud some place all i get is the answer i don't
+ever see your code". T37 (17:00-18:30) "I don't take code and run it so I can't Benchmark things
+... I'm not going to spin up a Docker instance to run your Ruby code ... that's first of all
+expensive and second of all there's no need for it".
+[BELGELENEN] Her girdi için tam bir doğru cevap şartı. GT21 (17:00) "you need exactly one correct
+answer for each input"; birden fazla cevap varsa soruyu "en küçüğü / en büyüğü nedir" diye
+daraltıyor. T37 (17:00-18:00) labirentte beş altı nokta eşit uzaklıktaysa koordinat sormuyor.
+[BELGELENEN] Çözüm her soruda 15 saniyeyi geçmeyecek biçimde kurulur. "every problem has a solution
+that completes in at most 15 seconds on ten-year-old hardware." https://adventofcode.com/2025/about
+
+1.2 Kişiye özel girdi.
+[BELGELENEN] T37 (18:00) "every user has a distinct input that's just for them so if you're working
+with a friend you're probably working on different inputs ... you still kind of have to solve the
+problem on your own". GT21 (33:00-34:00) yanlış cevabın sık sebeplerinden biri arkadaşının girdisini kullanmak.
+[BELGELENEN] Girdi ve bulmaca metni paylaşılmamalı. "please don't include parts of Advent of Code
+like the puzzle text or your inputs." https://adventofcode.com/2025/about
+Doğrulanamadı: "Curiously, it's the right answer for someone else" mesajı. Yalnız arama motoru
+özetinde gördüm, birincil ya da güvenilir ikincil sayfada göremedim (Reddit erişimi engelli).
+
+1.3 Yanlış cevapta bekleme ve ipucu.
+[BELGELENEN] T37 (36:30-37:00) "the site does lock after getting a wrong answer it locks for 60
+seconds that number increases a little bit if you have many failures. anybody that asks why it's
+locking them out for an hour wrote a script that tried every number in a loop". GT21 (33:30-34:00)
+ilk birkaç yanlışta bir dakika, artan ölçek; amaç "to avoid people spamming the server or building
+tools that will just automatically submit".
+[BELGELENEN] (ikincil, kod) Sunucu cevabında "your answer is too high" / "too low", "You gave an
+answer too recently", "You have Xm Ys left to wait" ifadeleri var; yaygın aocd kütüphanesi bunları
+ayrıştırıyor ve "too high" gelen bir sayının üstünü bir daha göndermeyi engelliyor.
+https://github.com/wimglenn/advent-of-code-data/blob/main/aocd/models.py (satır 407-568)
+
+1.4 Liderlik tablosu neye göre?
+[BELGELENEN] 2024 global tablo: "Getting a star first is worth 100 points, second is 99, and so on
+down to 1 point at 100th place." https://web.archive.org/web/20241226000000/https://adventofcode.com/2024/leaderboard
+[BELGELENEN] Özel tablo varsayılanı "Local Score": "For N users, the first user to get each star
+gets N points, the second gets N-1, and the last gets 1. If you add or remove users, the points will
+be recalculated, and the order can change." Diğer sıralamalar Global Score ve Stars. JSON API için
+"avoid sending requests more often than once every 15 minutes".
+https://adventofcode.com/2022/leaderboard/private/view/369748?view_key=6e3e6a0f (herkese açık salt-okunur görünüm)
+[ÇIKARIM] Yerel puan yalnız yıldız sırasına bakar. Sıra herkes için aynı açılış anından (gece yarısı
+EST) itibaren oluşur; kullanıcının bulmacayı kendisinin ne zaman açtığı ölçülmez.
+[BELGELENEN] Liderlik altyapıya bağlı. GT21 (09:00) 2020 1. gün sunucular düştü, "meant that i had
+to cancel all those scores".
+
+1.5 2025'te ne değişti?
+[BELGELENEN] Gün sayısı. "puzzles come out every day (ending mid-December)". 2025 takvimi 1-12.
+https://adventofcode.com/2025/about , https://adventofcode.com/2025
+[BELGELENEN] Global tablo kalktı. "The global leaderboard was one of the largest sources of stress
+for me, for the infrastructure, and for many users. People took things too seriously ... some
+people even resorted to things like DDoS attacks. Many people incorrectly concluded that they were
+somehow worse programmers because their own times didn't compare." Özel tablonun salt-okunur
+paylaşımı açıldı, "Please don't use this feature or data to create a 'new' global leaderboard."
+https://adventofcode.com/2025/leaderboard sayfası "Advent of Code 2025 doesn't have a global leaderboard."
+[BELGELENEN] AI politikası 2025. "Should I use AI to solve Advent of Code puzzles? No. ... puzzles
+are designed to be interesting for humans to solve - no consideration is made for whether AI can or
+cannot solve a puzzle." Özel tablolarda kural tablo sahibine bırakıldı (çalışma süresi, dil, araç).
+https://adventofcode.com/2025/about
+[BELGELENEN] AI politikası 2024. "Please don't use AI / LLMs (like GPT) to automatically solve a
+day's puzzles until that day's global leaderboards are full ... The leaderboards are for human
+competitors". https://web.archive.org/web/20241215000000/https://adventofcode.com/2024/about
+
+1.6 Bulmaca nasıl yapılıyor ve test ediliyor?
+[BELGELENEN] Üretim hattı (GT21 23:00-24:30, T37 22:30-23:30). Fikir, araştırma, tek cevaplı bir
+soru tasarımı, sonra girdi üreteci, sonra otomatik bölüm 1 ve bölüm 2 çözücüleri. "sometimes the
+input generator is the thing full of all of the assertions ... and sometimes the input generator is
+literally just give me a random number between one and a million and the solvers are the things
+that have all the assertions ... they work together to finally generate a set of inputs that are
+both good and also meet all of the criteria for runtime". Sonra döngüde çok sayıda girdi üretiliyor;
+metin (hikâye) en son yazılıyor.
+[BELGELENEN] Örnek garanti. GT21 (27:00) hücresel otomat bulmacasında üreteç "always guarantees
+that ... the input will produce these random spiral patterns for every single user".
+[BELGELENEN] Derlenen ve yorumlanan dil dengesi. GT21 (21:00-22:30) "my goal is to make it so that
+using a compiled language does not give you an advantage ... by choosing big O curves and input
+sizes ... the naive solution ... would take several weeks in c but the fast solution would take 15
+seconds in python".
+[BELGELENEN] Beta testçiler. T37 (16:30-17:00) ilk yıldan sonra her yıl beta testçi; T37 (50:30)
+"the beta testers ranked every puzzle on difficulty ... I have puzzles that beta testers have
+simultaneously rated very easy and very hard". 2025 listesi Ben Lucek, JP Burke, Aneurysm9, Andrew
+Skalski (2024'te ek olarak Tim Giannetti). https://adventofcode.com/2025/about
+[BELGELENEN] Yayın sonrası doğrulama kalabalıkla. "Once a puzzle has been out for even an hour, many
+people have already solved it; after that point, bugs are very unlikely." (2025/about). GT21
+(33:30) "it's happened i think one time where the puzzle had a bug where some users answers were
+wrong and none of the beta testers caught it".
+[ÇIKARIM] "Her girdi eşit zorlukta" diye açık bir taahhüt konuşmalarda geçmiyor. Belgelenen şey
+otomatik kriterlerle (runtime dahil) girdi eleme. Eşitlik, kriterlerin kapsadığı kadar. Topluluğun
+"benim girdim daha kolaydı" raporlarını doğrulayamadım (Reddit engelli).
+
+1.7 Hız yarışçıları
+[BELGELENEN] T37 (37:30-38:30) hızlı çözenler metni okumuyor, "they look at the input because the
+input secretly all that really matters they look at the last line of the puzzle ... outright guess".
+
+1.8 Kapsam dışı ama temel risk
+[BELGELENEN] "If you're making a website, please don't make it look like Advent of Code or name it
+something similar." ve "Advent of Code is a registered trademark ... The design elements, language,
+styles, and concept of Advent of Code are all the sole property of Advent of Code and may not be
+replicated". https://adventofcode.com/2025/about
+[ÇIKARIM] "Adventcodendar" adı ve "advent takvimi + programlama bulmacası" kavramı bu cümlelerin
+doğrudan hedefinde. Bu bir hukuk değerlendirmesi değil, metin okuması.
+
+
+======================================================================
+2. LEETCODE ÇÖZÜMDEN NE BEKLİYOR?
+======================================================================
+
+Erişim notu. leetcode.com ve support.leetcode.com doğrudan isteklere 403 (Cloudflare) döndü.
+Help Center makalelerini Wayback Machine kopyasından okudum; tarih her satırda. Discuss gönderileri
+JavaScript ile yüklendiği için Wayback'te de okunamadı.
+
+2.1 Fonksiyon imzası ve aynı süreç
+[BELGELENEN] Tasarım problemlerinde girdi "Function Names" ve "Function Arguments" listesi; hazır
+ListNode/TreeNode tipleri kullanılmalı ("Always use the provided ListNode class/type"). Run örnek
+testlerle, Submit "will run your code against all system test cases".
+https://web.archive.org/web/20251007090150/https://support.leetcode.com/hc/en-us/articles/32442719377939-How-to-create-test-cases-on-LeetCode
+[BELGELENEN] Tüm testler aynı program örneğinde koşuyor. "the system executes all test cases using
+the same program instance, global/static variables affect the program state from one test case to
+another." Python sınıf değişkeni "is only init once per process".
+https://web.archive.org/web/20251007090803/https://support.leetcode.com/hc/en-us/articles/360011834174-I-encountered-Wrong-Answer-Runtime-Error-for-a-specific-test-case-When-I-test-my-code-using-this-test-case-it-produced-the-correct-output-Why (makale 17 Kas 2022)
+
+2.2 Ortam ve zaman sınırı
+[BELGELENEN] Dil ortamları (makale 2 Mart 2026). C++ clang 19, C++23, -O2, AddressSanitizer açık;
+Java 25; Python 3.14; Rust 1.88 opt-level 2; birçok kütüphane otomatik içe aktarılıyor. Sayfada
+zaman sınırı yok. https://web.archive.org/web/20260318054137/https://support.leetcode.com/hc/en-us/articles/360011833974-What-are-the-environments-for-the-programming-languages
+[BELGELENEN] TLE ve Timeout farkı. TLE sebepleri sonsuz döngü, yüksek karmaşıklık, geçersiz durumda
+dönen veri yapısı (döngülü bağlı liste). "Timeout simply means the server queue is busy".
+https://web.archive.org/web/20251012175818/https://support.leetcode.com/hc/en-us/articles/360011883714-What-is-the-difference-between-Time-Limit-Exceeded-TLE-and-Timeout
+[ÇIKARIM] LeetCode problem ya da dil başına sayısal zaman sınırını resmi bir sayfada yayınlamıyor;
+okuduğum Help Center sayfalarında yok. "Total timeout values for different languages" başlıklı
+Discuss konusu erişilemedi. Arama özetinde geçen "Python 11 sn, Java 4 sn" rakamlarını doğrulayamadım,
+kullanmıyorum.
+[BELGELENEN] (kullanıcı raporu + resmi depo) Aynı karmaşıklıkta iki Python çözümünden biri son testte
+TLE, editoryal geçiyor; destek cevabı genel. https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/39409
+Üç farklı O(n) Java çözümü aynı son testte TLE; LeetCode "Your feedback has been used to enhance the
+problem" deyip 100 LeetCoin vermiş. https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/39265
+MLE için resmi açıklama sayfası bulamadım.
+
+2.3 Gizli testlerin eksikliği
+[BELGELENEN] (resmi geri bildirim deposu, GitHub arama, 30 Eki 2026) Başlığında "Missing Test Case"
+geçen 26.662 issue var; 30 Eki 2025-30 Eki 2026 arasında açılan 6.383. Şablonun tanımı "Incorrect/
+Inefficient Code getting accepted because of missing test cases". Örnek, 380 numaralı problem O(1)
+getRandom istiyor, O(n) çözüm 21/21 test geçiyor. https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/40365
+[ÇIKARIM] Sayı tekrarlı ve geçersiz raporları da içerir; yine de testlerin yayından sonra kullanıcı
+raporuyla güçlendirildiğini gösteriyor.
+
+2.4 Runtime yüzdeliğinin gürültüsü
+[BELGELENEN] (kullanıcı raporu + resmi depo) Aynı TypeScript kodu art arda iki gönderimde "Runtime
+63ms, beats 8.73%" ve "51ms Beats 67.70%". Destek cevabı "We will share it with our internal team".
+https://github.com/LeetCode-Feedback/LeetCode-Feedback/issues/35581 (23 Şub 2026)
+
+2.5 Özel checker
+[BELGELENEN] (ikincil, problem metni aynası) "You can return the answer in any order." (1. Two Sum),
+"Answers within 10^-5 of the actual value will be accepted." (1515).
+https://github.com/doocs/leetcode/tree/main/solution/0000-0099/0001.Two%20Sum ,
+https://github.com/doocs/leetcode/tree/main/solution/1500-1599/1515.Best%20Position%20for%20a%20Service%20Centre
+[ÇIKARIM] Bu cümleler birebir karşılaştırma yerine problem başına özel doğrulayıcı olduğunu ima
+ediyor; LeetCode bu doğrulayıcıların nasıl test edildiğini yayınlamıyor.
+
+2.6 Yarışma puanı ve ceza
+[BELGELENEN] "Each problem has an assigned score ... obtain the highest score with the fastest finish
+time while making as few mistakes as possible."
+https://web.archive.org/web/20260308194758/https://support.leetcode.com/hc/en-us/articles/360011883834-How-does-the-ranking-work-in-a-contest
+[BELGELENEN] "Penalty time is 5 minutes for each incorrect solution you submitted for problems you
+eventually solved." WA ve TLE ceza ekler; "Accepted, Compile Error, Internal Error, or Timeout do not
+add to your penalty time". Çözülmemiş probleme yapılan yanlış sayılmaz.
+https://web.archive.org/web/20250905161303/https://support.leetcode.com/hc/en-us/articles/360011984773-What-does-the-Finish-Penalty-Time-column-mean-in-the-ranking
+[BELGELENEN] 27 Nis 2026'dan itibaren yeni kullanıcı ilk 5 yarışmada yüzdelikle puan alıyor (ilk %5
++70, ilk %10 +50, ilk %15 +30, ilk %30 +10, ilk %50 -10, alt %50 -20), 6. yarışmadan itibaren 1500
++ bu toplam ile normal algoritma. https://web.archive.org/web/20260414142805/https://leetcode.com/discuss/post/7884989/contest-rating-rule-updates-by-leetcode-a0z3/
+Erişilemedi: 2020 "New Contest Rating Algorithm" gönderisi. Arama özetine göre Elo benzeri beklenen
+sıra ile gerçek sıranın geometrik ortalaması; doğrulamadım.
+[BELGELENEN] İhlaller arasında çoklu hesap ve "Multiple accounts submitting similar code".
+https://web.archive.org/web/20251007082024/https://support.leetcode.com/hc/en-us/articles/360011984933-What-are-considered-contest-violations
+
+
+======================================================================
+3. REKABETÇİ PROGRAMLAMA ALTYAPISI YANLIŞ TESTİ VE YANLIŞ YARGICI NASIL YAKALIYOR?
+======================================================================
+
+3.1 Codeforces ve Polygon
+Erişim notu. codeforces.com ve polygon.codeforces.com 403. Blog sayfalarını Wayback'ten okudum.
+"Uphacking" resmi blogu (68204) ve "CF2268C/2269E zayıf sistem testleri" blogu (157162) erişilemedi;
+ikincisinin yalnız başlığını arama sonucunda gördüm.
+
+[BELGELENEN] testlib dört rol tanımlıyor: checker (çıktıyı cevapla karşılaştırır), interactor,
+validator ("checks that it contains only one integer between 1 and 100 ... It does not ignore
+white-spaces, so it works very strictly"), generator ("It is typical behavior for a testlib generator
+to set up randseed by command line").
+https://github.com/MikeMirzayanov/testlib/blob/master/README.md
+[BELGELENEN] Polygon çözüm etiketleri (API dokümanından alıntı, resmi issue takibinde) "MA - Main, OK,
+RJ, TL, TO - Time Limit or Accepted, WA, PE, ML or RE"; kullanıcı ayrıca TM ve NR görmüş.
+https://github.com/Codeforces/polygon-issue-tracking/issues/569
+[BELGELENEN] Etiketine uymayan çözüm problem doğrulamasını düşürüyor. Mike Mirzayanov "Fixed in April
+2026: for a solution tagged 'Time limit exceeded', any other failing verdict, including ML, is
+highlighted in red as a tag violation." Issue gövdesi "problem verification fails".
+https://github.com/Codeforces/polygon-issue-tracking/issues/508
+[BELGELENEN] Tek "Main correct" çözüm; ikinci eklenirse öncekisi Correct'e düşüyor.
+https://github.com/Codeforces/polygon-issue-tracking/issues/484
+Invocation sonucundan etiketleri otomatik atama eklendi. https://github.com/Codeforces/polygon-issue-tracking/issues/525
+[BELGELENEN] (ikincil eğitim yazısı) Çoklu doğru ve yanlış çözümün amacı test setini doğrulamak;
+validator'ın kendi testleri; stres testi; üreteç aynı komutla her platformda aynı testi üretmeli.
+https://quangloc99.github.io/posts/polygon-codeforces-tutorial/
+[BELGELENEN] Yarışma kuralları. Yarışma sırasında "a small number of tests called pretests"; bitince
+ana test seti yalnız "verified" çözümlere (pretest geçen, son gönderilen, hacklenmemiş). Hack testi
+otomatik doğrulanıyor: "The system automatically validates the test to satisfy problem statement
+constraints." Zaman sınırı problem başına tek: "All problems indicate the maximum time a program can
+take to work on one test". Puan dakikada X/250 düşüyor, önceki her gönderim -50, alt sınır %30.
+https://web.archive.org/web/20261004051940/https://codeforces.com/blog/entry/4088
+[BELGELENEN] Eğitim turlarının kuruluş metni (Mike Mirzayanov, Kasım 2015). Açık hack döneminde
+başarılı hack'ler "will be added to the official test set" ve tüm tam çözümler yeniden test ediliyor;
+"Only after the final standings based on improved test data, the results are final". Gerekçe
+"Our ability to process such problems are limited, so actually the test suites from the jury are
+expected to end up incomplete — we are looking forward to your hacks!"
+https://web.archive.org/web/20251113223344/https://codeforces.com/blog/entry/21496
+[BELGELENEN] (ikincil, topluluk SSS) Uphack "does NOT affect the standings nor rating changes ...
+The hack tests will be added to the tests for practice submissions later, but there won't be any
+rejudges". Eğitim/Div.3/4'te 12 saatlik açık hack, testler eklenip "all the accepted solutions will
+be rejudged". https://web.archive.org/web/20231209124308/https://codeforces.com/blog/entry/103654
+
+3.2 ICPC / Kattis problem paketi (2025-09 sürümü, en günceli)
+[BELGELENEN] Asgari paket "problem.yaml, a problem statement, a secret test case, an accepted judge
+solution, and an input validator".
+[BELGELENEN] Test dizinleri. data/invalid_input "Inputs that must be rejected by at least one input
+validator", data/invalid_output "Outputs that must be rejected by the output validator",
+data/valid_output "Outputs that must be accepted by the output validator". Yani yargıcın kendisinin
+testi paketin parçası.
+[BELGELENEN] Örnek çözüm dizinleri ve anlamları. accepted (en az bir zorunlu), rejected, wrong_answer,
+time_limit_exceeded ("Used to upper bound the time limit"), run_time_error, brute_force ("Never gives
+the wrong answer, but not accepted because run time error or timeout").
+[BELGELENEN] Zaman sınırı türetimi. ac_to_time_limit varsayılan 2.0, time_limit_to_tle 1.5.
+"The time_limit must satisfy T_ac * ac_to_time_limit <= time_limit and time_limit *
+time_limit_to_tle <= T_tle". T_ac en yavaş kabul, T_tle en hızlı TLE çözümü; TLE çözümü yoksa sonsuz.
+"The time_limit specifies the maximum CPU time a submission may use per test case." Dil anahtarı yok.
+[BELGELENEN] Varsayılan çıktı doğrulayıcı token token karşılaştırır, boşluk ve büyük-küçük harf
+duyarlılığı ve kayan nokta mutlak/göreli toleransı bayrakla açılır.
+[BELGELENEN] Üreteçler pakette belgelenir ama "judge systems are not responsible for executing the
+provided generators and all test data written by the generators must be included".
+[BELGELENEN] Puanlı problemlerde test grupları, score_aggregation "pass-fail, sum, or min",
+require_pass ile başka grubu geçme şartı.
+Hepsi https://icpc.io/problem-package-format/spec/2025-09.html
+[BELGELENEN] Eski (legacy) sürümde time_multiplier varsayılan 5, time_safety_margin 2.
+https://icpc.io/problem-package-format/spec/legacy.html
+[BELGELENEN] problemtools verifyproblem "run a complete check on a problem". Kaynakta hata mesajları
+"Require at least one \"accepted\" submission" ve "is used to upper bound the time limit, but its
+slowest runtime ... is within the safety margin".
+https://github.com/Kattis/problemtools (README, problemtools/checks/submissions.py)
+
+3.3 CMS / IOI
+[BELGELENEN] Dört puan tipi. Sum her doğru test için sabit puan; GroupMin "minimum outcome within the
+group times the multiplier"; GroupMul çarpım; GroupThreshold sonucu kaynak kullanımı olarak yorumlar.
+"Groups are also known as subtasks". https://cms.readthedocs.io/en/latest/Score%20types.html
+[BELGELENEN] Görev puanı kuralı IOI yıllarına göre değişmiş. 2010-2012 token kullanılan ya da son
+gönderimin en iyisi; 2013-2016 tüm gönderimlerin en iyisi; 2017'den beri "the sum over each subtask of
+the best result for that subtask across all submissions" (hiçbir gönderim tam puan almadan tam puan
+mümkün). Tokenlar gizli test sonucunu sınırlı açıyor.
+https://cms.readthedocs.io/en/latest/Configuring%20a%20contest.html
+[BELGELENEN] Görev tipleri Batch, OutputOnly, Communication, Interactive, TwoSteps. Girdinin bir kısmı
+çözümden gizli kalmalıysa "Batch is insecure and Communication should be used". Çıktı white-diff ya da
+checker ile; çözüm çökerse sonuç 0.0. https://cms.readthedocs.io/en/latest/Task%20types.html
+[BELGELENEN] Diller. C, C++, Pascal kapsamlı test edilmiş; "PHP and Python have only been tested with
+Batch task types". Java açılırsa "multithreading and multiprocessing will be allowed in the sandbox
+for all evaluations (even with other languages)", süre tüm iş parçacıklarının user time toplamı.
+https://cms.readthedocs.io/en/latest/Configuring%20a%20contest.html
+[BELGELENEN] Sandbox isolate. --time CPU süresi ("Time in which the OS assigns the processor to other
+tasks is not counted"), --wall-time ayrı. Tekrarlanabilirlik için ASLR kapatma, CPU frekans ölçekleme
+ve turbo kapatma, tek çekirdeğe sabitleme, transparent huge pages ve swap kapatma öneriliyor.
+https://www.ucw.cz/isolate/isolate.1.html
+
+3.4 DMOJ
+Erişim notu. docs.dmoj.ca 403; aynı içerik GitHub'daki DMOJ/docs deposundan okundu.
+[BELGELENEN] Kısmi puan, test başına ağırlıkla (1/2/7 örneği, 30/100).
+https://github.com/DMOJ/docs/blob/master/docs/site/managing_problems.md
+[BELGELENEN] Dile göre sınır bir çarpan değil, problem başına dil başına ayrı mutlak değer
+("language-specific resource limit", time_limit ve memory_limit alanları).
+https://github.com/DMOJ/online-judge/blob/master/judge/models/problem.py (LanguageLimit)
+[BELGELENEN] Hazır checker'lar arasında kayan nokta toleranslı floats/floatsabs/floatsrel, satır
+sırasını yok sayan seçenek, testlib ve coci tipi kısmi puanlı checker.
+https://github.com/DMOJ/docs/blob/master/docs/problem_format/custom_checkers.md
+
+3.5 Judge0
+[BELGELENEN] Sınırlar gönderim başına parametre: cpu_time_limit, cpu_extra_time, wall_time_limit,
+memory_limit, enable_network, number_of_runs ("Run each program number_of_runs times and take average
+of time and memory"). Durum mesajları isolate'tan. https://ce.judge0.com/
+[BELGELENEN] Doğruluk kontrolü yalnız expected_output ile; satır sonu boşlukları atılıp birebir
+karşılaştırma ("strip(submission.expected_output) == strip(submission.stdout)").
+https://github.com/judge0/judge0/blob/master/app/jobs/isolate_job.rb (satır 358-367)
+[ÇIKARIM] Judge0 bir çalıştırıcı, yargıç değil. Özel checker, test grubu, dil çarpanı yok; hepsini
+çağıran sistem kurmak zorunda.
+
+3.6 HackerRank (soruda yoktu, dil çarpanının en net örneği)
+[BELGELENEN] Problemden bağımsız sabit dil tablosu. C ve C++ 2 sn, Java 4 sn, Go 4 sn, Python 3 10
+sn, Ruby 10 sn, Common Lisp 12 sn. https://www.hackerrank.com/environment
+
+
+======================================================================
+4. PUAN HANGİ KANITA DAYANIYOR, DİLLER ARASINDA NE KADAR KARŞILAŞTIRILABİLİR?
+======================================================================
+
+[BELGELENEN, yukarıdaki kaynaklar] Kanıt türleri
+  AoC          kişiye özel girdinin tek doğru cevabı (bir metin) + yıldız zamanı. Kod görülmez.
+  LeetCode     tüm sistem testlerini o dilde, bilinmeyen sınır içinde geçmek. Yarışmada problem
+               puanı + bitiş süresi + çözülen problemdeki her WA/TLE için 5 dk.
+  Codeforces   pretest geçmek (geçici), ana testleri geçmek (kesin). Puan zamana göre düşer.
+               Hack ile test seti büyür.
+  ICPC/Kattis  gizli testleri tek CPU sınırı içinde geçmek; puanlı problemde grup toplamı ya da min.
+  CMS/IOI      test sonucu 0..1, alt görev toplamı; 2017'den beri gönderimler arası alt görev en iyisi.
+  DMOJ         ağırlıklı test toplamı, problem/dil başına ayrı sınır.
+  Judge0       yalnız stdout eşleşmesi ve kaynak ölçümü.
+
+Diller arası karşılaştırılabilirlik
+[BELGELENEN] Dört farklı yaklaşım var ve hiçbiri tam eşitlik iddia etmiyor.
+  1) Tek sınır, dil yok sayılır: Codeforces ("maximum time a program can take to work on one test"),
+     ICPC paketi (dil anahtarı olmayan time_limit).
+  2) Sabit dil tablosu: HackerRank (C 2 sn, Python 10 sn).
+  3) Problem başına dil başına el ile ayar: DMOJ LanguageLimit.
+  4) Süreyi hiç ölçmemek, girdi boyutunu dil farkı önemsiz olacak biçimde seçmek: AoC (GT21 21:00).
+[ÇIKARIM] ICPC'de sınır jüri çözümlerinden türediği için karşılaştırılabilirlik, jürinin hangi
+dillerde accepted çözüm koyduğuna bağlı. Yalnız C++ çözümüyle türetilen sınır Python'u fiilen dışlar.
+[BELGELENEN] Aynı dilde bile süre ölçümü gürültülü (LeetCode 63 ms/%8,73 ve 51 ms/%67,70; isolate
+tekrarlanabilirlik ayarları; Judge0'ın ortalama alma seçeneği).
+[ÇIKARIM] Doğruluk kanıtı (cevap ya da geçilen test) diller arasında karşılaştırılabilir; süre ve
+bellek kanıtı yalnız aynı dil, aynı makine, aynı ayarda ve tekrarlı ölçümle karşılaştırılabilir.
+
+
+======================================================================
+ADVENTCODENDAR İÇİN YANLIŞ TEMEL ADAYLARI
+======================================================================
+
+1. Kabul kanıtını "tek doğru cevap" yapmak (AoC modeli)
+(a) Karar: Ladybug bir kapıyı, kullanıcının yolladığı tek değer beklenen değerle eşleşirse geçmiş sayar.
+(b) AoC bu modeli ancak her girdi için tam bir doğru cevap çıkacak biçimde soruyu daraltarak
+    çalıştırıyor (GT21 17:00, "en küçüğü/en büyüğü nedir"), kodu hiç görmüyor. Tek cevaplı olmayan
+    problemlerde ICPC ayrı çıktı doğrulayıcı ve bu doğrulayıcının kendi geçerli/geçersiz çıktı
+    testlerini istiyor. Gerçek dünya case'i doğası gereği çok cevaplı.
+(c) "Mahalle fırını ertesi gün kaç ekmek pişirsin" kapısında Python regresyonu 212, RAG'lı çözüm 198
+    der; ikisi de savunulabilir. Birebir eşleşme ikisini de reddeder ya da kapı "17. gündeki toplam
+    satış kaç" bulmacasına küçülür, "gerçek dünya problemi" vaadi kaybolur.
+
+2. Değerlendiriciyi kendisi sınanmadan yayına almak
+(a) Karar: Kapının test senaryoları ve kontrol mantığı yazılır, bilerek yanlış çözümlerle denenmeden
+    kapı açılır.
+(b) Polygon'da etiketine uymayan çözüm problem doğrulamasını düşürüyor (#508); ICPC paketi accepted,
+    wrong_answer, time_limit_exceeded çözümleri ve invalid_input/invalid_output testlerini paketin
+    parçası yapıyor, problemtools bunları denetliyor. Bu süreci açık işletmeyen LeetCode'da "Missing
+    Test Case" başlıklı 26.662 issue var (son 12 ayda 6.383); O(1) istenen yerde O(n) 21/21 geçiyor.
+    Codeforces kurucusu eğitim turlarında "jury test suites are expected to end up incomplete" diyor.
+(c) "API rate limiter" kapısında eşzamanlı istekleri saymayan bir limiter senaryoları geçer, XP alır;
+    hata ilk şikayete kadar görünmez. Her kapı açılmadan önce farklı teknolojilerde geçmesi gereken
+    çözümler ve kalması gereken çözümler beklenen sonucu almalı.
+
+3. Kapı yayındayken değerlendirici değişirse ne olacağını baştan belirlememek
+(a) Karar: Testler sonradan güçlendirilebilir ama verilmiş XP'nin akıbeti, kanıtın hangi
+    değerlendirici sürümüne bağlı olduğu kayda geçmez.
+(b) Codeforces iki ayrı açık politika işletiyor. Uphack test ekler, eski kabulleri yeniden yargılamaz,
+    puanı bırakır. Açık hack test ekler, tüm kabulleri yeniden yargılar, sonuç ancak sonra kesinleşir.
+    LeetCode testi kullanıcı raporundan sonra güçlendiriyor (#39265). Yeniden yargılama ancak gönderim
+    ve test sürümü saklıysa mümkün.
+(c) 5. kapıya 9. günde yeni senaryo eklenir, 5. kapıyı geçen 400 kişiden 150'si yeni senaryoda kalır.
+    XP geri alınacak mı, "o günün sürümüyle geçti" mi denecek? Karar yoksa her düzeltme kriz olur ve
+    düzeltmemeye baskı doğar.
+
+4. Süreyi ya da performansı teknolojiler arasında doğrudan XP'ye katmak
+(a) Karar: Daha hızlı çalışan çözüme ek XP, ya da tüm teknolojilere tek süre sınırı.
+(b) Sistemler bunu dört farklı ve kısmi yolla çözüyor (tek sınır, HackerRank tablosu C 2 sn / Python
+    10 sn, DMOJ problem-dil ayarı, AoC'de süreyi hiç ölçmeme). Aynı dilde aynı kod bile 63 ms ile 51
+    ms ve %8,73 ile %67,70 arasında oynuyor; isolate tekrarlanabilirlik için çekirdek ayarı istiyor.
+(c) Aynı "fatura özetleyici" kapısında C++ komut satırı aracı 40 ms, harici LLM çağıran RAG 4 sn
+    döner. Süreye XP bağlanırsa ödül ağ gecikmesini ve teknolojiyi ölçer, beceriyi değil; "teknoloji
+    serbest" vaadi fiilen bozulur.
+
+5. "Teknoloji serbest" ile "kodu biz çalıştırırız" sözünü aynı anda verip tek süreçli sandbox seçmek
+(a) Karar: Ladybug teslimi Judge0/isolate/CMS Batch tarzı stdin-stdout sandbox'ında çalıştırır.
+(b) Belgelenen tüm kod çalıştıran yargıçlar tek programı sınırlı CPU ve bellekle koşturuyor; Judge0'da
+    ağ ayrı bayrak, CMS Python'u yalnız Batch'te test etmiş, Java açılınca herkese çoklu iş parçacığı
+    açılıyor. LeetCode tüm testleri aynı program örneğinde koşturuyor ve global durum testler arası
+    sızıyor. AoC tersini seçmiş, "her dilde Docker açmak pahalı ve gereksiz" deyip kodu hiç
+    çalıştırmıyor, doğruluğu kişiye özel girdi + cevapla sağlıyor.
+(c) Kullanıcı Next.js + vektör veritabanı + harici LLM ile bir uygulama yollar. Stdin-stdout
+    sandbox'ı bunu çalıştıramaz; ağ açılırsa sonuç dış servise bağlanır, tekrarlanamaz; servis aynı
+    konteynerde koşarsa 1. senaryodan kalan önbellek 2. senaryonun sonucunu değiştirir. Ya serbestlik
+    sessizce "tek dosya script"e daralır ya da teslim sözleşmesi (çıktı dosyası, JSON şeması, HTTP uç
+    noktası) baştan seçilir.
+
+6. Kişiye özel girdi üretip denkliğini otomatik denetlememek (ya da herkese aynı girdi vermek)
+(a) Karar: Her kullanıcıya farklı veri seti üretilir ama her varyantın zorluğu ve geçerliliği ayrı
+    çözücüyle kontrol edilmez; ya da herkes aynı veriyle çalışır ve yalnız sonuç istenir.
+(b) AoC kişiye özel girdiyi cevap paylaşımını kırmak için kullanıyor (T37 18:00) ve bunu runtime
+    kriterli üreteç + otomatik çözücü döngüsüyle yapıyor; buna rağmen bir kez bazı kullanıcıların
+    cevabı yanlış çıkmış ve beta testçiler yakalamamış (GT21 33:30). Ortak girdi + yalnız cevap ise
+    cevabın anında yayılması demek.
+(c) Her kullanıcıya farklı "kargo rotası" verisi üretilir; birinin verisinde kapasite kısıtı hiç
+    bağlayıcı değildir, onun işi bariz kolaydır, XP karşılaştırılamaz. Her varyantta "saf çözüm
+    başarısız olmalı" gibi bir şart referans çözücüyle denetlenmeli.
+
+7. Puan toplama kuralını teşvik etkisini düşünmeden seçmek
+(a) Karar: Kapının XP'si geçilen senaryo sayısıyla orantılı (test başına toplam).
+(b) CMS'te Sum her doğru testi ödüllendirir, GroupMin grubun en kötü sonucunu alır; IOI kuralı üç
+    kez değişmiş (2010-12, 2013-16, 2017+), 2017+ kuralı farklı gönderimlerin parçalarını birleştirip
+    tam puan veriyor. ICPC paketi sum/min ve require_pass ile grubu tanımlıyor. Kural, kullanıcının
+    neyi optimize edeceğini belirliyor.
+(c) "Çok kiracılı abonelik faturası" kapısında 10 senaryonun 8'i tek kiracılıysa, çok kiracılığı hiç
+    ele almayan çözüm %80 XP alır; öğretilmek istenen beceri ödülsüz kalır. 2017+ modu ise her
+    senaryoyu ayrı bir araçla geçip toplamayı ödüllendirir.
+
+8. Geri bildirimi ve deneme sayısını sınırsız ve ayrıntılı yapmak
+(a) Karar: Ladybug her teslimde hangi gizli senaryonun neden kaldığını açıklar, deneme sınırı yok.
+(b) AoC yanlışta 1 dakikadan başlayıp artan kilit ve yalnız "too high/low" veriyor, gerekçe otomatik
+    deneme ve spam (GT21 33:30-34:00). Codeforces yarışmada yalnız pretest gösteriyor; CMS gizli test
+    sonucunu sınırlı token'la açıyor; ICPC'de tam geri bildirim varsayılan olarak yalnız örneklerde.
+(c) Ladybug "senaryo 7'de Retry-After başlığı eksik" derse kullanıcı ya da ajanı gizli senaryoları
+    tek tek sorgulayıp çözümü yargıca yaptırır. XP problemi çözmeyi değil yargıcı okumayı ölçer.
+
+9. Değerlendirme kanıtını tekrar üretilemez yapmak
+(a) Karar: Senaryolar her çalıştırmada rastgele üretilir, test seti sürümlenmez ya da puanlayıcı
+    aynı girdiye farklı sonuç verebilir.
+(b) testlib üreteçleri tohumu komut satırından alır; ICPC paketi üretilen tüm verinin pakette
+    bulunmasını şart koşar; isolate tekrarlanabilirlik ayarları listeler; Judge0 tekrarlı ölçüm
+    ortalaması sunar. Codeforces'un açık hack sonrası toplu yeniden yargılaması bunlara dayanıyor.
+(c) Ladybug aynı teslime bugün 72, yarın 58 verirse itirazda hangisinin doğru olduğu gösterilemez,
+    test düzeltmesinden sonra yeniden yargılama anlamsızlaşır. [ÇIKARIM] LLM tabanlı puanlayıcının
+    deterministik olmaması bu araştırmanın kaynaklarında belgelenmedi; proje CLAUDE.md'deki "her şeyi
+    gönder, AI puanlasın kestirmesi yok" sınırıyla aynı yöne bakıyor.
+
+10. XP'yi kapının açılışından geçen süreye bağlamak
+(a) Karar: Erken çözene bonus, sıralama süreye göre.
+(b) AoC yerel puanı yıldız sırasına bakıyor ve üye eklenince yeniden hesaplanıyor; global tablo
+    stres, DDoS ve "kendini kötü programcı sanma" yüzünden 2025'te kaldırıldı; 2024'te AI ile tabloya
+    girmeme ricası vardı. Hızlı çözenler metni okumadan girdiye ve son satıra bakıyor (T37 37:30).
+(c) Kapılar 09:00'da açılır ve "ilk 3 saatte çözene ek XP" varsa okuldaki ya da işteki kullanıcı
+    yapısal olarak kaybeder, case metnini bir ajana yapıştıran 4 dakikada bitirir. [ÇIKARIM] XP
+    gerçek dünya problem çözmeyi değil erişilebilirliği ve araç kullanımını ölçer.
+
+
+======================================================================
+ERİŞİLEMEYEN / DOĞRULANAMAYAN KAYNAKLAR
+======================================================================
+- leetcode.com, support.leetcode.com doğrudan 403 (Cloudflare). Help Center Wayback'ten okundu.
+- LeetCode "New Contest Rating Algorithm" (discuss/468851) ve "Total timeout values for different
+  languages" (discuss/3271987) okunamadı; içerikleri bu belgede iddia edilmedi.
+- LeetCode problem sayfaları okunamadı; checker cümleleri doocs aynasından (ikincil).
+- codeforces.com ve polygon.codeforces.com 403. Kurallar, eğitim turu ve SSS Wayback'ten okundu.
+  "Uphacking" blogu (68204) Wayback'te de 403. "CF2268C/2269E weak system tests" blogu (157162)
+  okunamadı, yalnız arama başlığı görüldü.
+- Polygon resmi kılavuzu açılamadı; etiketler resmi issue takibindeki API alıntısından.
+- docs.dmoj.ca 403; GitHub'daki DMOJ/docs ve online-judge kaynak kodu kullanıldı.
+- Reddit (r/adventofcode) arama API'si engelli. "Curiously, it's the right answer for someone else"
+  mesajı ve "girdiler eşit zorlukta değil" şikayetleri doğrulanamadı.
+- Eric Wastl konuşmaları için resmi transkript yok; YouTube otomatik altyazısı kullanıldı.
