@@ -3,8 +3,9 @@
 Ürün tanımı: PROJECT.md. Geçmiş: REPORTS.md. Gerekçeli yapılmayacaklar: YAPILMAYACAKLAR.md.
 
 ## Faz
-Araştırma. Uygulama kodu yok. İlk ekran üretmek araştırmanın bittiği ya da görsel yönün
-onaylandığı anlamına gelmez.
+Araştırma + ağaç prototipi (`agac/index.html`, tek dosya; 30 kutu, LED, `* -` kar,
+gece/kar/pembe yön seçici). Palet ve font Damla seçmedi. Kutu içi yalnız ✦ + numara:
+hediye/case içeriği yok (hediye tasarımı ağaç çekiminden sonra).
 
 ## Kesin sınırlar (Damla'nın sözü)
 - Ağaç bölümü çekilmeden hediye tasarımı/teslimi yok. Aşama atlayıp "hazır elim değmişken"
@@ -19,7 +20,7 @@ onaylandığı anlamına gelmez.
 - Sıradan uygulama hataları (çift XP, yetki, veri kaybı, erken açılma) araştırmanın merkezi değil.
 
 ## Karar verilmemiş (uygulama, Damla'ya sormadan seçme)
-Önce: ağaç + ad + AoC benzerliği (YAPILMAYACAKLAR.md §0), ağaç çekiminden önce.
+Önce: ad ("adventcodendar" AoC'ye benziyor, YAPILMAYACAKLAR.md §0), ağaç çekiminden önce.
 Yayın ritmi, ilk case kapsamı, teslim biçimi, Ladybug'ın ilk sorumluluğu, font, palet,
 ekran düzeni, streak/katkı kuralı, XP formülü, ücretli özellikler, framework/hosting/db.
 

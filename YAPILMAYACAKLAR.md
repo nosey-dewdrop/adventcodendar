@@ -10,30 +10,16 @@ Damla'nın onaylamadığı görsel aday. Her madde üç satır: karar → neden 
 
 ---
 
-## 0. Önce karar gereken çatışma: ağaç + ad + Advent of Code
+## 0. Ağaç + ad + Advent of Code
 
-**Durum.** Rabadon ağacı, Advent of Code 2015 ağacıyla aynı iskelette. Ortak öğeler şunlar:
-- tepe yıldızı ve 24 satır,
-- `>`/`<` yapraklar ve `@ o *` süsler,
-- `|` gövde ve `_` zemin.
+**Ağaç: çözüldü (30.10.2026, Damla).** Ağaç artık advent takvimi gibi 30 minik kutudan oluşuyor. Kutulara tıklanınca açılıyor, etrafta yanıp sönen LED'ler var, `*` `-` karakterlerinden kar yağıyor. Prototip `agac/index.html` adresinde.
 
-Ekran görüntüleri: `research/2026-10-30/gorsel/rabadon-desktop-agac-yakin.png` ↔ `aoc-2015-masaustu.png`.
+**Yapılmayacak.** Rabadon ağacını AoC 2015 iskeletiyle taşımak.
+- Rabadon ağacı AoC 2015'le aynı iskelette: tepe yıldızı, `>`/`<` yapraklar, `@ o *` süsler, `|` gövde, `_` zemin.
+- Ekran görüntüleri: `research/2026-10-30/gorsel/rabadon-desktop-agac-yakin.png` ↔ `aoc-2015-masaustu.png`.
+- AoC'nin About sayfası: *"please don't make it look like Advent of Code or name it something similar"*. Tasarım öğelerini ve konseptini de kendi mülkü sayıyor.
 
-**AoC'nin yazdığı** (adventofcode.com/2025/about):
-- *"If you're making a website, please don't make it look like Advent of Code or name it something similar."*
-- *"The design elements, language, styles, and concept of Advent of Code are all the sole property of Advent of Code."*
-- AoC, ABD'de tescilli marka.
-
-**Neden önemli.** Tek başına her öğe savunulabilir. Ama hepsi aynı yerde: "adventcodendar" adı, aralık/takvim kurgusu, koyu zeminde karakterlerden çizilmiş ağaç ve 2015 iskeleti. Bu birleşim AoC'nin açıkça istemediği şeyin tam tarifi.
-
-Build in public'in 2. bölümü ağaç. Çekimden sonra adı ya da ağacı değiştirmek, yayımlanmış içeriği de değiştirmek demek.
-
-**Yapılmayacak.** Ağacı AoC 2015 iskeletiyle birebir taşımak ve bu adla yayına çıkmak.
-
-**Öneri** (hukuki görüş değil):
-- "Rabadon ağacı" fikri kalsın: karakterlerden çizilmiş, yazının ızgarasında duran, seni hatırlayan ağaç.
-- Çizim kendi glifleriyle ve kendi siluetiyle yeniden kurulsun.
-- Ad, ilk çekimden önce ayrıca konuşulsun.
+**Ad: açık.** "adventcodendar", "Advent of Code"a benziyor ve AoC benzer ad istemiyor. Ağaç bölümü çekilmeden önce konuşulmalı. Çekimden sonra değiştirmek, yayımlanmış içeriği de değiştirmek demek.
 
 ---
 
@@ -263,8 +249,8 @@ Neden: mail tercihi üyelikten ayrı kararlaştı. Yıldız, bitirilmiş işin i
 Neden: Rabadon'da yıldız 32px, ağaç 15,5px. Mobilde ağaç 9,95px, yani sayfadaki en küçük yazı ağaç oluyor. AoC'de çizimin her satırı bir metin satırı.
 **G5 [yorum] AoC'nin mobil yaklaşımını almak.**
 Neden: `min-width: 60em` yüzünden 390px'te sayfa 1128px'e açılıp küçülüyor. R8 ve büyük yazı isteğiyle çelişiyor.
-**G6 [yorum] Canlılığı sürekli animasyonla sağlamak.**
-Neden: giriş yapmadan bakılan 11 AoC takviminden yalnız 2015 hareket ediyor. Canlılığı başka şeyler taşıyor: her yıl farklı çizim, yüklemede değişen süs ve şaka, satır hover'ı, kazanılan renk.
+**G6 [Damla, 30.10] Yanıp sönen LED ve yağan kar isteniyor; önceki "canlılığı animasyonla sağlama" yorumum geçersiz.**
+Sınır: hareket metni ve tıklamayı engellemez, azaltılmış hareket tercihinde durur.
 **G7 [yorum] Ağacı takvimden ayrı bir resim yapıp yanına gün kartları dizmek.**
 Neden: AoC'de çizimin her satırı bir gün linki. Ağaç takvimden ayrılınca süse dönüşür.
 **G8 [yorum] Tasarımı lorem ipsum ve kısa adlarla onaylamak; bütün siteyi tek seferde üretmek.**
