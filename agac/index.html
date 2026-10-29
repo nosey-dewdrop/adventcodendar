@@ -160,7 +160,7 @@
   // Tuğla yerleşimi: katların genişliği tepeden tabana doğrusal büyür, hepsi ortalı.
   const kur = () => {
     const cift = (n) => n - (n % 2);
-    const altW = cift(Math.min(W - 6, Math.max(34, Math.round((1.35 * AGAC_SATIR * satirH) / chW))));
+    const altW = cift(Math.min(W - 8, Math.max(34, Math.round((1.15 * AGAC_SATIR * satirH) / chW))));
     const ustW = Math.max(8, cift(Math.round(altW * 0.2)));
     const cx = Math.floor(W / 2);
     const gY1 = H - 4, gH = 3, gY0 = gY1 - gH;          // gövde, zeminin hemen üstünde
