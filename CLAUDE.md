@@ -19,6 +19,7 @@ onaylandığı anlamına gelmez.
 - Sıradan uygulama hataları (çift XP, yetki, veri kaybı, erken açılma) araştırmanın merkezi değil.
 
 ## Karar verilmemiş (uygulama, Damla'ya sormadan seçme)
+Önce: ağaç + ad + AoC benzerliği (YAPILMAYACAKLAR.md §0), ağaç çekiminden önce.
 Yayın ritmi, ilk case kapsamı, teslim biçimi, Ladybug'ın ilk sorumluluğu, font, palet,
 ekran düzeni, streak/katkı kuralı, XP formülü, ücretli özellikler, framework/hosting/db.
 
