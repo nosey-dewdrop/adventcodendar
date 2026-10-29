@@ -1,0 +1,27 @@
+# adventcodendar — şu an ne doğru?
+
+Ürün tanımı: PROJECT.md. Geçmiş: REPORTS.md. Gerekçeli yapılmayacaklar: YAPILMAYACAKLAR.md.
+
+## Faz
+Araştırma. Uygulama kodu yok. İlk ekran üretmek araştırmanın bittiği ya da görsel yönün
+onaylandığı anlamına gelmez.
+
+## Kesin sınırlar (Damla'nın sözü)
+- Ağaç bölümü çekilmeden hediye tasarımı/teslimi yok. Aşama atlayıp "hazır elim değmişken"
+  üyelik, hediye, puanlama bitirmek yok.
+- Ladybug yepyeni; hiçbir kodu yok. Bilgisayardaki aynı adlı eski dosyalar bu projeye bağlanmaz.
+- Teknolojiye göre ana kategori yok (web/RAG/Python/C++ aynı ihtiyacı çözebilir).
+  "Her şeyi gönder, AI puanlasın" kestirmesi yok.
+- Katkı satırı tek satır: `damumya · 29.10.2026 · sewing engine`.
+- Aylık topluluk özeti / "ayın izi" reddedildi; başka isimle geri gelmez.
+- Tier = kazanılan başarı seviyesi; ücretli paket diye yorumlanmaz.
+- Çalışan mekanik, token listesi, tutarlılık veya test sonucu görsel kaliteye cevap değildir.
+- Sıradan uygulama hataları (çift XP, yetki, veri kaybı, erken açılma) araştırmanın merkezi değil.
+
+## Karar verilmemiş (uygulama, Damla'ya sormadan seçme)
+Yayın ritmi, ilk case kapsamı, teslim biçimi, Ladybug'ın ilk sorumluluğu, font, palet,
+ekran düzeni, streak/katkı kuralı, XP formülü, ücretli özellikler, framework/hosting/db.
+
+## Repo
+- github.com/nosey-dewdrop/adventcodendar (public), github.com/nosey-dewdrop/ladybug (public, README).
+- Araştırma kanıtı: research/<tarih>/. Doğrulanan commit hemen push.
