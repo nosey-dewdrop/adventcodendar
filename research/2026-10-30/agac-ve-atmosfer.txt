@@ -1,0 +1,294 @@
+ADVENTCODENDAR — RABADON AĞACI VE ADVENT OF CODE AĞACI/ATMOSFERİ
+30.10.2026
+
+Durum: görsel araştırma. [GÖZLEM] = dosya, kaynak kod, ölçüm ya da ekran görüntüsü.
+[YORUM] = araştırmacı yorumu; Damla'nın onayladığı tasarım kararı değildir.
+Görüntüler: research/2026-10-30/gorsel/ (aşağıda yalnız dosya adı yazıldı).
+Önceki notlarda olanlar tekrar edilmedi (AoC'nin Source Code Pro ~18.67px gövdesi,
+lacivert zemin/yeşil link/sarı vurgu, problem sayfasında çizimsiz de karakterin
+sürmesi, boş alanın dünya hissini kendiliğinden bozmaması, istatistik yıldızları).
+Hediye tasarımı yapılmadı. Git commit atılmadı.
+
+
+A. RABADON AĞACI
+
+A1. Nerede, ne zaman
+
+[GÖZLEM] Ağaç rabadon.noseydewdrop.com ana sayfasında. Canlı index.html, home.css,
+style.css ve effects.js, ~/rabadon-web-release-20261019-garden-v3 içindeki
+dosyalarla bayt bayt aynı (30 Eki, curl + cmp).
+[GÖZLEM] Kaynak: ~/rabadon-garden-20261019, dal design/quiet-garden, commit f357d16
+(19 Eki 2026). Çizim site/index.tmpl.html satır 64–94 içinde; build.py bu şablonu okuyup
+sayfayı yazıyor. Stil: site/style.css satır 311–314, site/home.css
+satır 9 ve 25–38. Davranış: site/effects.js.
+[GÖZLEM] 17–18 Ekim yayınlarında (rabadon-web-release-20261017-3/-4/-4b, -20261018-seo)
+ağaç yok; ilk kez 19 Ekim "garden" yayınında var. 122 sayfanın yalnız 1'inde
+(ana sayfa) duruyor; her sayfada olan şey sol üstteki asa (wand) işareti.
+[GÖZLEM] CLI/terminal tarafında ağaç yok: native/, npm/, hooks/, bin/, scripts/
+içinde çizim izi bulunmadı. Ağaç yalnız web sayfasında.
+
+A2. Nasıl çiziliyor
+
+[GÖZLEM] Tek bir <pre class="pine"> içinde düz metin. Görsel dosya, SVG veya canvas
+yok. Yapı: tepede yıldız "*", altında 24 yaprak satırı (genişlik 1, 3, 5 … 47
+karakter), iki satır gövde "| | |", zemin "_ _ _ _|_|_|_ _ _ _".
+[GÖZLEM] Yapraklar düzenli ikiye bölünmüş: sol yarı ">" karakterleri, sağ yarı "<".
+Süsler "@", "o", "*": 576 yaprak karakterinin 95'i süs (%16).
+[GÖZLEM] Her süs ayrı <span class="bauble bN"> ve kendi sabit --delay değeriyle HTML'e
+yazılmış. Repoda bu dizilimi üreten bir script bulunmadı; süsler her ziyaretçide
+ve her yüklemede aynı yerde.
+[GÖZLEM] Renkler (koyu gri zemin #181b1e üstünde): yaprak #80bc91 yeşil; süsler dört
+sınıf: pembe-somon #e69d8e, sarı #e3c68f, mavi #8fc5e2, açık gri-mavi #a8cbdc
+(CSS'te adı "purple" ama ana sayfa bunu açık maviyle eziyor); gövde #c0a1ff lila;
+zemin #6f607e; yıldız #e3c68f sarı. Görüntü: rabadon-desktop-agac-yakin.png.
+[GÖZLEM] Hareket: süslerde "light" animasyonu, 4 sn döngü, parlaklık 0.85↔1.15 ve
+kendi renginde yumuşak parıltı; her süs farklı gecikmeyle. 1.3 sn arayla alınan üç
+ölçümde süslerin parlaklığı 0.85–1.15 arasında değişiyordu. Yıldızdaki "star-invite"
+animasyonu sonradan gelen bir kuralla kapatılmış (yıldız durağan).
+prefers-reduced-motion açıkken tüm animasyonlar kapanıyor (style.css global kural).
+
+A3. Neyi temsil ediyor, durumla değişiyor mu
+
+[GÖZLEM] aria-label: "A tall Christmas pine made of terminal characters, with colourful
+twinkling lights". Ağacın ürün verisiyle (kural, ret sayısı, kullanıcı) bağı yok.
+[GÖZLEM] Değişen tek iki şey:
+  - "lights: on/off" düğmesi: kapalıyken süsler yeşil-gri #6f907d olur ve durur,
+    yıldız sarı kalır (rabadon-desktop-agac-isiklar-kapali.png).
+  - Yıldız bir düğme: tıklanınca "[ release notes ]" e-posta abonelik kutusu açılır.
+    Kutu ağacın üst satırlarını örter; yıldız beyaza döner
+    (rabadon-desktop-yildiz-tiklandi.png, rabadon-mobile-yildiz-tiklandi.png).
+[GÖZLEM] Işık tercihi saklanmıyor (effects.js'te localStorage yok); sayfa her
+açılışta "lights: on" ile başlıyor. Ağaç ziyaretçiyi hatırlamıyor.
+[YORUM] Damla'nın "ağaç seni hatırlasın" isteği Rabadon ağacında karşılığı olmayan,
+Adventcodendar'da yeni kurulacak bir katman. Rabadon'dan gelen şey görünüş ve
+karakter; hafıza/ilerleme mekanizması değil.
+
+A4. Font, ölçü, yerleşim
+
+[GÖZLEM] Masaüstü 1440×1000 (rabadon-desktop-ilk-ekran.png): her şey IBM Plex Mono.
+h1 "rabadon" 64px kalın sarı; alt başlık 22px kalın; gövde 16px. Ağaç 15.55px,
+satır yüksekliği 18.35px (clamp(10px, 1.08vw, 16px)); yani ağaç gövde metniyle
+neredeyse aynı punto. Yıldız ayrı: 32px kalın, ağacın iki katı.
+[GÖZLEM] İki sütun: solda başlık + kurulum, sağda ağaç (kutu 448×514px, x=887).
+Izgara x=40'tan başlayıp 1360px kullanıyor; ilk ekranda geniş yan boşluk yok.
+Altındaki üç sayı şeridi ortalanmış.
+[GÖZLEM] CSS'te yıldız için ayrı yama var: "A literal asterisk, centered on the existing
+character grid." 32px yıldız 15.5px karakter ızgarasına sığmadığı için
+konumlandırma kuralıyla merkezlenmiş.
+[GÖZLEM] Mobil 390×844 (rabadon-mobile-ilk-ekran.png, rabadon-mobile-agac-yakin.png):
+tek sütun; ağaç kurulum bölümünün altına iniyor, ilk ekranda yalnız yıldız en altta
+görünüyor. Ağaç punto 9.95px'e düşüyor; h1 48px. Yatay taşma yok (belge 390px).
+[YORUM] Mobilde ağaç sayfanın en küçük yazısı haline geliyor. Damla'nın büyük yazı
+isteğiyle ağaç ölçeği mobilde çelişebilir.
+
+A5. Rabadon ağacı ile AoC 2015 ağacının ilişkisi
+
+[GÖZLEM] AoC 2015 takvimi (aoc-2015-masaustu.png) aynı iskelet: tepede "*", 24 yaprak
+satırı (genişlik 3 … 49), ">" ve "<" ile örülmüş yaprak, "@ o O *" süsler, iki satır
+"|   |" gövde, "_ __ ___|___|___ __ _" zemin.
+[GÖZLEM] Farklar: AoC'de ">" ve "<" karışık ve süsler her istekte yeniden diziliyor
+(aynı sayfa üç kez çekildi, üçü farklı); süs oranı %31 (624'te 195). AoC'de her
+satır bir günün linki ve sağında gün numarası var; Rabadon'da gün/link yok.
+AoC'de ağaç kazanılana kadar gri; Rabadon'da baştan renkli ve yanıp sönüyor.
+[YORUM] Rabadon ağacı AoC 2015 ağacından türemiş görünüyor (aynı karakter sözlüğü,
+aynı satır sayısı, aynı gövde/zemin kalıbı). Rabadon'un katkısı: yarıları düzenli
+">"/"<" dizilimi, pastel renk ve yumuşak parıltı, yıldızın gizli kapı olması,
+"lights" düğmesi ve "*-*" yüz ifadesi. Bu katkıları Damla'nın beğenip beğenmediği
+bu araştırmada ölçülmedi.
+
+
+B. ADVENT OF CODE: AĞAÇ VE ATMOSFER
+
+Giriş yapılmadan, 1440×1000, 11 takvim (2015–2025) çekildi; hepsi HTTP 200.
+
+B1. Takvim çizimi yıldan yıla
+
+[GÖZLEM] Her yıl bambaşka bir sahne; giriş yapmamış görünümde:
+  2015 Noel ağacı; her satır bir gün (aoc-2015-masaustu.png).
+  2016 ":::" pencereli büyük bir bina, çizgi sanatı (aoc-2016-masaustu.png).
+  2017 kesik çizgi çerçeveli devre kartı; içinde "ETHERNET", "12v", "9001 ohm",
+       "APL 1071" gibi yazılar çizimin parçası; bileşenler soluk renkli
+       (aoc-2017-masaustu.png).
+  2018 neredeyse boş: yalnız gün numaraları ve tek bir zemin çizgisi
+       (aoc-2018-masaustu.png).
+  2019 noktalı yaylar (aoc-2019-masaustu.png).
+  2020 "~" deniz, "###" kara, "O>" tekne ile harita; gün numaraları sıralı değil
+       (1–8, 17, 9, 16, 18, 15, 19, 10 …): günün yeri çizime göre (aoc-2020-masaustu.png).
+  2021 üstte "~~~" yüzey, aşağı doğru daralan noktalı iniş (aoc-2021-masaustu.png).
+  2022 "@#" ile dolu yoğun bir alan, tepede "/\" zirveler (aoc-2022-masaustu.png).
+  2023 her gün için tek bir "*", dağınık; sıra yine çizime göre
+       (14, 15, 16, 13, 17, 12 …) (aoc-2023-masaustu.png).
+  2024 dev bir "10" rakamı dış çizgisi (aoc-2024-masaustu.png).
+  2025 12 gün; çok odalı bir tesis kesiti; her gün iki satır (aoc-2025-masaustu.png).
+[YORUM] 2019 uzay, 2021 deniz altına iniş, 2024 onuncu yıl okuması çizimlerden
+yapılmış tahmin; hikâye metinleriyle doğrulanmadı.
+[GÖZLEM] Başlıktaki yıl her yıl başka bir programlama dili sözdizimine sarılmış,
+%33 opaklıkta: "sub y{2015}", "int y=2016;", "$year=2017;", "0x0000|2020",
+"<y>2021</y>", "{:year 2023}". 2025 üç yüklemede üç farklı geldi: "<y>2025</y>",
+"0.0.0.0:2025", "0xffff&2025" (aoc-2025-masaustu.png, aoc-2025-mobil.png,
+aoc-2025-gun1.png).
+
+B2. İlerlemeyle açılma ve renklenme
+
+Giriş yapmadan görülemedi. Aşağıda görülen, kaynakta belgelenen ve görülemeyen ayrı.
+
+[GÖZLEM, ekran] Giriş yapmamış takvimde çizim gri (#666), link olmayan parçalar daha
+koyu (#333). Kalıcı renk yalnız 2017'de, soluk (bileşenler opacity .2); 2015'te
+yeşil yalnız dalga geçerken (B3).
+[GÖZLEM, AoC'nin kendi CSS'i, /static/style.css]
+  - Gün tamamlanınca numaranın yanında sarı "*", iki bölüm bitince "**" beliriyor
+    (.calendar-mark-complete / -verycomplete, #ffff66).
+  - Yeni gün açıldığı an satır 5 sn beyaz parlayıp griye iniyor (anim-day-new).
+[GÖZLEM, 2015 sayfasının satır içi CSS'i] Bir bölüm bitince o günün satırı yeşile
+(#009900) dönüyor; iki bölüm bitince süsler maviye, turuncuya, kırmızıya, sarıya
+dönüp 5px parlıyor; 25. gün bitince tepe yıldız sarı, iki bölümde parlak.
+Yani 2015'te ağaç gün gün, kişinin kendi çözümleriyle yanıyor.
+[GÖZLEM, sayfa kaynağındaki Eric Wastl notu] "The best surprises don't even appear in
+the source until you unlock them for real."
+[GÖZLEM] 2016 ve 2018–2025 giriş yapmamış kaynağında renk sınıfı ya da yıla özel stil
+yok (2016'da yalnız ".calendar-streets", 2019'da ".calendar-s{color:#333}"). 2018'de
+çizim kaynağa hiç gelmiyor.
+[GÖZLEM, 2025 1. gün metni] "Collect stars by solving puzzles … Each puzzle grants one
+star."
+GÖREMEDİĞİM: giriş yapmış takvimler; 2016–2025'te çözdükçe hangi renk/hareketin
+geldiği; 2018 ve 2023'te gizli çizimin açılmış hali; Aralık'taki açılma anı;
+2015'in yanmış hali (yalnız CSS'ten biliniyor). Bunlar hakkında yazılan her şey
+kaynaktan çıkarımdır.
+[YORUM] AoC'de renk kazanılan şeyin işareti: ziyaretçi gri bir çizim görüyor, sahibi
+renkli. "Ağaç seni hatırlasın"a en yakın belgelenmiş örnek 2015'in bu mekanizması.
+
+B3. Hareket ne kadar
+
+[GÖZLEM] Giriş yapmamış 11 takvimde tüm çizim elemanlarının hesaplanmış animasyonu
+okundu: hareket yalnız 2015'te var. "anim-beckon": 3 sn döngü, her gün 0.125 sn
+kaydırılmış, gri→parlak yeşil (#00ff00)→gri; sonuç ağaçta aşağıdan yukarı çıkan
+yeşil bir dalga (aoc-2015-beckon-kare1.png, -kare2.png, -kare3.png: yeşil bant
+karelerde farklı satırlarda).
+[GÖZLEM] Her yılın <pre> etiketinde "calendar-beckon" sınıfı var ama dalga keyframe'leri
+yalnız 2015 sayfasında tanımlı; diğer yıllar giriş yapmamış görünümde hareketsiz.
+[GÖZLEM] Hareketin yerine parıltı kullanılıyor: başlık (#00cc00), vurgulu kelime
+(beyaz), yıldız ve "başarılı" yazısı (sarı) text-shadow ile ışık veriyor
+(aoc-2025-gun1.png).
+[YORUM] AoC'yi canlı gösteren şey hareket miktarı değil: her yıl başka çizim, her
+yüklemede değişen süs ve yıl şakası, satırın tamamının tıklanabilir olması, kazanınca
+gelen renk. Bu Damla'nın "cansız/jenerik görünmesin, çok animasyon da değil"
+ayrımına uyan bir karşılaştırma noktası.
+
+B4. Renk
+
+[GÖZLEM] Ekranın çoğu iki ton: #0f0f23 zemin, gri metin/çizim. Yeşil link ve başlık,
+sarı yalnız yıldız/başarı. Çizimdeki çok renk giriş yapmamış görünümde yok (2017
+soluk istisna). 2015 kaynak CSS'inde süs renkleri doygun mavi/turuncu/kırmızı/sarı.
+[YORUM] Rabadon pastel ve baştan renkli; AoC gri ve renk kazanılıyor. İkisi ters
+uçlar; hangisinin Damla'ya yakın olduğu ölçülmedi.
+
+B5. Hover ve gizli ayrıntılar
+
+[GÖZLEM] Fareyle bir gün satırının üstüne gelince satırın tamamı (çizim + numara)
+mor-gri bir bantla vurgulanıyor; çizimin kendisi tıklama alanı
+(aoc-2015-hover-gun12.png; CSS: rgba(119,119,165,.2)).
+[GÖZLEM] Problem metninde title ipucu: 2015 1. günde "Good luck!" üstünde "Also, some
+puzzles contain Easter eggs like this one. Yes, I know it's not traditional to do
+Advent calendars for Easter." 2025 1. günde title bulunmadı.
+[GÖZLEM] Sayfa kaynağında Eric Wastl'ın HTML yorumu (kendini tanıtıyor, otomatik
+istekler için uyarı, siteyi kendisinin yaptığı).
+[GÖZLEM] Sponsor metni yüklemeye göre değişiyor (2025: Jane Street, Boot.dev).
+
+B6. Ağaç ve tipografi
+
+[GÖZLEM] Takvim çizimi gövde metniyle aynı font, aynı punto (18.67px), aynı satır
+yüksekliğinde. Her çizim satırı bir metin satırı; gün numarası aynı satırda.
+[GÖZLEM] AoC'de h1/h2 "font-size: 1em; font-weight: normal" (style.css). Sayfanın her
+yerinde tek punto. Hiyerarşi boyutla değil; "--- Day 1: … ---" çizgileri, köşeli
+parantezli menü, renk ve parıltıyla kuruluyor.
+[GÖZLEM] Takvim sola dayalı (x=8'den başlıyor, çizim ~550px, numaralar ~590px);
+sponsor sütunu sağda x≈1217.
+[YORUM] AoC'de çizim yazının ızgarasına uyuyor, yazının üstüne konan bir resim değil.
+Rabadon'da da ağaç gövde puntosunda; ızgaradan çıkan tek öğe 32px yıldız.
+
+B7. Mobil
+
+[GÖZLEM] AoC'de body "min-width: 60em". 390px telefonda belge 1128px'e açılıyor ve sayfa
+küçültülüyor; yazı ve çizim çok küçük, altta boş alan (aoc-2015-mobil.png,
+aoc-2025-mobil.png). Mobil için ayrı bir düzen yok.
+
+B8. About sayfası: kopyalama
+
+[GÖZLEM] https://adventofcode.com/2025/about, "Can I copy/redistribute part of Advent of
+Code?" sorusu: "Please don't. Advent of Code is free to use, not free to copy. …
+If you're making a website, please don't make it look like Advent of Code or name it
+something similar."
+[GÖZLEM] Aynı sayfa, Legal: "Advent of Code is a registered trademark in the United
+States. The design elements, language, styles, and concept of Advent of Code are all
+the sole property of Advent of Code and may not be replicated or used by any other
+person or entity without express written consent of Advent of Code."
+[YORUM] Hukuki görüş değil. Ad ("Adventcodendar"), aylık takvim, koyu zemin üstünde
+karakterlerle ağaç ve A5'teki türeme birlikte AoC'ye benzerliği artırıyor. Rabadon
+ağacını taşıma isteği bu riskle beraber ele alınmalı.
+
+
+C. GÖRSEL OLARAK YAPILMAYACAKLAR ADAYLARI
+
+Bunlar aday, Damla'nın onaylı kararı değil.
+
+1. (a) Rabadon ağacını AoC 2015 iskeletiyle birebir taşımak (">"/"<" yaprak,
+   "@ o *" süs, tepe yıldız + 24 satır, "|" gövde, "_" zemin).
+   (b) A5: bu iskelet AoC 2015'in kendisi. B8: AoC "make it look like Advent of Code
+   or name it something similar" diyor; ad da benzer. Ad + ağaç + takvim aynı yerde
+   olunca benzerlik birikiyor.
+   (c) Ana sayfa ve takvim/ağaç ekranı.
+
+2. (a) Ağacı herkese aynı görünen, süsleri HTML'e sabitlenmiş bir figür yapmak.
+   (b) A2–A3: Rabadon'da 95 süsün yeri sabit, ışık tercihi bile saklanmıyor; ağaç kimseyi
+   hatırlamıyor. B2: AoC 2015'te satır ve süs rengi kişinin çözdüğü güne bağlı.
+   "Ağaç seni hatırlasın" sabit figürle karşılanmaz.
+   (c) Ağaç ekranı, profil.
+
+3. (a) Süsleri ve ışıkları kazanılmadan baştan yanık/renkli göstermek.
+   (b) B2/B4: AoC'de renk kazanılmış işin işareti; ziyaretçi griyi görüyor. Rabadon'da
+   süsler ilk saniyeden yanıyor (A2). Baştan yanan ağaçta çözülen günün değişimi
+   görünür bir ödül olarak kalmaz [YORUM].
+   (c) Ağaç ekranı; yeni üye/giriş yapmamış görünüm.
+
+4. (a) Ağacın en anlamlı öğesini (tepe yıldızı) e-posta/abonelik kapısına bağlamak.
+   (b) A3: Rabadon'da yıldız mail kutusu açıyor, kutu ağacın üstünü örtüyor. B2: AoC'de
+   yıldız bir günün bitişi. Adventcodendar'da mail tercihi üyelikten ayrı onaylandı
+   (2026-10-29/kararlar.json); yıldıza bağlamak iki anlamı karıştırır [YORUM].
+   (c) Ana sayfa ağacı, üyelik/mail tercihi.
+
+5. (a) Ağacı metinden farklı ölçekte süs gibi koymak: tepede iki kat büyük yıldız,
+   mobilde gövde yazısının altına inen küçük bir ağaç.
+   (b) A4: Rabadon yıldızı 32px, ağaç 15.5px; ızgara için ayrı CSS yaması gerekmiş.
+   Mobilde ağaç 9.95px, ilk ekranda yalnız yıldız görünüyor. B6: AoC'de çizim ve
+   yazı aynı ızgarada. Damla büyük yazı istiyor; mobilde en küçük yazı ağaç oluyor.
+   (c) Mobil ana sayfa, takvim.
+
+6. (a) AoC'nin mobil yaklaşımını almak: sabit minimum genişlik, telefonda küçültülmüş
+   masaüstü.
+   (b) B7: 390px'te belge 1128px, yazı ve ağaç okunmayacak kadar küçük.
+   (c) Mobil takvim ve problem sayfası.
+
+7. (a) Canlılığı sürekli yanıp sönen ya da kayan animasyonla sağlamaya çalışmak.
+   (b) B3: AoC giriş yapmamış 11 takvimde yalnız 2015'te (3 sn dalga) hareket
+   ediyor; canlılığı yıllık çizim, yüklemede değişen süs ve yıl şakası, satır hover'ı,
+   gizli notlar ve kazanılan renk taşıyor. Damla'nın şikâyeti cansızlık, istediği
+   çok animasyon değil (görev tanımı).
+   (c) Ana sayfa, ağaç, sıradan sayfalar.
+
+8. (a) Ağacı takvimden ayrı bir resim olarak koyup yanına ayrı gün kartları/listesi
+   dizmek.
+   (b) B5–B6: AoC'de çizimin her satırı bir gün linki, hover satırın tamamını yakıyor,
+   2020/2023'te gün sırası bile çizime göre. A3: Rabadon ağacının ürün verisiyle bağı
+   yok ve 122 sayfanın yalnız birinde. Ağaç takvimden ayrılınca süse dönüşür [YORUM].
+   (c) Takvim ekranı.
+
+
+Kanıt dosyaları (repoda değil, oturum karalama alanı):
+  ölçüm ve kaynak: /private/tmp/claude-501/-Users-damummyphus/f159f8c0-8d06-4416-92e1-6c16f3ee198d/scratchpad/
+  (rabadon-info.json, aoc-run.log, aoc-hover.log, aoc-raw/*.html, aoc-raw/style.css)
+Kaynaklar:
+  https://rabadon.noseydewdrop.com/
+  https://adventofcode.com/2015 … https://adventofcode.com/2025
+  https://adventofcode.com/2025/about
+  https://adventofcode.com/2015/day/1, https://adventofcode.com/2025/day/1
+  https://adventofcode.com/static/style.css?32
