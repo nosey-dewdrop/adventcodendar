@@ -1,0 +1,742 @@
+ADVENTCODENDAR — ÖLÇEK, SEO VE ARŞİV MİMARİSİ: YANLIŞ TEMEL ARAŞTIRMASI
+30.10.2026 · Yalnız araştırma. Framework, hosting veya veritabanı seçmez.
+
+Kapsam ve kabul koşulu
+Soru, çok sayıda problem/case sayfasının yıllarca arşivde yaşayacağı bir üründe
+hangi erken mimari kararın sonradan geri alınması pahalı bir hataya dönüştüğü.
+Kabul koşulu: her bulgu ya birincil kaynağa bağlı [BELGELENEN] ya da açıkça
+[ÇIKARIM] olarak işaretli; dosyanın sonunda 5–10 maddelik "yanlış temel adayları".
+"Büyük sayı" burada kapasite hedefi değil. Amaç, ölçeğin baştan düşünülmesi.
+
+Yöntem
+Google Search Central belgeleri ve değişiklik günlüğü, web.dev, Chrome geliştirici
+blogu, Next.js ve Astro resmi belgeleri, Cloudflare/Vercel/Fastly belgeleri,
+RFC 5861, W3C, MDN browser-compat-data (ham JSON), IndexNow ve Bing Webmaster blogu
+açıldı. Eric Wastl'ın CppNorth açılış konuşmasının YouTube otomatik altyazısı
+yt-dlp ile indirildi ve okundu. Etiketler:
+  [BELGELENEN] = kaynakta yazıyor, link verildi. Tarih varsa sayfanın "last updated" tarihi.
+  [ÇIKARIM]    = kaynaklardan benim çıkardığım sonuç ya da Adventcodendar'a uygulaması.
+Bir maddede iki etiket karışmasın diye çıkarımlar ayrı satırda.
+
+
+==========================================================================
+1. ARAMA MOTORU TARAFI: ÇOK SAYFA NEREDE İŞE YARAR, NEREDE CEZA ALIR
+==========================================================================
+
+1.1 Spam politikaları (2024 sonrası)
+
+[BELGELENEN] Scaled content abuse tanımı "many pages are generated for the primary
+purpose of manipulating search rankings and not helping users". Örnekler arasında
+üretken yapay zekâ ile değer katmayan çok sayıda sayfa, beslemelerden/arama
+sonuçlarından kazınmış sayfalar, farklı sayfaları değer katmadan birleştirme ve
+anlamsız ama anahtar kelime taşıyan çok sayıda sayfa var. Doorway abuse, benzer
+sorgular için açılıp kullanıcıyı asıl hedefe yönlendiren ara sayfalar.
+https://developers.google.com/search/docs/essentials/spam-policies (2026-08-28)
+
+[BELGELENEN] Google'ın AI optimizasyon rehberi, her olası sorgu varyasyonu veya
+"fan-out" sorgusu için ayrı içerik üretmenin, bunu sıralamayı/AI yanıtlarını
+manipüle etmek için yapıyorsanız scaled content abuse ihlali olduğunu açıkça yazıyor
+ve "a high quantity of pages doesn't make a website higher quality" diyor.
+https://developers.google.com/search/docs/fundamentals/ai-optimization-guide (2026-07-10)
+
+[BELGELENEN] Üretken AI içerik rehberi Ekim 2026'da güncellendi: değer katmadan çok
+sayfa üretmek scaled content abuse olabilir. Başlık, meta açıklama, yapılandırılmış
+veri ve alt metin de elle gözden geçirilmeli. Rehber, Search Quality Rater
+Guidelines'ın 4.6.5 (scaled content abuse) ve 4.6.6 (az emek, az özgünlük) bölümlerine
+yönlendiriyor.
+https://developers.google.com/search/docs/fundamentals/using-gen-ai-content (2026-10-01)
+
+[BELGELENEN] Yararlı içerik öz-değerlendirmesindeki sorular arasında "Are you
+producing lots of content on many different topics in hopes that some of it might
+perform well?" ve "Are you using extensive automation to produce content on many
+topics?" var.
+https://developers.google.com/search/docs/fundamentals/creating-helpful-content (2026-10-05)
+
+[BELGELENEN] Site reputation abuse, üçüncü taraf sayfaların ev sahibi sitenin
+sıralama sinyallerinden yararlanmak için yayımlanması. Kasım 2024 netleştirmesinde
+"üçüncü taraf" örnekleri arasında sitenin kullanıcıları da sayılıyor. Yalnızca
+üçüncü taraf içerik barındırmak ihlal sayılmıyor. İhlal için sıralama sinyalini
+istismar etme amacı gerekiyor. Ayrıca Google, ana içerikten belirgin biçimde ayrışan
+site bölümlerini ayrı site gibi ölçebiliyor.
+https://developers.google.com/search/blog/2024/11/site-reputation-abuse
+Ağustos 2026: AB/AEA içinde bu politikanın manuel işlem etkisi farklı uygulanıyor.
+https://developers.google.com/search/blog/2026/08/update-site-reputation-policy
+
+[BELGELENEN] Ekim 2026'da güncellenen kullanıcı-kaynaklı spam rehberi: itibarı
+olmayan yeni kullanıcıların içeriğine noindex koymayı, güvenilmeyen linklere
+nofollow/ugc eklemeyi öneriyor. Yeni bölüm "Only index content meant for Search"
+diyor ki doğrudan paylaşım, iş birliği veya araç amaçlı oluşturulan sayfalar
+varsayılan olarak noindex almalı ya da robots.txt ile engellenmeli. Az sayıda
+kullanıcının indekslenebilir URL'lerin büyük kısmını üretmesi için alarm kurulması
+öneriliyor.
+https://developers.google.com/search/docs/monitor-debug/prevent-abuse (2026-10-26)
+
+[BELGELENEN] "Indexing isn't guaranteed; not every page that Google processes will
+be indexed." İndeksleme sayfanın içeriğine ve metadata'sına bağlı. Benzer içerikli
+sayfalar kümelenir, kümeden tek canonical seçilir.
+https://developers.google.com/search/docs/fundamentals/how-search-works (2025-12-18)
+
+[ÇIKARIM] Programatik çok sayfa, her sayfa gerçekten farklı bir şey taşıdığında işe
+yarar. Adventcodendar'da bu tür sayfalar case'in kendisi, gerçek çözüm geçmişi ve
+gerçek tartışmadır. Aynı case'i dil/zorluk/etiket varyasyonuyla çoğaltan sayfalar,
+"X dilinde Y problemi" şablonları, boş profil sayfaları ve açılmamış kapıların
+"yakında" sayfaları ise doğrudan yukarıdaki tanımlara girer. Ceza almasalar bile
+kümelenip indekslenmez, tarama bütçesini yer.
+
+1.2 Faceted navigation, takvim ve sonsuz URL alanları
+
+[BELGELENEN] Facet URL'leri iki sorun doğurur. Tarayıcı faydasız olduklarını
+anlamadan önce çok sayıda URL'yi tarar (overcrawling) ve yeni, faydalı URL'lerin
+keşfi yavaşlar. İndekslenmesi gerekmiyorsa önerilen yol robots.txt ile disallow
+ya da filtreyi URL fragment'ında tutmaktır. İndekslenecekse '&' ayırıcı ve sabit
+filtre sırası kullanılmalı, sonuç olmayan kombinasyon 404 dönmeli. rel=canonical ve
+nofollow "generally less effective in the long term".
+https://developers.google.com/search/docs/crawling-indexing/crawling-managing-faceted-navigation (2025-12-18)
+
+[BELGELENEN] URL yapısı belgesi "Calendar issues" başlığı altında, başlangıç/bitiş
+sınırı olmadan ileri-geri tarih linki üreten takvimi sorun olarak sayıyor. Önerisi
+"If your site has an infinite calendar, add a nofollow attribute to links to
+dynamically created future calendar pages". Takvim, sıralama ve filtre gibi sonsuz
+alanlar için robots.txt engeli öneriliyor. Session ID'ler URL'de değil cookie'de
+tutulmalı.
+https://developers.google.com/search/docs/crawling-indexing/url-structure (2026-10-21)
+
+[ÇIKARIM] Ürünün adı ve ana metaforu takvim. "Sonraki ay" linki sonsuza giden bir
+aylık görünüm, Google'ın birebir örnek verdiği hata olur. Takvim sayfaları yalnız
+içeriği olan dönemler için var olmalı. Gelecek dönem linkleri ya hiç olmamalı ya da
+nofollow ve robots.txt ile kapatılmalı.
+
+1.3 Tarama bütçesi: hangi ölçekte önemli
+
+[BELGELENEN] Rehber üç tür site için yazılmış: haftada bir değişen 1 milyon+ benzersiz
+sayfalı siteler, günlük değişen 10.000+ sayfalı siteler ve URL'lerinin büyük kısmı
+"Discovered – currently not indexed" görünen siteler. Öneriler: kopyaları birleştir,
+önemsiz sayfaları robots.txt ile engelle, kalıcı silinen sayfa için 404/410 dön,
+soft 404'ü yok et, sitemap'i güncel tut, uzun redirect zincirinden kaçın, HTTP
+önbelleğini destekle.
+https://developers.google.com/search/docs/crawling-indexing/large-site-managing-crawl-budget (2026-07-22)
+
+[BELGELENEN] Sunucu 5xx ve 429 dönerse Google taramayı yavaşlatır. İndeksli URL'ler
+bir süre korunur, sonra düşer. 404 ve 410 aynı işlenir.
+https://developers.google.com/search/docs/crawling-indexing/http-network-errors (2026-02-04)
+
+[ÇIKARIM] Günde bir case, yılda yüzlerce sayfa eder. Bu sayı tarama bütçesi eşiğine
+kendiliğinden yaklaşmaz. Eşiği aşan şey URL envanterinin patlamasıdır: facet
+kombinasyonları, sonsuz takvim, her kullanıcı için profil/çözüm/sekme/sıralama
+URL'leri ve oturum parametreleri. Ölçeği düşünmek burada "kaç case" değil, "bir
+case kaç URL doğuruyor" sorusudur. İkinci risk, yük altında 5xx veren origin.
+Google'ın tarama hızını düşürmesi tam arşivin büyüdüğü dönemde keşfi yavaşlatır.
+
+1.4 Sitemap sınırları ve lastmod
+
+[BELGELENEN] Tek sitemap en fazla 50.000 URL veya sıkıştırılmamış 50 MB olabilir. URL'ler
+mutlak olmalı. Google <priority> ve <changefreq> değerlerini yok sayar. <lastmod>
+değerini "consistently and verifiably accurate" ise kullanır.
+https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap (2026-07-08)
+
+[BELGELENEN] Sitemap index dosyası en fazla 50.000 <loc> içerir. Search Console'da
+site başına en fazla 500 index dosyası gönderilebilir. Alt sitemap'ler aynı sitede
+ve index ile aynı dizinde ya da altında olmalı.
+https://developers.google.com/search/docs/crawling-indexing/sitemaps/large-sitemaps (2025-12-10)
+
+[BELGELENEN] Bing de changefreq/priority'yi yok sayar. lastmod için ISO 8601 tarih+saat
+istiyor ve lastmod'u sitemap'in üretildiği zamana ayarlamamayı söylüyor. Bing
+sitemap'i genelde günde en az bir kez yeniden okur.
+https://blogs.bing.com/webmaster/2025/7/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search/
+
+[ÇIKARIM] lastmod, case metni gerçekten değiştiğinde değişmeli. Yorum, çözüm sayacı
+veya sıralama değişimi lastmod'u oynatırsa sinyal güvenilmez olur ve Google onu
+kullanmayı bırakabilir. Bu yüzden içerik modelinde "anlamlı değişiklik zamanı" ayrı
+bir alan olarak tutulmalı.
+
+1.5 Canonical
+
+[BELGELENEN] Redirect güçlü sinyaldir. rel=canonical güçlü sinyaldir. Sitemap'e koymak
+zayıf sinyaldir. Canonicalization için robots.txt ya da noindex kullanılmamalı. Aynı
+sayfa için farklı yöntemlerle farklı canonical verilmemeli.
+https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls (2026-07-10)
+
+[BELGELENEN] JavaScript ile canonical değiştirilecekse orijinal HTML'deki değerle
+aynı olmalı. En iyi yol canonical'ı HTML'de vermek.
+https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics (2026-03-04)
+
+1.6 Sayfalama
+
+[BELGELENEN] Her sayfa benzersiz URL (ör. ?page=n) ve kendi canonical'ını almalı.
+İlk sayfayı hepsinin canonical'ı yapmamak gerekiyor. Sayfalar birbirine <a href>
+ile bağlanmalı. Google rel=next/prev kullanmıyor. Tarayıcı "daha fazla yükle"
+düğmesine tıklamaz, sonsuz kaydırma tetiklemez. Sıralama/filtre varyantları noindex
+ya da robots.txt ile dışarıda tutulmalı.
+https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading (2025-12-10)
+
+[ÇIKARIM] Arşiv listesi yalnız sonsuz kaydırmayla gelirse eski case'lere tek yol
+sitemap olur. İç link yoksa sitemap zayıf sinyal olarak kalır. Arşivde sabit,
+tarih tabanlı ve <a href>'li liste sayfaları gerekir (yıl/ay gibi, içerik olan
+dönemlerle sınırlı).
+
+1.7 JavaScript render kuyruğu
+
+[BELGELENEN] Aşamalar tarama, render ve indeksleme. 200 dönen her sayfa render
+kuyruğuna girer ve "may stay on this queue for a few seconds, but it can take longer
+than that". 200 dışı kodlarda render atlanabilir (Aralık 2025'te eklendi). Orijinal
+HTML'de noindex varsa render ve JS çalıştırma atlanabilir, yani JS ile noindex'i
+kaldırmak çalışmayabilir. Fragment (#/) tabanlı yönlendirme yerine History API ve
+gerçek href kullanılmalı. Sunucu tarafı render veya prerender "still a great idea".
+https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics (2026-03-04)
+
+[BELGELENEN] Google'ın render servisi (WRS) sayfa yüklemeleri arasında durum tutmaz.
+Local Storage, Session Storage ve HTTP cookie'leri her yüklemede temizlenir. WRS
+önbellek başlıklarını yok sayabilir ve eski JS/CSS kaynaklarını kullanabilir.
+Çözüm olarak içerik parmak izli (fingerprint) dosya adları öneriliyor.
+https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript (2025-12-18)
+
+[ÇIKARIM] Case metni istemci tarafında oturum gerektiren bir API'den çekilirse
+Googlebot onu oturumsuz görür. Deploy'da eski hash'li JS parçaları silinirse
+Googlebot'un önbellekteki eski HTML'i render sırasında kırılabilir. Kamuya açık
+içerik ilk HTML'de bulunmalı. Eski statik parçalar en az bir süre yayında kalmalı.
+
+1.8 Yapılandırılmış veri: problem/case için uygun şema var mı
+
+[BELGELENEN] Programlama problemi için Google'ın özel bir zengin sonucu yok.
+  - Practice problems: Kasım 2025'te kaldırılacağı duyuruldu. 6 Ocak 2026'da belgesi
+    silindi, "no longer shown in Google Search results".
+    https://developers.google.com/search/updates (changelog, 2026-01-06 ve 2025-11-05)
+  - Learning Video ve Course Info dahil yedi tür Haziran 2025'te kaldırıldı.
+    "This update won't affect how pages are ranked."
+    https://developers.google.com/search/blog/2025/06/simplifying-search-results
+  - FAQ zengin sonucu 7 Mayıs 2026'dan beri gösterilmiyor (changelog, Mayıs/Haziran 2026).
+  - Math solver yalnız matematik çözücü siteler için. MathSolver işaretlemesi ana
+    sayfaya konur. Problem türleri polinom, türev, integral gibi matematik alanları.
+    https://developers.google.com/search/docs/appearance/structured-data/math-solvers (2025-12-18)
+  - QAPage kullanıcıların cevap gönderebildiği tek soruluk sayfa ister. Sitenin kendi
+    yazdığı cevaplar ve sayfa başına birden fazla soru uygun değil.
+    https://developers.google.com/search/docs/appearance/structured-data/qapage (2026-09-08)
+  - Event işaretlemesinde "Avoid marking non-events as events" kuralı var. Çalışma
+    saatleri, kupon gibi örnekler yasaklı.
+    https://developers.google.com/search/docs/appearance/structured-data/event (2026-09-08)
+  - ProfilePage, içerik üreten kişi/kurumların profil sayfaları ve forum yazarları
+    için. DiscussionForumPosting ve QAPage'e Mart 2026'da yeni özellikler eklendi.
+    https://developers.google.com/search/docs/appearance/structured-data/profile-page (2026-09-08)
+  - BreadcrumbList hâlâ destekleniyor, ancak Ocak 2025'ten beri mobil sonuçlarda
+    breadcrumb gösterilmiyor (masaüstünde gösteriliyor).
+    https://developers.google.com/search/blog/2025/01/simplifying-breadcrumbs
+
+[BELGELENEN] İşaretleme görünür içeriği temsil etmeli. Gizli, alakasız veya yanıltıcı
+içerik işaretlenmemeli. İhlal manuel işleme ve zengin sonuç uygunluğunun kaybına
+yol açabilir. Doğru işaretleme bile gösterimi garanti etmez.
+https://developers.google.com/search/docs/appearance/structured-data/sd-policies (2026-07-10)
+
+[ÇIKARIM] Bir case'e Quiz, PracticeProblem, Event veya kendi yazdığımız çözümle QAPage
+giydirmek ya ölü işaretlemedir ya da sahte şema riski taşır. "Kapı açılışı"nı Event
+yapmak, Google'ın non-event örneklerine en yakın kullanım olur. Savunulabilir set
+küçük: BreadcrumbList, yazar/katkıcı için ProfilePage, gerçek kullanıcı tartışması
+varsa DiscussionForumPosting, gerekirse genel Article/TechArticle (özel bir zengin
+sonuç beklentisi olmadan).
+
+1.9 GEO: Google AI özellikleri, llms.txt, Bing ve IndexNow
+
+[BELGELENEN] AI Overviews/AI Mode için "There are no additional requirements" ve özel
+optimizasyon gerekmiyor. Destekleyici link olabilmek için sayfanın indekslenmiş ve
+snippet ile gösterilebilir olması gerekiyor.
+https://developers.google.com/search/docs/appearance/ai-features (2025-12-10)
+
+[BELGELENEN] Mayıs 2026'da yayımlanan AI optimizasyon rehberinin "mythbusting"
+bölümüne göre llms.txt ve benzeri "özel" dosya/işaretleme Google Search tarafından
+kullanılmıyor. Tutmak ne zarar ne yarar sağlıyor. İçeriği "chunk"lara bölmek, AI
+için yeniden yazmak ve yapay "mention" peşinde koşmak gereksiz. Yapılandırılmış
+veri AI için zorunlu değil. Rehberde ayrıca generative AI özelliklerinde görünmek
+için sitenin Search Console'daki "Search generative AI features" ayarına dahil
+olması gerektiği yazıyor.
+https://developers.google.com/search/docs/fundamentals/ai-optimization-guide (2026-07-10)
+Changelog notu (15 Haziran 2026): "these files aren't needed for Google Search (and
+won't negatively or positively impact your visibility or rankings)".
+https://developers.google.com/search/updates
+
+[BELGELENEN] llms.txt, Jeremy Howard'ın 3 Eylül 2024'te yaptığı bir öneri. v2 sürümü
+10 Ağustos 2026'da çıktı. Kendi sayfası bunu "a proposal" olarak tanımlıyor.
+Lighthouse'un agentic browsing denetimlerinde bu dosyayı aradığını iddia ediyor
+(bu iddiayı Lighthouse belgesinden doğrulamadım).
+https://llmstxt.org/
+
+[BELGELENEN] Bing/Microsoft'un llms.txt okuduğuna dair birinci taraf açıklama
+bulamadım. Bing'in belgelediği yol sitemap + IndexNow.
+https://blogs.bing.com/webmaster/2025/7/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search/
+
+[BELGELENEN] IndexNow tek POST'ta 10.000 URL kabul ediyor. Katılımcı motorlar
+gönderimleri birbiriyle paylaşıyor. 200 yanıtı yalnız alındı demek, indeksleme
+garantisi değil. Ekleme, güncelleme ve silmede gönderilmeli. Açtığım belge sayfası
+Google'ı katılımcı olarak anmıyor.
+https://www.indexnow.org/documentation
+
+[BELGELENEN] Google'ın anlık bildirim API'si (Indexing API) yalnız JobPosting veya
+VideoObject içinde BroadcastEvent taşıyan sayfalar için kullanılabiliyor.
+https://developers.google.com/search/apis/indexing-api/v3/quickstart (2026-10-16)
+
+[ÇIKARIM] Açılış anında Google'a "şimdi indeksle" demenin meşru bir yolu yok. Bing ve
+Yandex tarafında IndexNow + doğru lastmod kullanılabilir. GEO için ayrı bir "AI katmanı"
+kurmak Google tarafında boşa iş. Asıl iş, case sayfasının ilk HTML'de tam, özgün ve
+indekslenebilir olması.
+
+
+==========================================================================
+2. RENDER VE ÖNBELLEK MİMARİSİ
+==========================================================================
+
+2.1 SSG, ISR, SSR + CDN
+
+[BELGELENEN] Next.js ISR belgesi, amacı "Handle large amounts of content pages without
+long next build times" olarak koyuyor. İşleyiş stale-while-revalidate: süre dolunca
+sonraki istek bayat sayfayı alır, yenisi arka planda üretilir. generateStaticParams
+dışındaki bir path ilk istekte üretilir, olmayan kayıt için 404 döner. Uyarılar:
+ISR statik export'ta yok. Birden çok instance'ta varsayılan dosya önbelleği
+instance başına tutulur, yani on-demand revalidate yalnız çağrıyı alan instance'ı
+geçersizler (paylaşılan cache handler gerekir). Arka plan yenilemesi istek başına
+faturalanan platformlarda ek compute sayılır. revalidatePath girdiyi geçersiz kılar
+ama yeniden üretim bir sonraki istekte olur.
+https://nextjs.org/docs/app/guides/incremental-static-regeneration (2026-10-15)
+
+[BELGELENEN] Cloudflare Pages limitleri: ücretsiz planda site başına 20.000 dosya,
+ücretli planda 100.000 dosya, build zaman aşımı 20 dakika.
+https://developers.cloudflare.com/pages/platform/limits/ (2026-09-05)
+
+[ÇIKARIM] Her case, her yıl, her dil ve her profil sayfasını build anında üreten tam
+SSG, büyüdükçe dosya sınırına ve build süresine çarpar. Tek bir yazım düzeltmesi de
+tüm arşivin yeniden build edilmesini gerektirir. Tam SSR ise her bot isteğini
+origin'e taşır. Arşiv için sağlam kalıp genelde şu: sayfa ilk istekte üretilsin,
+CDN'de uzun süre kalsın, içerik değişince adres bazında temizlensin. Hangi
+framework ile yapıldığı ikincil.
+
+2.2 Kişisel durum, kamuya açık sayfanın önbelleğini nasıl kırar
+
+[BELGELENEN] Next.js'te cookies() "Request-time API"dır. Layout veya page içinde
+kullanılırsa route dinamik render'a geçer. Cache Components açıkken Suspense dışında
+çağrılırsa route prerender edilemez.
+https://nextjs.org/docs/app/api-reference/functions/cookies (2026-06-09)
+
+[BELGELENEN] Next.js "Preventing flash" rehberi şunu söylüyor: cookie'yi root layout'ta
+okumak "opts the entire app out of static prerendering". Önerilen çözüm, cookie'yi
+boyamadan önce çalışan küçük bir inline script ile okuyup <html> üzerine attribute
+yazmak. Rehber ayrıca Accept-Language başlığının saat dilimi taşımadığını belirtiyor.
+https://nextjs.org/docs/app/guides/preventing-flash-before-hydration (2026-10-15)
+
+[BELGELENEN] Cache Components/PPR modeli: statik kabuk (layout, nav, Suspense
+fallback'leri) CDN'den gelir, kişisel kısımlar Suspense içinde akar. Layout'un
+tepesinde await cookies() yapılırsa altındaki her şey prerender dışı kalır.
+"Push dynamic access down" ilkesi örnek olarak navbar içindeki UserMenu'yu veriyor.
+https://nextjs.org/docs/app/getting-started/caching (2026-10-06)
+https://nextjs.org/docs/app/guides/streaming (2026-10-15)
+
+[BELGELENEN] Aynı streaming belgesinde iki tuzak var.
+ (1) Akış başladıktan sonra durum kodu değişmez. Akış içinde notFound() çağrılırsa
+     HTTP 200 + <meta name="robots" content="noindex"> döner. Akış içindeki redirect
+     de istemci tarafı yönlendirmeye dönüşür. Gerçek 404 için kontrol Suspense'ten
+     önce yapılmalı.
+ (2) "HTML-limited" botlar statik kabuğu atlar ve sayfa onlar için istek anında
+     dinamik render edilir. Kabuk yalnız build anında var olan veriye dayanıyorsa
+     sayfa insana açılırken bota hata verebilir.
+https://nextjs.org/docs/app/guides/streaming
+
+[BELGELENEN] Astro server islands: server:defer ile kişisel bileşen (avatar gibi)
+sayfadan ayrı istekle gelir, sayfa agresif önbelleklenir. "fallback" slotu yer tutar.
+Props şifreli GET parametresiyle taşınır ve Cache-Control ile önbelleklenebilir.
+URL 2048 baytı aşarsa POST'a döner ve tarayıcı önbelleği devre dışı kalır. Island
+içinde Astro.url island'ın kendi route'udur, sayfa bilgisi için Referer okunur.
+https://docs.astro.build/en/guides/server-islands/
+
+[BELGELENEN] Cloudflare varsayılan olarak HTML ve JSON önbelleklemez. Yanıtta
+Set-Cookie varsa ya da Cache-Control private/no-store/no-cache/max-age=0 ise de
+önbelleklemez.
+https://developers.cloudflare.com/cache/concepts/default-cache-behavior/ (2026-09-14)
+
+[BELGELENEN] Vercel CDN şu durumlarda önbelleklemez: Set-Cookie içeren yanıt,
+Authorization başlıklı istek, private/no-cache/no-store, Vary: * ve Vary: Cookie.
+Vary: Cookie artık açıkça reddediliyor ("Vary key denied"). Belge, Vary'nin
+middleware'de global olarak değil, gereken route'ta konmasını öneriyor ki tek başlık
+her route'u önbelleklenemez yapmasın. CDN önbelleği bölgelere ayrılmış ve süreler
+"best-effort". Seyrek istenen içerik bölge önbelleğinden atılabilir.
+https://vercel.com/docs/caching/cdn-cache (2026-09-14)
+
+[BELGELENEN] Fastly request collapsing: aynı nesneye gelen eşzamanlı istekler tek
+origin isteğine indirilir. Origin yanıtı önbelleklenemezse sıradaki istekler
+seri hâlde origin'e gider ve bu "several minutes" sürebilir.
+https://www.fastly.com/documentation/guides/concepts/edge-state/cache/request-collapsing/
+
+[BELGELENEN] Sayfanın kendisi Cache-Control: no-store taşıyorsa tarayıcılar onu
+geleneksel olarak bfcache'e koymaz. Chrome'da bu davranışı değiştiren çalışma
+sürüyor.
+https://web.dev/articles/bfcache (2026-10-16)
+
+[ÇIKARIM] Gerçek çözüm kalıbı şöyle.
+  - Kamuya açık HTML herkes için aynı bayt dizisi olmalı. Bunda Set-Cookie, Vary:
+    Cookie ve oturum okuma bulunmamalı.
+  - Kişisel durum (giriş, avatar, kaldığın yer, streak) ayrı, küçük, private bir
+    endpoint'ten ya da island'dan gelmeli.
+  - Navbar'da bu kısım için sabit ölçülü yer ayrılmalı.
+En sık gözden kaçan kırıcı, oturum kütüphanesinin her yanıtta session cookie'yi
+yenilemesi. Bu, kamuya açık sayfalara Set-Cookie ekler ve CDN'yi sessizce devre dışı
+bırakır. Ölçüsü, kamuya açık bir case sayfasının yanıt başlıklarında Set-Cookie ve
+"x-...-cache: MISS" görmek. Bu kontrol ilk günden bir teste dönüşmeli.
+
+[ÇIKARIM] "Bugün" bilgisi kullanıcının saat dilimine bağlıysa önbelleklenmiş sayfa
+bunu bilemez (Accept-Language saat dilimi taşımaz, yukarıda belgeli). Takvimin
+"bugünkü kapı" vurgusu ya istemcide hesaplanmalı ya da tek bir global açılış saati
+seçilmeli. Bu, ritim kararıyla birlikte verilmesi gereken bir mimari karar.
+
+
+==========================================================================
+3. ADVENT TİPİ AÇILMA ANI
+==========================================================================
+
+3.1 Advent of Code'un yaşadıkları (birincil kaynak: Eric Wastl)
+
+Kaynak: "Keynote: Advent of Code, Behind the Scenes – Eric Wastl", CppNorth
+https://www.youtube.com/watch?v=uZ8DcbhojOw (HN'de 8 Aralık 2024'te paylaşıldı,
+https://news.ycombinator.com/item?id=42354221). YouTube otomatik altyazısından
+okundu. Alıntılar ASR metni olduğu için kelimesi kelimesine değil.
+
+[BELGELENEN] 2015'te 70 kişilik plan yapılmış, etkinlik sonunda 52.000 kişi olmuş.
+Ardından AWS'ye geçilmiş. Konuşma anında 1,4 milyon kayıtlı kullanıcı var, bunların
+930.000'i en az bir bulmaca çözmüş. (yakl. 00:09:20–00:09:56)
+
+[BELGELENEN] 2020'nin ilk gününde AWS sunucuları "patladı". İlk sebep, Apache'nin
+bellek olup olmadığına bakmadan gelen istek kadar worker açmasıydı. Bellek artırıldı.
+İkinci ve asıl sebep AWS Application Load Balancer'ın otomatik ölçeklemesiydi. Bu
+ölçekleme sinüs gibi yavaş yükselen trafiğe yetişiyor. Gece yarısı "dikey bir çizgi"
+gelip kullanıcılar hemen ayrılınca, yük dengeleyiciler yeni kapasite açtığında
+kullanıcılar çoktan "bulmacasını ya da bir 503'ü alıp" gitmiş oluyor. Wastl'ın
+sonucu: beklenmedik bir trafik deseninde otomatik ölçeklemeye güvenilemez. Çözüm,
+AWS destek ekibinden yük dengeleyicileri kalıcı olarak yüksek ölçekte tutmalarını
+istemek oldu. Bunu bulmak bir hafta sürdü. (yakl. 00:10:21–00:12:10)
+
+[BELGELENEN] Hız yarışı için ilk dakikalarda sitenin tam çalışması gerekiyor, aksi
+hâlde o gün "geçersiz" olur. Wastl en az sıralamalar dolana kadar, genelde üç saat,
+sunucuların başında bekliyor. Ara ara DDoS yaşanıyor ve AWS'nin ücretli koruma
+araçlarıyla yönetiliyor. (yakl. 00:32:13–00:32:31, 00:37:50–00:38:29)
+
+[BELGELENEN] Her bulmaca için bir girdi üreticisi ve iki çözücü yazılıyor. Çok sayıda
+girdi üretilip doğrulanıyor, kurala uymayan girdi atılıyor. (yakl. 00:25:13–00:26:22)
+
+[BELGELENEN] Açılma saati UTC-5 gece yarısı. Sebep, Wastl'ın her gün o saatte orada
+olup her şeyin çalıştığından emin olabilmesi.
+https://adventofcode.com/2025/about
+
+[BELGELENEN] 2025'te global sıralama kaldırıldı. Gerekçe: "The global leaderboard was
+one of the largest sources of stress for me, for the infrastructure, and for many
+users." Etkinlik 1 Aralık'ta başlayıp Aralık ortasında bitecek şekilde kısaltıldı.
+https://adventofcode.com/2025/about
+
+[BELGELENEN] MIT Technology Review'a göre 2020'de "a giant burst of traffic
+synchronized to a single second" Amazon'un yük dengeleyicilerini zorladı.
+https://www.technologyreview.com/2021/12/17/1042483/puzzle-challenge-coding-christmas/
+(İkincil özet: https://www.sfeir.dev/tendances/les-coulisses-dadvent-of-code/ — trafik
+açılışta fırlıyor ve bir saat içinde düşüyor.)
+
+[BELGELENEN] Saniye başına istek sayısı gibi rakamlar bulamadım. Konuşmada da yok.
+
+3.2 Thundering herd ve önceden üretilmiş içerik
+
+[BELGELENEN] stale-while-revalidate tanımı gereği süresi dolmuş yanıt sunulurken
+arka planda yenileme yapılır ve bu sırada istek bloklanmaz.
+https://www.rfc-editor.org/rfc/rfc5861.html
+Next.js ISR'de de süre dolduktan sonraki istek "still return the cached (now stale) page".
+https://nextjs.org/docs/app/guides/incremental-static-regeneration
+
+[ÇIKARIM] Açılış anını TTL ve SWR'ye bırakmak iki ayrı hata üretir.
+ (a) "Kilitli" sürüm CDN'de bayat kopya olarak kalır. Açılıştan sonraki ilk istekler,
+     her bölgede ayrı ayrı olmak üzere, kilitli sayfayı görür.
+ (b) Tüm bölgeler aynı saniyede ıskalar. Önbellek bölgelere ayrıldığı için (Vercel
+     belgesi) her bölge origin'e kendi isteğini atar.
+Daha sağlam kalıp, case içeriğinin açılıştan önce üretilip doğrulanması (AoC'nin
+girdi üretimi gibi). Açılış anında yalnız ucuz bir "yayınla" işlemi yapılır: yeni
+statik nesne yayımlanır ya da ilgili path açıkça temizlenir. Kilit kontrolü,
+yüksek trafikli HTML'in içine gömülmez.
+
+[ÇIKARIM] AoC dersine göre açılış anındaki asıl sıcak nokta önbelleklenemeyen
+yanıtlardır: kişisel navbar endpoint'i, giriş, gönderim. Bunlar CDN'nin request
+collapsing'inden yararlanamaz (Fastly belgesi). Kapasite açılıştan önce elle
+yükseltilmeli. Autoscaling dikey trafiğe yetişmez. Wastl bunu AWS ALB ile yaşadı,
+hosting seçiminde de aynı soru sorulmalı.
+
+3.3 Açılış anında sıralama yazma yükü
+
+[BELGELENEN] Redis sorted set ZADD/ZINCRBY/ZREVRANK işlemleri O(log N) ve belge bunları
+leaderboard kullanımı için örnekliyor.
+https://redis.io/docs/latest/develop/data-types/sorted-sets/
+
+[ÇIKARIM] Algoritmik karmaşıklık sorun değil. Sorun, ilk dakikada binlerce gönderimin
+aynı birkaç anahtara yazması: "bugünkü case'in çözüm sayısı" satırı, "ilk N"
+listesi, kullanıcı streak'i ve XP. Bu yazılar gönderimin senkron yoluna konursa
+kilit/sıcak satır çekişmesi gönderimin kendisini yavaşlatır. Çözüm kaydını
+(gerçeğin kaynağı) sıralama ve sayaç türevlerinden ayırmak, türevleri sonradan
+hesaplamak ve "ilk N yarışı"nın ürüne gerçekten gerekip gerekmediğini sorgulamak
+gerekir. AoC kendi global sıralamasını altyapı stresi gerekçesiyle kaldırdı.
+
+
+==========================================================================
+4. NAVBAR VE FONT KAYMASI
+==========================================================================
+
+4.1 Core Web Vitals eşikleri (birincil kaynak)
+
+[BELGELENEN] LCP iyi ≤ 2500 ms, kötü > 4000 ms. INP iyi ≤ 200 ms, kötü > 500 ms. CLS iyi
+≤ 0,1, kötü > 0,25. Sınıflandırma tüm sayfa görüntülemelerinin 75. yüzdeliğiyle
+yapılır. Eşikler mobil ve masaüstü için aynıdır.
+https://web.dev/articles/defining-core-web-vitals-thresholds (2025-05-07)
+
+4.2 CLS'nin kaçırdığı kaymalar
+
+[BELGELENEN] CLS, sayfa ömrü boyunca en büyük kayma patlamasıdır (aralar < 1 sn, pencere
+en fazla 5 sn). Kullanıcı girdisinden sonraki 500 ms içindeki kaymalar
+hadRecentInput ile hariç tutulur (tıklama ve dokunma için, kaydırma için değil).
+transform animasyonları kayma sayılmaz. Laboratuvar araçları yalnız yükleme anını
+ölçtüğü için alandakinden düşük CLS gösterebilir.
+https://web.dev/articles/cls
+
+[BELGELENEN] Layout Instability API (LayoutShift) Chrome 77'den beri var. Firefox ve
+Safari'de yok.
+MDN browser-compat-data, api/LayoutShift.json:
+https://github.com/mdn/browser-compat-data/blob/main/api/LayoutShift.json
+
+[ÇIKARIM] iPhone ve Firefox kullanıcılarının yaşadığı navbar kayması CLS'ye ve CrUX'a
+hiç yansımaz. "CLS yeşil" demek, Safari'de kayma olmadığını göstermez.
+
+[BELGELENEN] SPA geçişleri (soft navigation) için CrUX, Ekim 2026'dan beri yalnız
+deneysel metrik yayımlıyor. Deneysellikten çıkış hedefi Mayıs 2027. Ölçüm API'leri
+Chrome 151 ile geldi, diğer motorlarda yok.
+https://web.dev/articles/vitals-spa-faq (2026-10-13)
+
+[ÇIKARIM] İstemci tarafı geçişlerde navbar'ın giriş durumuna göre yeniden
+çizilmesinden doğan kayma, bugün resmi CWV raporunda ya hiç görünmüyor ya da
+deneysel kalıyor. Ayrıca "giriş yap" tıklamasından sonraki kayma 500 ms kuralıyla
+hariç tutulur. Navbar kayması metriğe değil, gerçek cihazda kare kare ekran kaydına
+bakarak denetlenmeli.
+
+4.3 Web font fallback metrik eşleme
+
+[BELGELENEN] size-adjust yatayda ölçekler. ascent-override, descent-override ve
+line-gap-override dikey metrikleri ayarlar. Birlikte kullanılınca fallback font
+web fontuyla hem yatay hem dikey eşlenebilir. Araçlar: Fontaine, Capsize, Next.js
+font modülü (v13'ten beri otomatik), Nuxt fontaine.
+https://developer.chrome.com/blog/font-fallbacks (2023-02-10)
+
+[BELGELENEN] Tarayıcı desteği (MDN BCD, css/at-rules/font-face.json):
+size-adjust Chrome 92, Firefox 92 ve Safari 17'de var. ascent-override,
+descent-override ve line-gap-override Chrome 87 ve Firefox 89'da var, Safari'de
+yalnız "preview" sürümünde.
+https://github.com/mdn/browser-compat-data/blob/main/css/at-rules/font-face.json
+
+[ÇIKARIM] Safari ve iOS'ta dikey metrik eşleme çalışmaz. Damla'nın tercihi olan
+büyük monospace navbar yazısında satır kutusu yüksekliği font gelince değişebilir.
+Navbar yüksekliği font metriğinden türetilmemeli, sabit bir değerle verilmeli.
+
+[BELGELENEN] font-display: optional dışındaki stratejiler font değişiminde kayma riski
+taşır. swap metni en erken gösterir ama sonradan değişir. WOFF2 ve unicode-range ile
+alt küme önerilir.
+https://web.dev/articles/font-best-practices (2022-10-04)
+
+4.4 Avatar ve giriş durumu için ayrılmış alan
+
+[BELGELENEN] Suspense fallback'i ile asıl içerik farklı boyuttaysa çevredeki düzen
+kayar. Öneri, fallback'in asıl içerikle aynı ölçüde olması ya da sabit/min-height
+kap kullanılması.
+https://nextjs.org/docs/app/guides/streaming
+Astro island'larının "fallback" slotu da aynı amaçla kullanılıyor.
+https://docs.astro.build/en/guides/server-islands/
+
+[BELGELENEN] scrollbar-gutter desteği: Chrome 94, Firefox 97, Safari 18.2 (MDN BCD).
+
+[ÇIKARIM] Navbar'ın sağ ucu (giriş düğmesi, ya da avatar + streak) iki durumda da
+aynı genişlik ve yükseklikte bir kutu olmalı. Avatar kutusu sabit ölçülü olmalı.
+"Oturum var" ipucu sunucuda değil, boyamadan önce çalışan inline script ile
+okunmalı (Next "Preventing flash" kalıbı). Sayfa uzunluğu değişip kaydırma çubuğu
+belirdiğinde ortalanmış navbar yatay kayabilir. scrollbar-gutter: stable bunu
+önler. Bu kaymanın CLS'ye sayılıp sayılmadığını doğrulamadım.
+
+
+==========================================================================
+5. KALICI BAĞLANTI VE İÇERİK MODELİ
+==========================================================================
+
+[BELGELENEN] "Cool URIs don't change". URI'ye yazar adı, konu sınıflandırması, durum
+("draft", "old"), erişim düzeyi, dosya uzantısı ve teknik mekanizma konmamalı.
+Tarih, kararlı bir çapa olarak kullanılabilir. "En güncel" anlamındaki sayfalar
+tarihsiz kalmalı.
+https://www.w3.org/Provider/Style/URI
+
+[BELGELENEN] GitHub dal URL'si ile commit SHA'sına sabitlenmiş kalıcı linki ayırıyor.
+Dal ilerledikçe dal URL'sinin içeriği değişir. SHA'lı link "anyone you share it with
+will see exactly what you saw" sağlar.
+https://docs.github.com/en/repositories/working-with-files/using-files/getting-permanent-links-to-files
+
+[BELGELENEN] 301 ve 308 kalıcı, 302/303/307 geçici yönlendirmelerdir. Kalıcılar
+canonical sinyalidir. Sunucu tarafı yönlendirme en güvenilir yoldur.
+https://developers.google.com/search/docs/crawling-indexing/301-redirects (2026-04-14)
+
+[BELGELENEN] Yönlendirmeler "generally at least 1 year" tutulmalı. Zincir ideal
+olarak en fazla 3, her durumda 5'ten az halka içermeli. Çok sayıda eski URL'yi ana
+sayfaya yönlendirmek soft 404 sayılabilir.
+https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes (2026-08-20)
+
+[BELGELENEN] 404 ile 410 Google'da aynı işlenir ("All 4xx errors, except 429, are
+treated the same"). Daha önce indekslenmiş URL indeksten çıkarılır.
+https://developers.google.com/search/docs/crawling-indexing/http-network-errors
+Kalıcı kaldırma yolları içeriği kaldırmak, parola korumak veya noindex. robots.txt
+kaldırma aracı değil. Search Console Removals aracının etkisi yaklaşık 6 ay sürer.
+https://developers.google.com/search/docs/crawling-indexing/remove-information (2025-12-10)
+
+[BELGELENEN] Soft 404, içeriği hata, boş sayfa veya hata mesajı gibi görünen ama 200
+dönen sayfadır. SPA'larda gerçek 404'e yönlendirme ya da noindex önerilir.
+https://developers.google.com/search/docs/crawling-indexing/http-network-errors
+https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics
+
+[ÇIKARIM] Önerilen içerik modeli:
+  - Case kalıcı bir kimlik alır (sayı veya kısa kod). URL'de kimlik esastır, slug
+    süs olarak durur: /c/1234/kar-tanesi-sayaci. Slug yanlışsa ya da başlık değiştiyse
+    tek adımda 301/308 ile güncel slug'a gidilir. Başlık değişikliği redirect
+    zinciri doğurmaz.
+  - Case metni ve girdisi değişmez revizyonlar olarak saklanır (r1, r2...). Kamuya açık
+    URL son revizyonu gösterir. Her çözüm kaydı case_id ile birlikte revizyon
+    numarasını da tutar, böylece eski çözüm hangi metne karşı yazıldıysa ona bağlı
+    kalır. Eski revizyonun kalıcı linki (/c/1234/r/2) içerik büyük ölçüde aynıysa
+    canonical olarak güncel sürümü gösterir.
+  - Geri çekme türleri ayrılır. Hukuki/telif sebebiyle kaldırılan case gerçek 404/410
+    döner ve bu kontrol akış başlamadan yapılır. Tarih için tutulan ama artık önerilmeyen
+    case 200 + noindex + açıklama alır. Ana sayfaya toplu yönlendirme yapılmaz.
+  - lastmod yalnız yeni revizyonda değişir.
+
+
+==========================================================================
+6. ADVENTCODENDAR İÇİN YANLIŞ TEMEL ADAYLARI
+==========================================================================
+
+1) Kişisel durumu kamuya açık sayfanın HTML'ine sunucuda gömmek
+ (a) Karar: Navbar'daki avatar, streak ve "kaldığın yer" bilgisini root layout'ta
+     cookie/oturum okuyarak sunucuda render etmek. Ya da oturum kütüphanesinin her
+     yanıtta Set-Cookie yazmasına izin vermek.
+ (b) Sonuç: Root layout'ta cookie okumak bütün uygulamayı statik prerender dışına
+     çıkarır (Next.js belgesi). Set-Cookie veya Vary: Cookie içeren yanıtı Cloudflare
+     ve Vercel önbelleklemez (her ikisinin belgesi). Önbelleklenemeyen yanıtta
+     request collapsing çalışmaz, istekler origin'e seri gider (Fastly belgesi). Her
+     arşiv sayfası ve her bot isteği origin'e iner. Origin yük altında 5xx verirse
+     Google taramayı yavaşlatır, uzun sürerse indeksli URL'ler düşer.
+ (c) Örnek: Aralık açılışında /c/0005 isteklerinin tamamı origin'e gider. Aynı anda
+     Googlebot geçen yılın 300 case sayfasını tararken origin 503 verir.
+
+2) Takvimi sınırsız tarih URL'leriyle ve "yakında" sayfalarıyla kurmak
+ (a) Karar: /takvim/YYYY/AA ile ileri-geri gezilebilen, açılmamış kapılar için 200
+     dönen "kilitli" sayfalar.
+ (b) Sonuç: Google URL yapısı belgesi sonsuz takvimi adıyla anıyor ve gelecek tarih
+     linklerine nofollow ya da robots.txt öneriyor. İçeriksiz 200 sayfası soft 404
+     tanımına girer. URL envanteri büyür, tarama bütçesi ve keşif hızı düşer.
+ (c) Örnek: "Sonraki ay" oku 2031'e kadar giden boş aylar üretir. Her gelecek kapının
+     "5 Aralık'ta açılır" sayfası indekslenmeye aday olur.
+
+3) Filtre, etiket ve dil kombinasyonlarını ya da "X dilinde Y" varyantlarını
+   indekslenebilir sayfa yapmak
+ (a) Karar: /cases?lang=python&tag=graph&diff=3&sort=new gibi her kombinasyonun
+     taranabilir olması ya da aynı case için dil başına SEO sayfası üretmek.
+ (b) Sonuç: Facet rehberine göre overcrawling ve yavaş keşif oluşur, canonical ve
+     nofollow uzun vadede zayıf kalır. AI optimizasyon rehberine göre her sorgu
+     varyasyonu için ayrı içerik üretmek scaled content abuse ihlalidir. Benzer
+     sayfalar tek canonical altında kümelenir, emek boşa gider.
+ (c) Örnek: Ürün "teknolojiden bağımsız problem keşfi" vaat ediyor. Bu vaadi dil
+     başına sayfaya çevirmek tek case'ten onlarca URL doğurur.
+
+4) Kullanıcı üretimi sayfaları (profil, çözüm, topluluk case önerisi) varsayılan
+   olarak indekslenebilir açmak
+ (a) Karar: Her kayıtla birlikte herkese açık ve indekslenebilir bir profil, her
+     gönderimle bir çözüm sayfası yayımlamak.
+ (b) Sonuç: Google'ın Ekim 2026'da güncellediği UGC rehberi, itibarı olmayan yeni
+     kullanıcı içeriğine noindex koymayı, doğrudan paylaşım amaçlı sayfaları
+     varsayılan olarak indeks dışı tutmayı ve URL'lerin büyük kısmının az sayıda
+     kullanıcıdan gelmesi için alarm kurmayı öneriyor. Site reputation abuse kapsamında
+     sitenin kullanıcıları da "üçüncü taraf" sayılıyor. Boş profiller düşük kaliteli
+     indeks yığınına dönüşür.
+ (c) Örnek: Sıfır çözümlü binlerce profil sayfası, spam linkli biyografiler ve onay
+     beklemeden yayımlanan "topluluk case önerileri".
+
+5) Açılış anını otomatik ölçeklemeye ve TTL/SWR önbelleğine bırakmak
+ (a) Karar: Case'in açılmasını "revalidate=60" gibi süreli bir önbellek yenilemesiyle
+     ya da açılış anında içerik üreterek yapmak ve kapasiteyi autoscaling'e bırakmak.
+ (b) Sonuç: Wastl'ın anlatımına göre AWS ALB otomatik ölçeklemesi gece yarısının dikey
+     trafiğine yetişemedi, kullanıcılar 503 aldı. Çözüm kapasiteyi önceden kalıcı
+     olarak yükseltmek oldu. SWR tanımı gereği süre dolunca bayat yanıt sunulur
+     (RFC 5861, Next ISR). Kilitli sürüm açılıştan sonra da görünür. Bölgesel önbellek
+     her bölgede ayrı ıskalama üretir.
+ (c) Örnek: 00:00:00'da /c/0005 yerine kilitli sayfa gelir. 60 saniye sonra bütün
+     bölgeler aynı anda origin'e döner ve tam o anda gönderimler başlar.
+
+6) Sıralama, streak ve XP yazımını gönderimin senkron yoluna ve tek sayaçlara bağlamak
+ (a) Karar: Çözüm gönderme isteğinin içinde "ilk N" listesini, case çözüm sayacını,
+     streak'i ve XP'yi aynı işlemde güncellemek.
+ (b) Sonuç: AoC global sıralamayı "en büyük stres kaynaklarından biri, altyapı için de"
+     diyerek 2025'te kaldırdı. Sıralama veri yapısı ucuz (Redis O(log N)) olsa da
+     ilk dakikadaki yazılar aynı birkaç anahtarda toplanır ve gönderim gecikmesine
+     dönüşür (çıkarım).
+ (c) Örnek: Açılıştan 5 saniye sonra binlerce gönderim aynı "case_0005_solved" satırını
+     kilitler. Kullanıcı doğru cevabı göndermiş olur ama sayfa döner durur.
+
+7) Case'i yerinde düzenlenen tek kayıt ve başlıktan türeyen URL olarak modellemek;
+   geri çekmeyi rastgele çözmek
+ (a) Karar: URL = başlık slug'ı, metin ve girdi yerinde güncelleniyor. Kaldırılan case
+     için ana sayfaya yönlendirme ya da akış içinde notFound kullanılıyor.
+ (b) Sonuç: Cool URIs ilkesi URI'ye değişebilecek bilgi konmamasını söylüyor. GitHub,
+     değişen hedef ile SHA'lı kalıcı linki bu yüzden ayırıyor. Başlık her değiştiğinde
+     redirect birikir ve zincir oluşur (Google en fazla 3–5 halka ve en az 1 yıl
+     öneriyor). Toplu ana sayfa yönlendirmesi soft 404 sayılabilir. Next.js'te akış
+     içindeki notFound 404 yerine 200 + noindex üretir. Eski çözümler hangi metne
+     karşı yazıldığını kaybeder.
+ (c) Örnek: "Kar Tanesi Sayacı" başlığı düzeltilir ve 2026 çözümlerinin paylaşılan
+     linkleri kırılır. Girdi hatası düzeltilince eski doğru çözümler "yanlış" görünür.
+     Telif sebebiyle kaldırılan case Search Console'da 200 olarak kalır.
+
+8) Navbar kararlılığını font fallback'ine ve CLS skoruna emanet etmek
+ (a) Karar: Navbar yüksekliğinin web fontunun satır yüksekliğinden çıkması, giriş
+     durumunun sonradan yüklenip farklı genişlikte öğe çizmesi ve kabulün "CLS ≤ 0,1"
+     olarak tanımlanması.
+ (b) Sonuç: ascent/descent/line-gap-override Safari'nin kararlı sürümünde yok (MDN BCD).
+     LayoutShift API Safari ve Firefox'ta yok, bu tarayıcılardaki kayma ölçülmez.
+     Girdiden sonraki 500 ms hariç tutulur. Soft navigation CWV'leri yalnız deneysel.
+     Metrik yeşil görünürken kullanıcı kaymayı görebilir.
+ (c) Örnek: iPhone'da büyük monospace navbar, font gelince satır yüksekliği kadar oynar. Giriş yapan
+     kullanıcının avatarı ve streak'i geç gelince menü öğeleri sola itilir. Hiçbiri
+     raporda görünmez.
+
+9) Arşivi tam SSG ile her deploy'da baştan üretmek
+ (a) Karar: Tüm case, yıl, dil ve profil sayfalarını build anında üretmek ve içerik
+     değişikliğini yeniden build ile yayımlamak.
+ (b) Sonuç: Cloudflare Pages'te site başına 20.000/100.000 dosya ve 20 dakika build
+     sınırı var. Next.js ISR'nin varlık sebebi tam olarak uzun build sürelerini
+     önlemek. Ayrıca WRS eski JS'i önbellekte tutabildiği için her deploy'da eski
+     hash'li parçaları silmek Googlebot render'ını kırabilir (Google belgesi).
+ (c) Örnek: Tek bir case'teki yazım hatası için bütün arşiv yeniden build edilir.
+     Profil sayfaları yüzünden dosya sayısı sınırı aşılır.
+
+10) GEO ve zengin sonuç için sahte ya da ölü işaretlemeye yatırım yapmak
+ (a) Karar: llms.txt, "AI katmanı", her case'e PracticeProblem/Quiz/Event/QAPage
+     şeması koymak.
+ (b) Sonuç: Google llms.txt'yi kullanmadığını ve tutmanın ne yarar ne zarar sağladığını
+     yazıyor. Practice problems (Ocak 2026) ve FAQ (Mayıs 2026) gösterimden kalktı.
+     QAPage kullanıcı cevabı ister. Event non-event'leri yasaklıyor. Görünür içeriği
+     yansıtmayan işaretleme manuel işlem riski taşır.
+ (c) Örnek: "5. kapı açılışı"nı Event olarak işaretlemek, site kendi çözümünü
+     yazdığı hâlde QAPage kullanmak ya da dil varyantlarını AI'ın "fan-out"
+     sorgularına göre çoğaltmak.
+
+
+==========================================================================
+ERİŞEMEDİĞİM VEYA DOĞRULAYAMADIĞIM KAYNAKLAR
+==========================================================================
+- Search Engine Land'in Kasım 2025 kaldırma listesi makalesi 403 döndü. Google'ın kendi
+  blog ve changelog sayfası curl ile okundu, bu yüzden bilgi kaybı yok.
+- Eric Wastl'ın 2021 Google TechTalk konuşması izlenmedi. Yalnız CppNorth konuşmasının
+  otomatik altyazısı okundu. Saniye başına istek gibi sayısal veri hiçbir yerde
+  bulunamadı.
+- AoC özel sıralama API'sinin istek sıklığı kuralı giriş gerektirdiği için açılmadı.
+- Cloudflare Workers static assets dosya limitleri sayfası içerik vermedi. Yalnız Pages
+  limitleri doğrulandı.
+- llmstxt.org'un Lighthouse iddiası Lighthouse belgesinde doğrulanmadı. Bing, OpenAI ve
+  Anthropic'in üçüncü taraf sitelerde llms.txt okuyup okumadığına dair birinci taraf
+  açıklama bulunamadı.
+- Next.js'in "HTML-limited bots" listesinde Googlebot'un olup olmadığı açılmadı.
+- Kaydırma çubuğu kaynaklı yatay kaymanın CLS'ye sayılıp sayılmadığı doğrulanmadı.
