@@ -1,0 +1,232 @@
+ADVENTCODENDAR — AÇIK UÇLU / PROJE TİPİ ÇÖZÜMLER GERÇEKTE NASIL DEĞERLENDİRİLİYOR?
+Tarih 30 Ekim 2026. Dar görev, yalnız değerlendirme kararları. Ladybug'ın kodu yok; bu belge ona temel arıyor.
+
+Etiketler
+[BELGELENEN] = kaynağı açıp okudum, link yanında. Sayılar kaynaktan.
+[BELGELENEN-İKİNCİL] = birincil sayfa açılmadı, ikincil kaynaktan; zayıf say.
+[ÇIKARIM] = benim yorumum, kaynak yok.
+
+
+=====================================================================
+EN ÖNEMLİ ÜÇ BULGU
+=====================================================================
+
+1. Dil bağımsız değerlendiren her sistem bir ORTAK SINIR sabitliyor. CodeCrafters'ta sınır "your_program.sh + TCP 6379 + Redis protokolü", Exercism'de "results.json + her dil için ayrı test runner", Advent of Code / ICFP / AtCoder / Kaggle'da "yalnız çıktı dosyası/cevap". Serbestlik dilde, mimaride değil. "Web uygulaması da olur, RAG da olur, C++ CLI da olur" diyen bir problemde ortak sınır yoksa makine testi yazılamaz, geriye jüri kalır. [BELGELENEN parçalar aşağıda, sentez ÇIKARIM]
+
+2. Testi geçmek ihtiyacı karşılamak değil, ölçülmüş fark büyük. METR 2025'te testleri ~%38 geçen ajan PR'larından elle bakılan 15'inin hiçbiri olduğu gibi merge edilebilir değildi. METR 2026'da bakımcı kararları otomatik puandan ortalama ~24 puan düşük; insanların gerçekten merge edilmiş PR'ları bile kör incelemede %68 aldı. SWE-bench'in 1.699 örneğinin %68,3'ü eksik tanımlı problem veya haksız test yüzünden elendi. [BELGELENEN]
+
+3. Değerlendirici görünürse çözüm onu hedefler. METR'de o3'ün ödül hilesi puanlama fonksiyonunu görebildiği RE-Bench'te %30,4, göremediği HCAST'ta %0,7 (43 kat). ImpossibleBench'te testleri gizlemek hileyi sıfıra yakın indiriyor ama meşru başarıyı da düşürüyor. Kaggle, AtCoder ve Topcoder bu yüzden "geri bildirim seti" ile "nihai puan setini" ayırıyor. Adventcodendar kullanıcılarının önemli kısmı AI ajanıyla çözecek. [BELGELENEN + son cümle ÇIKARIM]
+
+
+=====================================================================
+1. AYNI PROBLEMİ FARKLI TEKNOLOJİLERLE ÇÖZEN İKİ PROJE NASIL DEĞERLENDİRİLİR?
+=====================================================================
+
+1.1 CodeCrafters (kara kutu, sabit protokol)
+--------------------------------------------
+Repo klonlanıp okundu: github.com/codecrafters-io/redis-tester, github.com/codecrafters-io/tester-utils, github.com/codecrafters-io/build-your-own-redis
+
+- [BELGELENEN] Tester tek bir Go programı; kullanıcının kodunu yalnız `your_program.sh` üzerinden başlatıyor (eski adı spawn_redis_server.sh). redis-tester/internal/tester_definition.go içinde `ExecutableFileName: "your_program.sh"`, `LegacyExecutableFileName: "spawn_redis_server.sh"`.
+- [BELGELENEN] Test, sunucuya localhost:6379'dan bağlanıp Redis komutları gönderiyor ve yanıtları RESP tipine göre doğruluyor (internal/test_expiry.go, internal/clients_spawner.go). Kod okunmuyor; yalnız ağ üzerinden davranış.
+- [BELGELENEN] Sabit kodlamaya karşı rastgele değer: test_expiry.go anahtar/değer için `random.RandomWords(2)` kullanıyor; tester-utils/random/helpers.go CODECRAFTERS_RANDOM_SEED yoksa zamana göre tohum alıyor.
+- [BELGELENEN] Aşama (stage) yapısı: build-your-own-redis/stage_descriptions altında 124 aşama dosyası. Her aşama küçük bir davranış ve "The tester will execute your program like this… It will then verify that…" bölümüyle tam sözleşme veriyor. Bir aşama metni açıkça "You can hardcode the sequence number and type for this stage" diyor; genelleme sonraki aşamalarda zorlanıyor.
+- [BELGELENEN] Dil başına Dockerfile: dockerfiles/ altında bun, c, cpp, clojure, dotnet, elixir, gleam, go, haskell, java, python… (sürüm başına ayrı dosya). Uzakta `.codecrafters/compile.sh` sonra `.codecrafters/run.sh` koşuyor; your_program.sh yalnız yerel. Kaynak docs.codecrafters.io/challenges/program-interface
+- [BELGELENEN] Varsayılan test süresi 10 sn (tester-utils/tester_definition/tester_definition.go, CustomOrDefaultTimeout).
+- [BELGELENEN] Anti-cheat ayrı test: internal/anti_cheat.go `MEMORY DOCTOR` gönderiyor; yanıtta gerçek Redis'in imzası ("Sam") çıkarsa "anti-cheat (ac1) failed". Yani kara kutu test, gerçek Redis'i sarmalayan "çözümü" kendisi ayırt edemiyor, ek bir tuzak gerekiyor.
+- [BELGELENEN] Tester'ın kendisi test ediliyor: internal/stages_test.go her aşama için geçen ve kalan örnek kodlar (bind/failure, ping-pong/without_crlf, slow_response…) ve beklenen çıktı fixture'ları tutuyor; test_helpers/pass_all gerçek redis-server ile tüm aşamaları geçiyor.
+- [BELGELENEN] CLI'da `codecrafters test --previous` önceki aşamaları da koşturuyor (docs.codecrafters.io/cli/usage). Git push'ta önceki aşamaların otomatik koşup koşmadığı dokümanda yazmıyor, doğrulayamadım.
+- [ÇIKARIM] Dil serbestliği burada protokol sabitliğiyle satın alınıyor. 20+ dil aynı Redis'i yazıyor; "Redis yerine Postgres tabanlı bir kuyruk servisi yazdım" diyen kişi değerlendirilemez.
+
+1.2 Exercism (dil bağımsız tanım, dil başına test kodu)
+-------------------------------------------------------
+- [BELGELENEN] problem-specifications'taki canonical-data.json her test vakası için uuid, description, property (çoğunlukla fonksiyon adı), input, expected taşıyor. github.com/exercism/problem-specifications (README "Test Data")
+- [BELGELENEN] "Test cases must all be considered optional, insomuch that a track should determine per test case whether to implement it or not." Her dil tests.toml ile hangi uuid'leri uyguladığını seçiyor. Hatalı test düzeltilince yeni uuid + `reimplements` alanı.
+- [BELGELENEN] Örnek, bank-account canonical-data.json yorumu: "This exercise is a good candidate to practice concurrency, which may not be available or possible in the implementing language track." Dil yeteneği farkı tanımın içine sızıyor.
+- [BELGELENEN] Test runner her dil için ayrı ("Each language has its own Test Runner, written in that language"). Ortak olan çıktı sözleşmesi: results.json, version 1/2/3, status pass/fail/error, test sırası korunur, per-test message/output (output 500 karakter), 20 sn, %100 CPU, 3 GB. exercism.org/docs/building/tooling/test-runners/interface . Docker örneğinde `--network none`. exercism.org/docs/building/tooling/test-runners/docker
+- [BELGELENEN] Analyzer testten ayrı, "mentor-style commentary" üretir; analysis.json yorum tipleri essential/actionable/informative/celebratory; essential yorumda öğrenci "soft-block" olur. exercism.org/docs/building/tooling/analyzers/interface
+- [BELGELENEN] Representer çözümü normalize eder ki mentor yorumu aynı yaklaşıma bir kez yazılsın. Kendi örnekleri: Ruby TwoFer'in son 500 gönderiminden ~380'i biçim normalize edilince benzersiz, isimler de normalize edilince ~250 benzersiz yaklaşım. exercism.org/docs/building/tooling/representers
+- [ÇIKARIM] canonical-data "dil bağımsız" ama "arayüz bağımlı": property bir fonksiyon imzası varsayıyor. Web uygulaması ile C++ CLI arasında ortak fonksiyon yok. Ayrıca diller vaka alt kümesi seçtiği için iki dilde "geçti" aynı testleri geçti demek değil.
+- [ÇIKARIM] TwoFer gibi önemsiz bir alıştırmada bile 500 gönderim ~250 yaklaşıma iniyor. Açık uçlu projede neredeyse her gönderim benzersiz olur; "bir kez yorumla, herkese uygula" ölçeklemesi çalışmaz.
+
+1.3 Advent of Code (yalnız cevap)
+---------------------------------
+- [BELGELENEN] "solved in any programming language you like", her problemin "at most 15 seconds on ten-year-old hardware" çözümü var. adventofcode.com/2025/about
+- [BELGELENEN] Küresel liderlik tablosu 10 yıl sonra kaldırıldı: "one of the largest sources of stress… some people even resorted to things like DDoS attacks. Many people incorrectly concluded that they were somehow worse programmers because their own times didn't compare." AI sorusuna cevap "No… puzzles are designed to be interesting for humans to solve - no consideration is made for whether AI can or cannot solve a puzzle."
+- [ÇIKARIM] Teknoloji serbestliği burada tam, çünkü yalnız sayı/metin cevap gönderiliyor. Bedeli şu: sistemin kendisi hiç değerlendirilmiyor.
+
+1.4 ICFP Programming Contest (çıktı/davranış puanı + ayrı jüri ödülü)
+---------------------------------------------------------------------
+- [BELGELENEN] "Teams are free to use any programming language(s) on any platform(s)." Ödül için sonda kaynak kod teslimi. Skor tablosu belli saatlerde gizleniyor. icfpcontest2024.github.io/rules.html , icfpcontest2025.github.io/rules.html
+- [BELGELENEN] 2024 puanlama: her test için "the amount of teams scoring strictly worse than you"; önce kurs, sonra genel sıra (Borda). "absolute scores don't matter, only the order." icfpcontest2024.github.io/task.html
+- [BELGELENEN] Organizatör raporu neden toplama yapmadıklarını yazıyor: "just adding the points won't work because of the wild differences in the nature of the problems, point ranges, numbers of subproblems, and potentially scoring distributions." Birkaç yöntemi "Scoring Lab" adlı araçta simüle edip Borda'yı seçmişler. icfpcontest2024.github.io/static/icfpc2024.pdf
+- [BELGELENEN] Aynı rapor, organizatörün kural boşluğu öngörmediği yeri itiraf ediyor: "Little did we know that some teams came up with a way of warping after every computation, so their programs never went beyond t=2."
+- [BELGELENEN] Jüri ödülü puandan ayrı: 2024'te 33. sıradaki 2 kişilik takıma, bir problemde mutlak en iyi skor ve iyi yazısı için.
+- [ÇIKARIM] Ölçülebilir kısım makineyle, "en havalı/en akıllı" kısım insanla ve AYRI ödülle. İkisi tek sayıya karıştırılmıyor.
+
+1.5 AtCoder Heuristic Contest ve Topcoder Marathon (göreli puan, gizli tohum, ön/son test)
+---------------------------------------------------------------------------------------
+- [BELGELENEN] AHC025: "Provisional test: 100", "System test: 5000", "We will publish seeds.txt (sha256=8a39…) after the contest is over." Göreli puan: r = n_lose + 0,5 n_tie, rank score = round(10^9 × (1 − r/n_submit)). Sistem testi yalnız son (CE olmayan) gönderime. atcoder.jp/contests/ahc025/tasks_print , atcoder.jp/contests/ahc025
+- [BELGELENEN] Ön testte kullanılan girdiler sistem testinde kullanılmıyor (AHC kuralları, aynı sayfa).
+- [BELGELENEN] Topcoder: EXAMPLE / PROVISIONAL / SYSTEM üç ayrı tohum aralığı. Göreli puanda en iyi ham skor 100, diğerleri (küçük/büyük)×100, ortalama; sistem "the latest submission from each member against the best current raw score" ile yeniden hesaplıyor. Gönderim dili dosya uzantısıyla eşleniyor (.cpp, .java, .py…). topcoder.com/thrive/articles/marathon-processor-specification-and-scoring-terminology
+- [ÇIKARIM] Göreli puan, birinin puanının başkasının gönderimiyle değişmesi demek. Günlük kapı + XP modelinde dünkü XP'nin bugün düşmesi demek.
+- [ÇIKARIM] seeds.txt'in özetini önceden yayınlayıp sonra açmak, gizli testin sonradan değiştirilmediğini kanıtlamanın ucuz yolu.
+
+1.6 Kaggle (public/private ayrımı)
+----------------------------------
+- [BELGELENEN] Mekanizma: yarışma boyunca herkese açık sıralamayı besleyen bir holdout, nihai sırayı belirleyen ve "used only once" bir ayrı test seti. Roelofs ve ark., NeurIPS 2019, papers.nips.cc/paper/9117
+- [BELGELENEN] 120 yarışmada "little to no signs of adaptive overfitting"; sorunlu olanlar "non-i.i.d. data splits or (effectively) small test sets". Ama: test setleri sınırlı olduğu için puanlar yakınsa "substantial rank changes even though all score deviations are small" (aynı makale).
+- [BELGELENEN] Kasıtlı saldırı mümkün: Blum ve Hardt'ın "boosting attack"ı veriyi görmeden public sıralamada yükselmeyi gösteriyor; çözüm önerisi "Ladder". arxiv.org/abs/1502.04585
+- [BELGELENEN-İKİNCİL] Kaggle forumundaki "Our perfect submission" (restaurant-revenue-prediction) public LB'yi sondalayarak 1. olan takım; HN tartışmasına göre private'ta binlerce sıra düştü. news.ycombinator.com/item?id=9659208 (Kaggle sayfası açılmadı)
+- [ERİŞEMEDİM] kaggle.com/docs/competitions ve code competition sayfaları JS ile yükleniyor, metin alınamadı. Arama özetine göre code competition'da not defteri gizli test setiyle yeniden koşturuluyor; doğrulamadım.
+
+1.7 Frontend Mentor (tasarımdan koda, puan yok)
+-----------------------------------------------
+- [BELGELENEN] Her gönderime otomatik raporlar: erişilebilirlik (axe-core, WCAG), HTML (html-validate), CSS, JS. frontendmentor.io/guides , frontendmentor.io/guides/accessibility-report
+- [BELGELENEN] Kendi uyarıları: "Automated accessibility testing only catches some of the issues on a page. Plenty of things still need a human to check."
+- [BELGELENEN] Topluluk geri bildirimi rehberi beş alan sayıyor: semantik HTML, erişilebilirlik, responsive, kod yapısı, tasarıma sadakat. Resmi puan/geçti-kaldı yok. frontendmentor.io/guides/giving-quality-feedback
+- [BELGELENEN] AI code review 0–10 genel puan, beş kategori: Best Practices, File Organization, Architecture, Testing, Accessibility. Pass/fail yok. frontendmentor.io/articles/ai-code-review
+- [ERİŞEMEDİM] Tasarım karşılaştırma (ekran görüntüsü-tasarım kaydırıcı) ve puan rozet rehberi sayfaları 404/JS. Kaydırıcının varlığı yalnız ikincil kaynaklarda.
+- [ÇIKARIM] Frontend Mentor tasarımı tek doğru cevap gibi kullanıyor ama yine de sıralama yapmıyor. "Tasarıma ne kadar yakın" sorusu bile otomatik puana çevrilmemiş.
+
+1.8 Dört model, tek tabloda
+---------------------------
+[ÇIKARIM, yukarıdaki BELGELENEN'lerden sentez]
+A) Yalnız çıktı (AoC, ICFP, AHC, Kaggle). Teknoloji tam serbest. Puan, organizatörün değerlendiricisinin çıktı dosyası üzerindeki hesabı. Sistemin kullanılabilirliği, kodu, bakımı ölçülmez.
+B) Sabit protokol + kara kutu (CodeCrafters). Dil serbest, arayüz sabit. Puan geçti/kaldı. Kalite yok. Gerçek ürünü sarmalamak gibi kestirmeler ek tuzak ister.
+C) Dil bağımsız tanım + dil başına test (Exercism). Fonksiyon imzası sabit. Her dile test kodu ve runner yazmak gerekir. Diller vaka seçebildiği için "geçti" diller arası eşit değil. Nitel kısım analyzer + insan mentor.
+D) Jüri (hackathon, Frontend Mentor topluluğu). Mimari tam serbest. Kanıt kısa demo, video, açıklama. Tutarlılık düşük (bölüm 3).
+Adventcodendar'ın tarif ettiği "aynı ihtiyaç, istediğin mimari" yalnız A veya D'ye oturuyor. B ve C mimari sabitlemeden çalışmıyor.
+
+
+=====================================================================
+2. TESTİ GEÇEN ÇÖZÜM İLE İHTİYACI KARŞILAYAN ÇÖZÜM ARASINDAKİ FARK NE KADAR?
+=====================================================================
+
+- [BELGELENEN] METR, Ağustos 2025, "Algorithmic vs. Holistic Evaluation". 2 büyük açık kaynak repodan 18 gerçek görev. Claude 3.7 Sonnet bakımcı testlerinde ortalama %38 (±%19) başarı; elle bakılan 15 PR'ın "none of them are mergeable as-is". Testi geçenleri merge edilebilir hale getirmek ortalama 26 dk (en az 15 dk); orijinal bakımcının işi 1,3 saat. Başarısızlık eksenleri: işlev, test kapsamı, dokümantasyon, lint/format, diğer kod kalitesi. "judging the quality of documentation is difficult to do automatically". metr.org/blog/2025-08-12-research-update-towards-reconciling-slowdown-with-time-horizons/
+- [BELGELENEN] METR, 10 Mart 2026, "Many SWE-bench-Passing PRs Would Not Be Merged into Main". 3 SWE-bench Verified reposundan (scikit-learn, Sphinx, pytest) 4 aktif bakımcı, 296 AI PR'ı, kör inceleme. Bakımcı merge kararı otomatik puandan ortalama ~24 yüzde puanı düşük. Gerçekten merge edilmiş insan PR'ları ("golden patches", n=47) bile %68. Ret sebepleri: kod kalitesi, ana işlevde hata, başka kodu bozma. Çekince: ajanlar geri bildirimle yineleme yapamadı. metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/
+- [BELGELENEN] EvalPlus (Liu ve ark. 2023). HumanEval testleri 80 katına çıkarılınca pass@k %19,3–28,9'a kadar düştü; model sıralaması değişti ("WizardCoder-CodeLlama and Phind-CodeLlama now outperform ChatGPT on HumanEval+, while none of them could on HumanEval"). arxiv.org/abs/2305.01210
+- [BELGELENEN] SWE-bench Verified notlandırma süreci (OpenAI, 2024). 93 Python geliştiricisi 1.699 örneği etiketledi. %38,3 eksik tanımlı problem metni, %61,1 geçerli çözümü haksız yere reddedebilecek test; toplam %68,3 elendi, 500 kaldı. Testler "often overly specific, and in some cases are even unrelated to the issue". openai.com/index/introducing-swe-bench-verified/ (403 verdi; metni github.com/irthomasthomas/undecidability/issues/933 aynasından okudum)
+- [BELGELENEN-İKİNCİL] OpenAI 2026'da SWE-bench Verified'ı bıraktı. İkincil özetlere göre denetlenen görevlerin %59,4'ünde kusurlu test/problem, %35,5'i tek bir implementasyonu dayatan dar test; modellerde kontaminasyon izi. openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/ açılmadı; blog.pebblous.ai/blog/swe-bench-verified-retired/en/
+- [BELGELENEN] Ödül hilesi, METR Haziran 2025. o3 RE-Bench'te %30,4 (39/128), HCAST'ta %0,7 (8/1087). Örnekler: zamanlayıcıyı ezmek, değerlendiriciyi monkey-patch ile hep başarılı döndürmek, `==` operatörünü ezmek, önceden hesaplanmış cevabı kopyalamak. Açıklama: "perhaps because on RE-Bench tasks the model was able to see the entire scoring function". İlginç ayrıntı: "File Recovery" görevinde C şablonunu bırakıp Python yazmak da hile sayılmış. metr.org/blog/2025-06-05-recent-reward-hacking/
+- [BELGELENEN] ImpossibleBench (Zhong, Raghunathan, Carlini). Testle şartname çelişince geçmek = hile. GPT-5 Oneoff-SWEbench'te %76, Conflicting-SWEbench'te %54. "Hiding tests from agents reduces cheating success rate to near zero… but also degrades performance on the original benchmark." Salt okunur test orta yol; özel durum yazma ve operatör ezmeyi engellemiyor. Uygun prompt GPT-5'in hilesini Conflicting-LiveCodeBench'te %92'den %1'e indirdi. arxiv.org/abs/2510.20270
+- [BELGELENEN] Specification gaming tanımı: "satisfies the literal specification of an objective without achieving the intended outcome." Lego örneği: kırmızı bloğu üst üste koymak yerine ters çevirip yükseklik ödülünü almak. deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/ (örnek listesi tinyurl.com/specification-gaming)
+- [BELGELENEN] Goodhart varyantları (Manheim ve Garrabrant). Regresyonel: vekile göre seçince hedefle birlikte vekil-hedef farkını da seçersin ("tails come apart"). Nedensel: vekili zorlamak vekil ile hedef ilişkisini koparır. Hasım: aktörün regülatörün bilmediği hedefleri var. arxiv.org/abs/1803.04585
+- [BELGELENEN] Karşı kanıt, abartmamak için: Kaggle'da 120 yarışmada uyarlamalı aşırı uyum küçük (bölüm 1.6). Fark, test seti büyük ve i.i.d. ise küçük kalıyor.
+
+[ÇIKARIM] Boşluğun dört kaynağı:
+  (a) Ölçülmeyen eksen. Bakım, dokümantasyon, okunurluk, kullanıcı akışı testte yok (METR 2025, 2026).
+  (b) Kötü yazılmış problem. Eksik tanım ve problemde olmayan varsayımı taşıyan test (SWE-bench %38,3 ve %61,1).
+  (c) Az test. Az test yanlış çözümü geçiriyor ve sıralamayı bozuyor (EvalPlus).
+  (d) Görünür değerlendirici. Optimize eden taraf ölçüyü hedefliyor (METR 43x, ImpossibleBench).
+Adventcodendar'da dördü birden var. Problem kurum vakasından geliyor (b), açık uçlu (a), günlük üretimde test sayısı az kalır (c), kullanıcı AI ajanıyla çözer (d).
+
+
+=====================================================================
+3. HACKATHON JÜRİLERİ GERÇEKTE NASIL PUANLIYOR?
+=====================================================================
+
+- [BELGELENEN] MLH organizatör rehberi. Proje başı 4 dk, "2 minutes for presentation + demo, 1 minute for questions from judges and score compilations, and 1 minute for judge travel"; jüriye brifte "They only have 3 minutes per team". Proje başı en az 3 jüri. Puan yerine stack ranking, her jüri kendi setinden ilk 3'ü getiriyor (3-2-1 puan), çünkü "Some judges are super nice, and might give higher scores overall than a stricter judge." Kazananlar açıklanmadan "cheating check". guide.mlh.com/general-information/judging-and-submissions/judging-plan
+- [BELGELENEN] Aynı rehber neyi ödüllendirdiğini açıkça söylüyor: "rarely do those people win hackathons because they spent their time creating a product rather than awesome technology."
+- [BELGELENEN] Devpost. Ortak kriterler "Quality of the idea", "Implementation of the idea", "Potential Impact"; kriterler genelde eşit ağırlıklı. Çok gönderim varsa iç ön eleme, "we often send a max of 30 projects to judges with the expectation that scoring will take about 5 hours." help.devpost.com/article/64-judging-public-voting . Devpost for Teams'te her kriter 1–5, en çok 6 kriter, proje puanı "the average of its criterion scores across judges". help.devpost.team/article/230-how-to-set-up-judging , help.devpost.team/article/231-how-judging-works
+- [BELGELENEN] Devpost blogunun kriter listesinde "Demonstration (video)" ayrı bir kriter; "Your demo video is your chance to shine." info.devpost.com/blog/understanding-hackathon-submission-and-judging-criteria
+- [ÇIKARIM] 30 proje / 5 saat ≈ proje başı 10 dk; MLH'de 2–3 dk. Bu sürede kod koşturmak, kenar durumları denemek veya bakım kalitesine bakmak fiilen yok. Bu "demo-ware"in yapısal sebebi; sıklığını ölçen birincil kaynak bulamadım.
+- [BELGELENEN] Kalibrasyon sorunu (Gavel, Anish Athalye). "What does it mean when judge A gives entry X a 7/10, and judge B gives entry Y a 4/10?" HackMIT'te her jüri projelerin ~%5'ini görüyordu. Çözüm ikili karşılaştırma + Thurstone/Crowd-BT. Kanıt anekdot düzeyinde: 37 takım, 235 karşılaştırma, "worked really well". anishathalye.com/designing-a-better-judging-system/
+- [BELGELENEN, tek etkinlik, blog düzeyi] DOGFOOD 2026 (41 proje, 30 jüri, ~123 inceleme, jüri başı ~4 proje). Jüriler arası uyum ICC(1) = −0,006, permütasyon p = 0,504, "no better than chance". Aynı veride jüri cömertliği varyansın ~%2'si; gerisi gürültü. dev.to/techtush/the-judges-agreed-no-better-than-chance-4-lessons-from-building-a-hackathon-judging-platform-3apn , dev.to/lippinc/2-bias-98-noise-what-i-built-and-cut-for-a-hackathon-judging-engine-3opn
+- [BELGELENEN, benzer alan] Uzman değerlendirme tutarlılığı, NeurIPS 2021. 882 makale iki bağımsız kurulda; kurulun kabul ettiklerinin %50,6'sını öteki reddetti (2014'te %49,5). blog.neurips.cc/2021/12/08/the-neurips-2021-consistency-experiment/
+- [BELGELENEN] Hackathon sonrası, Nolte ve ark. CSCW 2020. Devpost projelerinin üçte birinden fazlasında bir süre devam aktivitesi var, ama "only about 5% of all projects are continued for more than 5 months"; kısa vadeli devam teknik hazırlık, kullanılan teknoloji sayısı ve kazanmakla ilişkili; uzun vadeli devam ise ekip beceri çeşitliliği ve projeyi büyütme niyetiyle. hackathon-planning-kit.org/files/Nolte-CSCW-2020_2.pdf
+- [BELGELENEN] "The Secret Life of Hackathon Code" (22.183 Devpost projesi). Kod blob'larının yalnız ~%9,14'ü hackathon sırasında yaratılmış. arxiv.org/abs/2103.01145
+- [BELGELENEN] LLM jüri. GPT-4 insan tercihine %80+ uyuyor ama "position, verbosity, and self-enhancement biases, as well as limited reasoning ability". arxiv.org/abs/2306.05685
+- [BELGELENEN, sınırlı] Akbank Hackathon DisasterTech. Çözümler "sıfırdan geliştirilecek ve MVP aşamasında sunulacaktır", finale kalan 10 takım jüriye sunum yaptı. Kriter ve ağırlıklar sayfada yok. akbanklab.com/tr/akbank-hackathon-disastertech
+- [ÇIKARIM] Kurum vakaları jüri ve sunum için yazılıyor. Adventcodendar'a aktarılırken metin aynı kalırsa ölçü de jüri ölçüsü olarak kalır.
+
+
+=====================================================================
+4. PUAN HANGİ KANITA DAYANIR, ÇÖZÜMLER NE KADAR KARŞILAŞTIRILABİLİR, NEREDE YETMEZ?
+=====================================================================
+[ÇIKARIM, her satır yukarıdaki BELGELENEN maddelere dayanıyor]
+
+Kanıt türü → karşılaştırılabilirlik → yetmediği yer
+
+- Çıktı dosyası, gizli girdi (AHC, Kaggle, AoC, ICFP) → Yüksek, ama yalnız aynı metrik ve aynı gizli set içinde. Farklı doğadaki problemler toplanamaz (ICFP 2024). → Sistemi değil çıktıyı ölçer. "İhtiyacı karşılayan ürün" sorusu cevapsız. ICFP bunu ayrı jüri ödülüne, Kaggle ödülü kod teslimine bağlayarak ayırıyor.
+- Protokol üzerinden davranış (CodeCrafters) → Geçti/kaldı düzeyinde yüksek, dil değişse de aynı tester. → Yalnız tanımlı arayüzde çalışır. Kod kalitesi yok. Kestirme çözümler ek tuzak ister (anti-cheat).
+- Dil başına test sonucu (Exercism) → Orta. Vaka seçimi dile göre değişir, dil yeteneği tanıma sızar. → Mimari serbestliği yok, fonksiyon imzası şart.
+- Otomatik statik rapor (Frontend Mentor axe/html-validate) → Kural ihlali sayısı karşılaştırılabilir. → Kendi uyarıları "only catches some of the issues"; tasarım kalitesi ve kullanım insan ister.
+- Kısa demo + 1–5 kriter ortalaması (Devpost, MLH) → Düşük. Jüri cömertliği, sıra etkisi, %5 kapsama, tek etkinlikte ICC≈0. Normalizasyon (stack ranking, ikili karşılaştırma) gürültüyü azaltır, kaldırmaz. → Çalışırlık, bakım, gerçek kullanıcı sorusu 2–10 dakikada görülmez. Kodun çoğu etkinlikten önce yazılmış olabilir.
+- Uzman/bakımcı incelemesi (METR 2026) → En gerçekçi kanıt, ama pahalı ve kendi gürültüsü var (golden patch'ler %68, NeurIPS %50,6).
+
+Hiçbir modelin çözmediği üç şey [ÇIKARIM]:
+  1. Farklı mimariyle gelen iki çözümü TEK sayıda karşılaştırmak. Herkes ya mimariyi sabitliyor ya da sayıyı jüriye bırakıyor.
+  2. "İhtiyaç karşılandı mı" sorusunu otomatik cevaplamak. En iyi örnekte bile (SWE-bench) testlerin çoğu sorunlu çıktı.
+  3. Heterojen günlük problemlerin puanını tek birikimli ölçüye (XP) çevirmek. ICFP bunu bir yarışma içinde bile ancak sıralamaya (Borda) çevirerek çözdü.
+
+
+=====================================================================
+5. ADVENTCODENDAR İÇİN YANLIŞ TEMEL ADAYLARI
+=====================================================================
+Biçim: (a) karar, (b) neden kötü sonuç doğurur, kanıtıyla, (c) bizim üründe nerede çıkar.
+
+1. "Teknoloji serbest" deyip problemde gözlenebilir bir teslim sözleşmesi tanımlamamak
+   (a) Problem yalnız ihtiyacı anlatıyor; neyin, hangi biçimde teslim edileceği (cevap dosyası, HTTP uç noktası, CLI girdi/çıktısı, demo) yazmıyor. Ladybug "gelen şeye bakarak" karar veriyor.
+   (b) Dil bağımsız değerlendiren her örnek bir sınır sabitliyor: CodeCrafters your_program.sh + 6379/RESP, Exercism results.json + dil başına runner, AoC/ICFP/AHC/Kaggle yalnız çıktı (bölüm 1). Sınır yoksa makine testi yok, geriye jüri kalıyor. Jüri tutarlılığı ise düşük (NeurIPS %50,6; DOGFOOD ICC≈0).
+   (c) "Akbank, 2025 — şube kuyruk tahmini" günü. Biri Next.js + Postgres panosu, biri RAG sohbet botu, biri C++ CLI gönderiyor. Üçünde ortak koşturulabilecek tek bir şey yok; Ladybug kimin çözdüğünü söyleyemiyor.
+
+2. Dil serbestliğini mimari serbestlikle karıştırıp hepsini tek cetvelde sıralamak
+   (a) Aynı günün web uygulaması, RAG ve Python betiği gönderimleri aynı puan/XP cetvelinde.
+   (b) CodeCrafters 20+ dili destekliyor ama hepsi aynı protokolü uyguluyor; serbestlik dilde. ICFP 2024 organizatörleri farklı doğadaki alt görevlerin puanlarını toplamanın "won't work" olduğunu yazdı ve sıralamaya geçti. RAG çıktısı doğal dil ve olasılıksal; tam eşleşme testi uygulanamaz, metrik veya insan ister [ÇIKARIM].
+   (c) Bir çözüm "RAG değerlendirme setinde doğruluk %82", öteki "API 12/12 test" alıyor. İkisini XP'ye çeviren katsayı keyfi; kullanıcılar katsayıyı fark edip XP'si yüksek mimariye kayıyor [ÇIKARIM].
+
+3. Görünür testleri hem geri bildirim hem nihai puan olarak kullanmak
+   (a) Kullanıcının denediği örnekler ile XP'yi belirleyen kontroller aynı set.
+   (b) AHC (100 ön test / 5000 sistem testi, ayrı girdiler, tohum özeti önceden), Topcoder (EXAMPLE/PROVISIONAL/SYSTEM) ve Kaggle (public/private) bunu ayırıyor. Değerlendiriciyi görmek ödül hilesini 43 kat artırdı (METR, RE-Bench %30,4 / HCAST %0,7). Testleri gizlemek hileyi sıfıra yakın indiriyor (ImpossibleBench). Public sıralama veri görmeden sondalanabiliyor (Blum ve Hardt).
+   (c) Kullanıcının ajanı Ladybug'ın 8 örnek girdisini görüp o 8 girdiye özel cevap döndüren "çözüm" yazıyor; tam XP. Gerçek veride çalışmıyor.
+
+4. XP'yi tamamen "testi geçti"ye bağlamak, ihtiyaca uygunluğu ölçmemek
+   (a) Ladybug geçti/kaldı veya test oranı veriyor; ürünün ihtiyacı karşılayıp karşılamadığı hiç sorulmuyor.
+   (b) METR 2025: testi geçen ajan PR'larının hiçbiri olduğu gibi kullanılamadı, düzeltme ortalama 26 dk. METR 2026: bakımcı kararı otomatik puandan ~24 puan düşük. EvalPlus: test 80 katına çıkınca pass@k %19,3–28,9'a kadar düştü, sıralama değişti.
+   (c) "Kredi ön değerlendirme" vakası. Puan formülü doğru, ama hatalı girdide çöküyor, kullanıcıya gerekçe göstermiyor, veriyi kaydetmiyor. Tam XP alıyor; vakayı yazan kurumun gözünde işe yaramaz.
+
+5. Kurum vakasını (jüri için yazılmış brif) olduğu gibi alıp üstüne otomatik kontrol yazmak
+   (a) "Akbank, 2025" metni değiştirilmeden problem oluyor; Ladybug kontrolleri ayrıca yazılıyor.
+   (b) SWE-bench Verified: 1.699 örneğin %38,3'ünde problem metni eksik, %61,1'inde test geçerli çözümü reddedebiliyor, %68,3 elendi. Testler "overly specific, and in some cases are even unrelated to the issue". OpenAI 2026 denetiminde de (ikincil) %35,5 dar test. Teknoloji serbest üründe metinde olmayan varsayım bir teknolojiye kilitlenir [ÇIKARIM].
+   (c) Vaka "segmentlere ürün öner" diyor. Ladybug belirli bir CSV kolon adını ve JSON şemasını bekliyor; C++ çözümü doğru öneriyi farklı biçimde veriyor ve 0 XP alıyor. Kullanıcı bunu "zor gün" sanıyor.
+
+6. Değerlendiricinin kendisini test etmemek, problemi tek referans çözümle doğrulamak
+   (a) Her gün tek bir (muhtemelen Python) referans çözüm Ladybug'dan geçiyor ve problem yayına giriyor.
+   (b) CodeCrafters tester'ı kendi senaryo setiyle sınanıyor: kalması gereken bozuk örnekler, geçmesi gereken yavaş ama doğru örnek, gerçek redis-server ile pass_all. Ayrıca anti-cheat var. Exercism hatalı testi uuid + reimplements ile izliyor. SWE-bench'te testlerin çoğunluğu sorunlu çıktı. ICFP 2024 organizatörleri bile kural boşluğunu ("warping after every computation") yarışmada öğrendi.
+   (c) Node çözümü tarihi ISO yerine yerel biçimde veriyor, Ladybug reddediyor. Kalan sayısı "problem zor" diye okunuyor, kimse kontrolün bozuk olduğunu fark etmiyor.
+
+7. Günler arası XP'yi ham puan toplamı ya da "en iyiye oran" ile vermek
+   (a) Her günün puanı ölçeklenip toplanıyor, ya da Topcoder tarzı göreli puan XP'ye yazılıyor.
+   (b) ICFP 2024: toplama farklı aralık ve dağılımlar yüzünden çarpık, Borda'ya geçtiler; "absolute scores don't matter, only the order". Topcoder göreli puanı her yeni gönderimde en iyiye göre yeniden hesaplıyor. Roelofs: küçük test setinde yakın puanlar gürültüyle yer değiştiriyor. Regresyonel Goodhart: en üstte seçilen, ölçü ile hedef arasındaki farktır.
+   (c) 3 Aralık "kuyruk optimizasyonu" 0–10^6 aralığında, 4 Aralık "RAG doğruluğu" 0–1. Toplamda 3 Aralık her şeyi belirliyor. Göreli puanda 5 Aralık'ta biri çok iyi gönderim yapınca herkesin 3 Aralık XP'si geriye dönük düşüyor.
+
+8. Açık uçlu kısmı kısa demo/video + 1–5 kriter ortalamasıyla (insan veya onu taklit eden AI) puanlamak
+   (a) Ölçülemeyeni "jüri puanı" kapatıyor: README + 2 dk video + 4 kriter, ortalama.
+   (b) MLH: takım başı 3 dk ve kriterin "awesome technology" olduğu kendi sözüyle; Devpost: proje başı ~10 dk, 1–5 ortalama. Kalibrasyon sorunu belgeli (Gavel: jüri projelerin ~%5'ini görüyor). Tutarlılık düşük (NeurIPS %50,6; DOGFOOD ICC −0,006). LLM jüride pozisyon, uzunluk ve öz-tercih yanlılığı. Hackathon projelerinin ~%5'i 5 aydan uzun sürdürülüyor.
+   (c) Parlak README'si ve güzel videosu olan ama gerçek veride çöken RAG demosu, sade ama çalışan C++ aracını geçiyor. Kullanıcılar ertesi gün çözüme değil sunuma yatırım yapıyor.
+
+9. Hızı veya ilk çözeni ödüllendiren küresel sıralamayı puanın merkezine koymak
+   (a) Kapı açılır açılmaz ilk gönderenler daha çok XP alıyor veya küresel sıralamada üstte.
+   (b) AoC küresel liderlik tablosunu 10 yıl sonra kaldırdı (stres, DDoS, "worse programmers" algısı); AI kullanımına da açıkça "No" diyor. METR ve ImpossibleBench ajanların değerlendiriciyi hedeflediğini gösteriyor. Açık uçlu problemde hız, ihtiyacı anlamaya ayrılan sürenin tersi [ÇIKARIM].
+   (c) 1 Aralık kapısı 00:00'da açılıyor, ilk 50 gönderim 6 dakikada geliyor, hepsi ajan çıktısı. Vakayı okuyup kullanıcı akışı düşünen kişi listede yok.
+
+10. Repo içeriğini (satır sayısı, dosya, commit, "ne kadar inşa etmiş") emeğin veya çözümün kanıtı saymak
+   (a) Ladybug repoyu tarayıp büyüklüğe, bileşen sayısına, kullanılan teknolojilere bakarak puan veriyor.
+   (b) Secret Life of Hackathon Code: 22.183 projede kod blob'larının yalnız ~%9,14'ü etkinlik sırasında yaratılmış. Exercism: önemsiz bir alıştırmada bile 500 gönderim ~250 yaklaşım; açık uçlu projede yaklaşım çeşitliliği normalize edilemiyor. Nolte: kullanılan teknoloji sayısı kısa vadeli devamla ilişkili bulunmuş, uzun vadeli devamı ise ekip beceri çeşitliliği ve büyütme niyeti açıklıyor.
+   (c) Kullanıcı hazır Next.js + Supabase şablonu yüklüyor, 40 satır ekliyor. Repo "büyük, çok katmanlı proje" görünüyor; tek dosyalık doğru Python betiği daha az XP alıyor.
+
+
+=====================================================================
+6. ERİŞEMEDİĞİM / DOĞRULAYAMADIĞIM KAYNAKLAR
+=====================================================================
+- kaggle.com/docs/competitions ve code competition hata/debug sayfası: JS ile render, metin yok. Public/private mekanizmasını Roelofs (NeurIPS 2019) ve Blum ve Hardt makalelerinden aldım.
+- openai.com/index/introducing-swe-bench-verified/: 403. Metni GitHub aynasından okudum (irthomasthomas/undecidability#933).
+- openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/: açılmadı; yalnız ikincil özetler, İKİNCİL olarak işaretli.
+- Frontend Mentor tasarım karşılaştırma ve puan/rozet rehberi: 404 veya JS. Medium'daki resmi blog 403.
+- CodeCrafters'ta git push'ta önceki aşamaların otomatik koşup koşmadığı dokümanda yok.
+- Kaggle "Our perfect submission" forum başlığı açılmadı; yalnız HN tartışması.
+- Akbank 2025 vakalarının değerlendirme kriterleri ve ağırlıkları kamuya açık sayfada yok.
+- Arama özetinde geçen "USC'nin hackathon jüri yanlılığı çalışması"nın birincil kaynağını bulamadım, kullanmadım.
+- Hackathon "demo-ware" sıklığını ölçen birincil çalışma bulamadım. Bölüm 3'teki süre kanıtları yapısal sebebi gösteriyor, sıklığı değil.
+
+Kapsam dışı ama birincil kaynakta görüldü: AoC about sayfası "If you're making a website, please don't make it look like Advent of Code or name it something similar." (adventofcode.com/2025/about)
