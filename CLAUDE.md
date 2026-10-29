@@ -8,7 +8,9 @@ karakter tuvali (Damla 30.10: "hepsi monospace, AoC'yi çalmıyoruz, ilham alıy
 farklı boyda tuğlalar ortak duvarlarla lego gibi geniş ağaç, kavisli girland + sarkan ışık
 dizileri + dal ucu ampulleri (tek çizgi değil), karakter yıldız, ızgarada düşen kar, ASCII zemin.
 Damla gece yönünü seçti (font Recursive), zemini lacivert ya da terminal istiyor: seçici
-lacivert/terminal/mor, karar bekliyor. Kutu çizgisi karakterleri (╭─) fontsource latin alt
+lacivert/terminal(#1e1e1e, Damla'nın Terminal'inden ölçüldü)/mor, karar bekliyor. Başlık
+komut satırı `guest@adventcodendar:~$ tree` (yazılır, ağaç çıktı gibi basılır), altta tmux
+gibi durum çubuğu (gerçek sayım "30 boxes, N opened"). Kutu çizgisi karakterleri (╭─) fontsource latin alt
 kümesinde yok, kullanma. Kutu içi yalnız parıltı + numara:
 hediye/case içeriği yok (hediye tasarımı ağaç çekiminden sonra).
 
