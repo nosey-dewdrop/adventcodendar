@@ -10,57 +10,47 @@
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono/400.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/maple-mono/700.css" rel="stylesheet">
 <style>
-  /* Her şey karakter ızgarasında. Ağacın en geniş satırı 34 karakter (7 kutu × 4 + 6 boşluk);
-     yazı boyu ekrana göre ağacın sığacağı en büyük değer. */
-  :root {
-    --gutter: 16px;
-    --fs: clamp(14px, min(calc((100vw - 2 * var(--gutter)) / 21.6), calc(100svh / 41)), 30px);
-    --lh: 1.12;
-  }
+  /* Sayfanın tamamı tek bir karakter tuvali: ağaç, tuğlalar, yıldız, ışıklar, kar ve zemin
+     aynı monospace ızgarada. Yazı boyu, ağaç ekrana sığacak en büyük değere ayarlanır. */
   [data-yon="gece"] {
-    --bg1: #2a1d3d; --bg2: #382851;
-    --ink: #f6ecdf; --muted: #a998bf; --wire: #6c5a86;
-    --g1: #9fd8b9; --g2: #7cc4a4; --g3: #c6ecd5;
+    --bg1: #261a38; --bg2: #382851;
+    --ink: #f6ecdf; --muted: #a998bf; --wire: #7a6894;
+    --w1: #9fd8b9; --w2: #7cc4a4; --w3: #c6ecd5;
     --a1: #f7a8bd; --a2: #f8dc94; --a3: #c9b6f5;
-    --trunk: #d1a582; --star: #ffd98a; --snow: 233, 226, 245;
+    --trunk: #d1a582; --star: #ffd98a; --snow: #e9e2f5; --glow: .35em;
     --font: "Recursive", ui-monospace, monospace; --fvs: "MONO" 1, "CASL" 1;
   }
   [data-yon="kar"] {
-    --bg1: #f7f4fb; --bg2: #e7edf8;
+    --bg1: #f7f4fb; --bg2: #e4ebf7;
     --ink: #3b2f4a; --muted: #85799a; --wire: #a79cbd;
-    --g1: #3f9f7b; --g2: #2f8566; --g3: #5ab892;
-    --a1: #de6488; --a2: #cf9a1e; --a3: #8a6fd3;
-    --trunk: #a8744f; --star: #e8a72e; --snow: 150, 140, 190;
+    --w1: #3f9f7b; --w2: #2f8566; --w3: #5ab892;
+    --a1: #de6488; --a2: #c98f12; --a3: #8a6fd3;
+    --trunk: #a8744f; --star: #e09a1c; --snow: #a99fc8; --glow: .2em;
     --font: "Maple Mono", ui-monospace, monospace; --fvs: normal;
   }
   [data-yon="pembe"] {
-    --bg1: #fdeaef; --bg2: #f8d5df;
+    --bg1: #fdeaef; --bg2: #f6d0dc;
     --ink: #5a2a3c; --muted: #a46a80; --wire: #c98ea3;
-    --g1: #3f9c7a; --g2: #2e8063; --g3: #5ab08e;
-    --a1: #e0557c; --a2: #cf9a1e; --a3: #8a6fd3;
-    --trunk: #b07a5c; --star: #f2b230; --snow: 205, 120, 150;
+    --w1: #3f9c7a; --w2: #2e8063; --w3: #5ab08e;
+    --a1: #d94873; --a2: #c98f12; --a3: #8a6fd3;
+    --trunk: #b07a5c; --star: #e9a215; --snow: #cf8aa2; --glow: .2em;
     --font: "Sono", ui-monospace, monospace; --fvs: "MONO" 1;
   }
 
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body {
-    min-height: 100svh; display: flex; flex-direction: column;
+    min-height: 100svh;
     background: linear-gradient(180deg, var(--bg1), var(--bg2));
     color: var(--ink);
     font-family: var(--font); font-variation-settings: var(--fvs);
-    font-size: var(--fs); line-height: var(--lh);
+    font-size: var(--fs, 18px); line-height: var(--lh, 21px);
     overflow-x: hidden;
   }
-  .ch { display: inline-block; width: 1ch; text-align: center; }
-
-  #kar { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
 
   header {
-    position: relative; z-index: 3;
-    display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .3em 1ch;
-    padding: 14px var(--gutter) 0;
-    font-size: max(15px, calc(var(--fs) * .78));
+    display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0 2ch;
+    padding: 10px 1ch 4px;
   }
   .ad { font-weight: 700; }
   .yon { color: var(--muted); white-space: nowrap; }
@@ -70,196 +60,354 @@
   }
   .yon button[aria-pressed="true"] { background: var(--ink); color: var(--bg1); }
 
-  .isiklar, .zemin { position: relative; z-index: 2; white-space: pre; overflow: hidden; }
-  .isiklar { margin-top: .5em; color: var(--wire); }
-  .ampul { animation: yan var(--d, 2.4s) ease-in-out var(--g, 0s) infinite; text-shadow: 0 0 .35em currentColor, 0 0 .8em currentColor; }
-  @keyframes yan { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
+  .sahne { position: relative; margin: 0 auto; }
+  .sahne pre {
+    position: absolute; inset: 0; margin: 0;
+    font: inherit; font-variation-settings: inherit; line-height: inherit; white-space: pre;
+  }
+  #kar { color: var(--snow); opacity: .75; pointer-events: none; }
+  #cizim { pointer-events: none; }
 
-  main { position: relative; z-index: 1; flex: 1; display: grid; justify-items: center; align-content: center; padding: .6em var(--gutter) 0; }
-  .agac { display: grid; justify-items: center; white-space: pre; }
-  .yildiz { color: var(--star); text-align: center; }
-  .yildiz .isin { animation: yan 3.2s ease-in-out infinite; }
-  .yildiz .isin:nth-child(2n) { animation-delay: -1.6s; }
-  .yildiz .ch.oz { text-shadow: 0 0 .4em var(--star); font-family: "Apple Symbols", "Segoe UI Symbol", sans-serif; font-size: 1.35em; line-height: .8; }
-  .sira { display: flex; gap: 1ch; }
-  .sira + .sira { margin-top: -.3em; }
+  .tel { color: var(--wire); }
+  .ampul { animation: yan var(--d, 2.4s) ease-in-out var(--g, 0s) infinite; text-shadow: 0 0 var(--glow) currentColor; font-weight: 700; }
+  @keyframes yan { 0%, 100% { opacity: 1; } 50% { opacity: .18; } }
+  .duvar { font-weight: 600; }
+  .gece-isik .duvar { text-shadow: 0 0 .25em currentColor; }
+  .no { font-weight: 800; }
+  .no.yan { color: var(--star) !important; text-shadow: 0 0 var(--glow) var(--star), 0 0 .8em var(--star); }
+  .nokta { opacity: .55; }
+  .parilti { color: var(--star); text-shadow: 0 0 var(--glow) var(--star); animation: yan 2.2s ease-in-out infinite; }
+  .parilti.p1 { animation-delay: -.7s; } .parilti.p2 { animation-delay: -1.4s; }
+  .isin { color: var(--star); animation: yan 2.8s ease-in-out infinite; }
+  .isin.i1 { animation-delay: -1.4s; }
+  .oz { color: var(--star); font-weight: 800; text-shadow: 0 0 var(--glow) var(--star), 0 0 1em var(--star); }
+  .kapak-kar { color: var(--snow); }
+  .zemin { color: var(--snow); opacity: .9; }
+  .ipucu { color: var(--muted); }
 
   .kutu {
-    display: grid; padding: 0; border: 0; background: none; cursor: pointer;
-    font: inherit; font-variation-settings: inherit; line-height: inherit;
-    color: var(--c); white-space: pre; position: relative; font-weight: 700;
-    transition: transform .15s ease;
+    position: absolute; padding: 0; border: 0; background: transparent; cursor: pointer;
+    border-radius: 2px;
   }
-  .kutu > span { display: block; }
-  .kutu .no { font-weight: 700; }
-  .kutu .no b { color: var(--ink); transition: color .3s ease, text-shadow .3s ease; }
-  .kutu .kapak i { font-style: normal; display: inline-block; transition: transform .5s cubic-bezier(.3, 1.4, .5, 1), opacity .5s ease; }
-  .kutu:hover { transform: translateY(-.12em); }
-  .kutu:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-  .kutu.acik .kapak i { transform: translateY(-.7em); opacity: 0; }
-  .kutu.acik .no b { color: var(--star); text-shadow: 0 0 .45em var(--star); }
-  .kutu.acik:hover { transform: none; }
-
-  .ipucu { margin: .9em 0 0; color: var(--muted); font-size: max(14px, calc(var(--fs) * .7)); }
-  .zemin { color: rgb(var(--snow)); opacity: .85; flex: none; margin-top: .4em; }
+  .kutu:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
 
   @media (prefers-reduced-motion: reduce) {
-    .ampul, .yildiz .isin { animation: none; }
-    .kutu, .kutu .kapak i, .kutu .no b { transition: none; }
+    .ampul, .parilti, .isin { animation: none; }
   }
 </style>
 </head>
 <body data-yon="gece">
-<canvas id="kar" aria-hidden="true"></canvas>
 
 <header>
   <div class="ad">adventcodendar</div>
   <div class="yon" role="group" aria-label="prototip yönü">yön <button data-v="gece" aria-pressed="true">gece</button> <button data-v="kar" aria-pressed="false">kar</button> <button data-v="pembe" aria-pressed="false">pembe</button></div>
 </header>
 
-<div class="isiklar" id="isiklar" aria-hidden="true"></div>
-
-<main>
-  <div class="agac" id="agac"></div>
-  <p class="ipucu">tap a box to open it</p>
-</main>
-
-<div class="zemin" id="zemin" aria-hidden="true"></div>
+<div class="sahne" id="sahne">
+  <pre id="kar" aria-hidden="true"></pre>
+  <pre id="cizim" aria-hidden="true"></pre>
+</div>
 
 <script>
 (() => {
   const body = document.body;
+  const sahne = document.getElementById('sahne');
+  const cizim = document.getElementById('cizim');
+  const karPre = document.getElementById('kar');
   const azHareket = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hash = (x, y) => { let h = (x * 374761393 + y * 668265263) ^ 0x5bd1e995; h = (h ^ (h >>> 13)) * 1274126177; return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
 
-  // Yıldız: ortada tek karakter, çevresinde yavaşça yanıp sönen ışınlar.
-  const agac = document.getElementById('agac');
-  agac.innerHTML = `<div class="yildiz" aria-hidden="true"><span class="isin">\\ | /</span>
-<span class="isin">--</span> <span class="ch oz">★</span> <span class="isin">--</span>
-<span class="isin">/ | \\</span></div>`;
+  // Ağacın katları, yukarıdan aşağı. h: kat yüksekliği (satır), c: tuğla genişlik ağırlıkları;
+  // 's' ile başlayan ağırlık o sütunda üst üste iki küçük tuğla demek. Toplam 28 tuğla + 2 gövde.
+  const KATLAR = [
+    { h: 4, c: [1] },
+    { h: 3, c: [1, 1.2] },
+    { h: 4, c: [1.1, 's1', 1] },
+    { h: 3, c: [1, 1.2, 0.9, 1.1] },
+    { h: 4, c: ['s1', 1.3, 1, 's0.9'] },
+    { h: 3, c: [1, 0.8, 1.2, 1, 1.1] },
+    { h: 4, c: [1.2, 's1', 1.4, 1, 1.1] },
+  ];
+  const AGAC_SATIR = KATLAR.reduce((t, k) => t + k.h, 0) + 3 + 1; // taç + gövde + son duvar
+  const GEREKEN_SATIR = 4 + 1 + 5 + 1 + AGAC_SATIR + 3;          // ışık, boşluk, yıldız, kar şapkası, ağaç, zemin
+  const NUMARALAR = [17, 4, 26, 11, 29, 2, 21, 8, 14, 30, 6, 19, 1, 24, 12, 27, 9, 16, 3, 22, 13, 28, 7, 18, 25, 5, 20, 10, 15, 23];
+  const LED = ['#ff8fab', '#ffd166', '#8ce0c0', '#9cc7ff', '#d6a8ff', '#ffb38a'];
 
-  // 30 kutu: 7 sıralık taç (28) + 2 kutuluk gövde. Numaralar advent takvimi gibi karışık.
-  const numaralar = [17, 4, 26, 11, 29, 2, 21, 8, 14, 30, 6, 19, 1, 24, 12, 27, 9, 16, 3, 22, 13, 28, 7, 18, 25, 5, 20, 10, 15, 23];
-  const yesil = ['--g1', '--g2', '--g3'], sus = ['--a1', '--a2', '--a3'];
-  // Yeşil kutular ağacı okutur; renkli olanlar çapraz bir süs dizisi gibi iner.
-  const renkSec = (s, i) => ((s - i) % 3 === 0 ? sus[i % 3] : yesil[(s + i) % 3]);
-  let k = 0;
-  const kutuYap = (renk) => {
-    const no = numaralar[k++];
-    const b = document.createElement('button');
-    b.className = 'kutu';
-    b.style.setProperty('--c', `var(${renk})`);
-    b.setAttribute('aria-label', `box ${no}`);
-    b.setAttribute('aria-pressed', 'false');
-    b.innerHTML = `<span class="kapak">.<i>--</i>.</span><span class="no">|<b>${String(no).padStart(2, '0')}</b>|</span><span>'--'</span>`;
-    b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.classList.toggle('acik'))));
-    return b;
-  };
-  for (let s = 1; s <= 7; s++) {
-    const sira = document.createElement('div');
-    sira.className = 'sira';
-    for (let i = 0; i < s; i++) sira.appendChild(kutuYap(renkSec(s, i)));
-    agac.appendChild(sira);
-  }
-  const govde = document.createElement('div');
-  govde.className = 'sira';
-  govde.append(kutuYap('--trunk'), kutuYap('--trunk'));
-  agac.appendChild(govde);
+  let W = 0, H = 0, chW = 0, satirH = 0, tuglalar = [], katlar = [], uzerinde = -1;
+  const durum = new Map(); // tuğla no → { acik, kare }
 
-  // Ekran genişliğini karakter sayısına çevirir.
-  const sutun = (el) => {
-    const olcu = document.createElement('span');
-    olcu.className = 'ch'; olcu.textContent = 'x'; olcu.style.cssText = 'position:absolute;visibility:hidden';
-    el.appendChild(olcu);
-    const w = olcu.getBoundingClientRect().width;
-    olcu.remove();
-    return Math.ceil(el.clientWidth / w) + 1;
+  const olc = () => {
+    const header = document.querySelector('header');
+    const bosH = innerHeight - header.offsetHeight - 4;
+    let fs = Math.floor(Math.min(bosH / (GEREKEN_SATIR * 1.16), (innerWidth - 8) / (36 * 0.6), 26));
+    fs = Math.max(12, fs);
+    satirH = Math.round(fs * 1.16);
+    while (fs > 12 && satirH * GEREKEN_SATIR > bosH) { fs--; satirH = Math.round(fs * 1.16); }
+    body.style.setProperty('--fs', fs + 'px');
+    body.style.setProperty('--lh', satirH + 'px');
+    const m = document.createElement('span');
+    m.textContent = 'x'.repeat(100);
+    m.style.cssText = 'position:absolute;visibility:hidden;white-space:pre';
+    sahne.appendChild(m);
+    chW = m.getBoundingClientRect().width / 100;
+    m.remove();
+    W = Math.floor(innerWidth / chW);
+    H = Math.max(GEREKEN_SATIR, Math.floor(bosH / satirH));
+    sahne.style.width = (W * chW) + 'px';
+    sahne.style.height = (H * satirH) + 'px';
   };
 
-  // LED dizisi: düz tel, farklı boyda sarkan ampuller (8 karakterlik desen).
-  const ledRenk = ['#ff8fab', '#ffd166', '#8ce0c0', '#9cc7ff', '#d6a8ff', '#ffb38a'];
-  const isiklar = document.getElementById('isiklar');
-  const isiklariCiz = () => {
-    const n = sutun(isiklar);
-    let r0 = '', r1 = '', r2 = '', a = 0;
-    const ampul = () => {
-      a++;
-      const d = (1.5 + ((a * 37) % 19) / 10).toFixed(2), g = (((a * 53) % 29) / 10).toFixed(2);
-      return `<span class="ch ampul" style="color:${ledRenk[a % ledRenk.length]};--d:${d}s;--g:-${g}s">●</span>`;
+  // Tuğla yerleşimi: katların genişliği tepeden tabana doğrusal büyür, hepsi ortalı.
+  const kur = () => {
+    const cift = (n) => n - (n % 2);
+    const altW = cift(Math.min(W - 6, Math.max(34, Math.round((1.35 * AGAC_SATIR * satirH) / chW))));
+    const ustW = Math.max(8, cift(Math.round(altW * 0.2)));
+    const cx = Math.floor(W / 2);
+    const gY1 = H - 4, gH = 3, gY0 = gY1 - gH;          // gövde, zeminin hemen üstünde
+    let y = gY0 - KATLAR.reduce((t, k) => t + k.h, 0);   // tacın tepesi
+    tuglalar = []; katlar = [];
+    KATLAR.forEach((kat, ki) => {
+      const w = cift(Math.round(ustW + ((altW - ustW) * ki) / (KATLAR.length - 1)));
+      const x0 = cx - w / 2, x1 = cx + w / 2, y0 = y, y1 = y + kat.h;
+      katlar.push({ x0, x1, y0, y1 });
+      const agirlik = kat.c.map((v) => (typeof v === 'string' ? parseFloat(v.slice(1)) : v));
+      const top = agirlik.reduce((a, b) => a + b, 0);
+      let birikim = 0, onceki = x0;
+      kat.c.forEach((v, i) => {
+        birikim += agirlik[i];
+        const sag = i === kat.c.length - 1 ? x1 : x0 + Math.round((w * birikim) / top);
+        const renk = ki < 2 ? '--w3' : ki < 4 ? '--w1' : '--w2';
+        if (typeof v === 'string') {
+          const ym = y0 + Math.floor(kat.h / 2);
+          tuglalar.push({ x0: onceki, x1: sag, y0, y1: ym, renk });
+          tuglalar.push({ x0: onceki, x1: sag, y0: ym, y1, renk });
+        } else tuglalar.push({ x0: onceki, x1: sag, y0, y1, renk });
+        onceki = sag;
+      });
+      y = y1;
+    });
+    const gW = Math.max(8, cift(Math.round(altW * 0.2)));
+    tuglalar.push({ x0: cx - gW / 2, x1: cx, y0: gY0, y1: gY1, renk: '--trunk' });
+    tuglalar.push({ x0: cx, x1: cx + gW / 2, y0: gY0, y1: gY1, renk: '--trunk' });
+    const sus = ['--a1', '--a2', '--a3'];
+    tuglalar.forEach((t, i) => {
+      t.no = NUMARALAR[i];
+      t.sus = t.renk !== '--trunk' && i % 3 === 1 ? sus[Math.floor(i / 3) % 3] : null;
+      if (!durum.has(t.no)) durum.set(t.no, { acik: false, kare: 0 });
+    });
+    dugmeleriKur();
+  };
+
+  // Izgaraya yazma.
+  let C, T;
+  const yaz = (x, y, c, etiket) => { if (x >= 0 && x < W && y >= 0 && y < H) { C[y][x] = c; T[y][x] = etiket; } };
+  const metin = (x, y, s, etiket) => { for (let i = 0; i < s.length; i++) if (s[i] !== ' ') yaz(x + i, y, s[i], etiket); };
+  const renkli = (sinif, renk, ek = '') => `<span class="${sinif}" style="color:var(${renk})${ek}">`;
+
+  const ciz = () => {
+    C = Array.from({ length: H }, () => Array(W).fill(' '));
+    T = Array.from({ length: H }, () => Array(W).fill(''));
+    let ampulSayac = 0;
+    const ampul = (x, y) => {
+      ampulSayac++;
+      const d = (1.5 + ((ampulSayac * 37) % 19) / 10).toFixed(2), g = (((ampulSayac * 53) % 29) / 10).toFixed(2);
+      yaz(x, y, 'o', `<span class="ampul" style="color:${LED[ampulSayac % LED.length]};--d:${d}s;--g:-${g}s">`);
     };
-    for (let x = 0; x < n; x++) {
-      const p = x % 8;
-      r0 += p === 2 || p === 6 ? '.' : '-';
-      r1 += p === 2 ? ampul() : p === 6 ? '|' : ' ';
-      r2 += p === 6 ? ampul() : ' ';
+
+    // Zemin: üç satır kar tepesi; ortasında ipucu.
+    const z0 = "    _.--._          _.-'''-._      ", z1 = "_.-'      '-.__.--''         ''--._", z2 = " .  '  .   .   '  .  .   '  .   . ";
+    for (let x = 0; x < W; x++) {
+      yaz(x, H - 3, z0[x % z0.length], '<span class="zemin">');
+      yaz(x, H - 2, z1[x % z1.length], '<span class="zemin">');
+      yaz(x, H - 1, z2[x % z2.length], '<span class="zemin">');
     }
-    isiklar.innerHTML = `${r0}\n${r1}\n${r2}`;
+    const ipucu = '  tap a box to open it  ';
+    const ix = Math.floor((W - ipucu.length) / 2);
+    for (let i = 0; i < ipucu.length; i++) yaz(ix + i, H - 1, ipucu[i], '<span class="ipucu">');
+
+    // Girland: iki satırlık kavisli tel, tel boyunca bir satır aşağıda sarkan ampuller.
+    const g0 = "'-._        _.-'", g1 = "    '-.__.-'    ";
+    const telSatiri = (x) => (g0[x % 16] !== ' ' ? 0 : 1);
+    for (let x = 0; x < W; x++) {
+      if (g0[x % 16] !== ' ') yaz(x, 0, g0[x % 16], '<span class="tel">');
+      if (g1[x % 16] !== ' ') yaz(x, 1, g1[x % 16], '<span class="tel">');
+      if (x % 4 === 2) ampul(x, telSatiri(x) + 1);
+    }
+
+    // Ağacın kenarındaki boşlukta, telden sarkan farklı boylarda ışık dizileri.
+    const enSol = katlar[katlar.length - 1].x0, enSag = katlar[katlar.length - 1].x1;
+    for (let x = 4; x < W - 2; x += 7) {
+      if (x > enSol - 5 && x < enSag + 5) continue;
+      const bas = telSatiri(x) + 1, boy = 5 + Math.floor(hash(x, 7) * Math.min(14, H - 12));
+      for (let y = bas; y < bas + boy && y < H - 4; y++) {
+        if ((y - bas) % 3 === 2 || y === bas + boy - 1) ampul(x, y); else yaz(x, y, ':', '<span class="tel">');
+      }
+    }
+
+    // Tuğla duvarları: ortak duvarlar tek çizilir, köşe ve kesişim karakteri komşulara göre seçilir.
+    const bayrak = Array.from({ length: H }, () => Array(W).fill(0)); // 1 yukarı, 2 aşağı, 4 sol, 8 sağ
+    const renkH = Array.from({ length: H }, () => Array(W).fill(null));
+    const isle = (x, y, b, r) => { if (x >= 0 && x < W && y >= 0 && y < H) { bayrak[y][x] |= b; renkH[y][x] = r; } };
+    const sirali = [...tuglalar].sort((a, b) => (a.renk === '--trunk') - (b.renk === '--trunk')).reverse();
+    for (const t of sirali) {
+      for (let x = t.x0; x <= t.x1; x++) {
+        const b = (x > t.x0 ? 4 : 0) | (x < t.x1 ? 8 : 0);
+        isle(x, t.y0, b, t.renk); isle(x, t.y1, b, t.renk);
+      }
+      for (let y = t.y0; y <= t.y1; y++) {
+        const b = (y > t.y0 ? 1 : 0) | (y < t.y1 ? 2 : 0);
+        isle(t.x0, y, b, t.renk); isle(t.x1, y, b, t.renk);
+      }
+    }
+    const secili = tuglalar[uzerinde];
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const b = bayrak[y][x];
+      if (!b) continue;
+      const yatay = b & 12, dikey = b & 3, kol = [1, 2, 4, 8].filter((k) => b & k).length;
+      let c = '+';
+      if (!dikey) c = '-';
+      else if (!yatay) c = '|';
+      else if (kol === 2) c = b & 2 ? '.' : "'";
+      const kenar = secili && (x === secili.x0 || x === secili.x1 || y === secili.y0 || y === secili.y1) && x >= secili.x0 && x <= secili.x1 && y >= secili.y0 && y <= secili.y1;
+      yaz(x, y, c, renkli('duvar', kenar ? '--ink' : renkH[y][x]));
+    }
+
+    // Tuğla içleri: numara ortada; süslü tuğlalarda seyrek nokta deseni; açılınca parıltı.
+    for (const t of tuglalar) {
+      const st = durum.get(t.no);
+      const iw = t.x1 - t.x0 - 1, ih = t.y1 - t.y0 - 1;
+      const ny = t.y0 + Math.floor((t.y1 - t.y0) / 2);
+      const ns = String(t.no), nx = t.x0 + 1 + Math.floor((iw - ns.length) / 2);
+      for (let r = 0; r < ih; r++) {
+        const y = t.y0 + 1 + r;
+        const acikSatir = r < st.kare;
+        for (let x = t.x0 + 1; x < t.x1; x++) {
+          if (y === ny && x >= nx - 1 && x <= nx + ns.length) continue;
+          if (acikSatir) {
+            const h = hash(x, y);
+            if (h < 0.42) yaz(x, y, h < 0.1 ? '*' : h < 0.2 ? '+' : h < 0.32 ? '.' : "'", `<span class="parilti p${(x + y) % 3}">`);
+          } else if (t.sus && (x + y * 2) % 4 === 0) yaz(x, y, '·', renkli('nokta', t.sus));
+        }
+        if (y === ny) {
+          const acikNo = acikSatir;
+          metin(nx, y, ns, acikNo ? '<span class="no yan">' : renkli('no', t.sus || '--ink'));
+        }
+      }
+    }
+
+    // Omuzlarda kar şapkası ve dal uçlarında ampul.
+    katlar.forEach((k, i) => {
+      const ust = i > 0 ? katlar[i - 1] : null;
+      const sapka = (a, b) => { for (let x = a; x <= b; x++) yaz(x, k.y0 - 1, '.:'[x % 2], '<span class="kapak-kar">'); };
+      if (ust) { sapka(k.x0, ust.x0 - 1); sapka(ust.x1 + 1, k.x1); } else sapka(k.x0, k.x1);
+      ampul(k.x0 - 1, k.y0 + 1); ampul(k.x1 + 1, k.y0 + 1);
+    });
+
+    // Yıldız: karakterlerden bir parıltı, ışınları yanıp söner.
+    const tepe = katlar[0], sx = Math.floor((tepe.x0 + tepe.x1) / 2), sy = tepe.y0 - 7;
+    const yildiz = [" .  |  . ", "  '.|.'  ", "--==*==--", "  .'|'.  ", " '  |  ' "];
+    yildiz.forEach((s, r) => {
+      for (let i = 0; i < s.length; i++) {
+        if (s[i] === ' ') continue;
+        const merkez = r === 2 && i === 4;
+        yaz(sx - 4 + i, sy + r, s[i], merkez ? '<span class="oz">' : `<span class="isin i${(i + r) % 2}">`);
+      }
+    });
+
+    // HTML: aynı etiketli komşu hücreler tek span olur.
+    let html = '';
+    for (let y = 0; y < H; y++) {
+      let acik = '';
+      for (let x = 0; x < W; x++) {
+        const e = T[y][x];
+        if (e !== acik) { if (acik) html += '</span>'; if (e) html += e; acik = e; }
+        const c = C[y][x];
+        html += c === '<' ? '&lt;' : c === '>' ? '&gt;' : c === '&' ? '&amp;' : c;
+      }
+      if (acik) html += '</span>';
+      html += '\n';
+    }
+    cizim.innerHTML = html;
+    maskeyiGuncelle();
   };
 
-  // Kar zemini: iki satır tepe ve bir satır doku.
-  const zemin = document.getElementById('zemin');
-  const zeminiCiz = () => {
-    const n = sutun(zemin);
-    const d0 = "    _.--._          _.-'''-._      ";
-    const d1 = "_.-'      '-.__.--''         ''--._";
-    const d2 = " .  '  .   .   '  .  .   '  .   . ";
-    const uzat = (d) => d.repeat(Math.ceil(n / d.length) + 1).slice(0, n);
-    zemin.textContent = `${uzat(d0)}\n${uzat(d1)}\n${uzat(d2)}`;
+  // Tıklanabilir alanlar: her tuğlanın üstünde görünmez bir düğme.
+  const dugmeleriKur = () => {
+    sahne.querySelectorAll('.kutu').forEach((b) => b.remove());
+    tuglalar.forEach((t, i) => {
+      const b = document.createElement('button');
+      b.className = 'kutu';
+      b.style.cssText = `left:${t.x0 * chW}px;top:${t.y0 * satirH}px;width:${(t.x1 - t.x0 + 1) * chW}px;height:${(t.y1 - t.y0 + 1) * satirH}px`;
+      b.setAttribute('aria-label', `box ${t.no}`);
+      b.setAttribute('aria-pressed', String(durum.get(t.no).acik));
+      b.addEventListener('pointerenter', () => { uzerinde = i; ciz(); });
+      b.addEventListener('pointerleave', () => { if (uzerinde === i) { uzerinde = -1; ciz(); } });
+      b.addEventListener('focus', () => { uzerinde = i; ciz(); });
+      b.addEventListener('blur', () => { if (uzerinde === i) { uzerinde = -1; ciz(); } });
+      b.addEventListener('click', () => ac(t, b));
+      sahne.appendChild(b);
+    });
   };
-  const yerlesim = () => { isiklariCiz(); zeminiCiz(); };
+
+  // Açılış: tuğlanın içi yukarıdan aşağı satır satır parıltıyla dolar; tekrar tıklayınca kapanır.
+  const ac = (t, b) => {
+    const st = durum.get(t.no);
+    st.acik = !st.acik;
+    b.setAttribute('aria-pressed', String(st.acik));
+    const hedef = st.acik ? t.y1 - t.y0 - 1 : 0;
+    if (azHareket) { st.kare = hedef; ciz(); return; }
+    const adim = () => {
+      if (st.kare === hedef) return;
+      st.kare += st.kare < hedef ? 1 : -1;
+      ciz();
+      setTimeout(adim, 70);
+    };
+    adim();
+  };
+
+  // Kar: ızgarada hücre hücre düşer; ağacın, ışıkların ve yazıların olduğu hücrelere girmez.
+  let maske = [], taneler = [];
+  const maskeyiGuncelle = () => {
+    maske = C.map((satir) => satir.map((c) => c !== ' '));
+    for (const k of katlar) for (let y = k.y0; y <= k.y1; y++) for (let x = k.x0; x <= k.x1; x++) if (maske[y]) maske[y][x] = true;
+  };
+  const isaretler = ['*', '-', '*', '.', '+', '-', '*', "'"];
+  const yeniTane = (ust) => ({ x: Math.floor(Math.random() * W), y: ust ? 0 : Math.floor(Math.random() * (H - 4)), hiz: 2 + Math.floor(Math.random() * 4), t: 0, c: isaretler[Math.floor(Math.random() * isaretler.length)] });
+  const karKur = () => { taneler = Array.from({ length: Math.round((W * H) / 38) }, () => yeniTane(false)); };
+  const karCiz = () => {
+    const satirlar = Array.from({ length: H }, () => Array(W).fill(' '));
+    for (const k of taneler) if (k.y < H && !(maske[k.y] && maske[k.y][k.x])) satirlar[k.y][k.x] = k.c;
+    karPre.textContent = satirlar.map((s) => s.join('')).join('\n');
+  };
+  const karAkit = () => {
+    for (const k of taneler) {
+      if (++k.t < k.hiz) continue;
+      k.t = 0; k.y++;
+      if (Math.random() < 0.18) k.x = (k.x + (Math.random() < 0.5 ? -1 : 1) + W) % W;
+      if (k.y >= H - 3) Object.assign(k, yeniTane(true));
+    }
+    karCiz();
+  };
+
+  const hepsi = () => { olc(); kur(); ciz(); karKur(); karCiz(); };
 
   // Yön seçici: palet ve font karşılaştırması için, ürün kontrolü değil.
   const yonler = document.querySelectorAll('.yon button');
   yonler.forEach((btn) => btn.addEventListener('click', () => {
     body.dataset.yon = btn.dataset.v;
+    body.classList.toggle('gece-isik', btn.dataset.v === 'gece');
     yonler.forEach((x) => x.setAttribute('aria-pressed', String(x === btn)));
-    requestAnimationFrame(yerlesim);
+    requestAnimationFrame(hepsi);
   }));
+  body.classList.add('gece-isik');
   const istenen = new URLSearchParams(location.search).get('yon');
   [...yonler].find((b) => b.dataset.v === istenen)?.click();
-  yerlesim();
-  document.fonts.ready.then(yerlesim);
-  addEventListener('resize', yerlesim);
 
-  // Kar: * - · + karakterleri, ağacın arkasında yavaşça yağar.
-  const cv = document.getElementById('kar');
-  const cx = cv.getContext('2d');
-  const isaretler = ['*', '-', '*', '·', '+', '-', '*'];
-  let taneler = [], W = 0, H = 0;
-  const yeni = (ust) => ({
-    x: Math.random() * W, y: ust ? -20 : Math.random() * H,
-    hiz: .25 + Math.random() * .8, boy: 11 + Math.random() * 12,
-    salin: Math.random() * Math.PI * 2, a: .3 + Math.random() * .55,
-    c: isaretler[(Math.random() * isaretler.length) | 0],
-  });
-  const boyutla = () => {
-    const dpr = Math.min(2, devicePixelRatio || 1);
-    W = innerWidth; H = innerHeight;
-    cv.width = W * dpr; cv.height = H * dpr;
-    cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    taneler = Array.from({ length: Math.min(110, Math.round((W * H) / 15000)) }, () => yeni(false));
-  };
-  const ciz = () => {
-    const st = getComputedStyle(body);
-    const renk = st.getPropertyValue('--snow').trim();
-    cx.clearRect(0, 0, W, H);
-    for (const t of taneler) {
-      cx.fillStyle = `rgba(${renk}, ${t.a})`;
-      cx.font = `${t.boy}px ${st.fontFamily}`;
-      cx.fillText(t.c, t.x, t.y);
-    }
-  };
-  const akit = () => {
-    for (const t of taneler) {
-      t.salin += .012; t.y += t.hiz; t.x += Math.sin(t.salin) * .35;
-      if (t.y > H + 20) Object.assign(t, yeni(true));
-    }
-    ciz();
-    requestAnimationFrame(akit);
-  };
-  boyutla();
-  addEventListener('resize', boyutla);
-  if (azHareket) { ciz(); yonler.forEach((b) => b.addEventListener('click', () => requestAnimationFrame(ciz))); }
-  else requestAnimationFrame(akit);
+  hepsi();
+  document.fonts.ready.then(hepsi);
+  let zaman;
+  addEventListener('resize', () => { clearTimeout(zaman); zaman = setTimeout(hepsi, 120); });
+  if (!azHareket) setInterval(karAkit, 110);
 })();
 </script>
 </body>
