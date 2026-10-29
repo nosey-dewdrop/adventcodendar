@@ -2,6 +2,10 @@
 
 En yeni üstte. Yalnız eklenir.
 
+## 30.10.2026 — ağaç prototipi (agac/index.html)
+**Yapıldı:** Damla'nın tarifiyle 30 kutulu advent ağacı. Pastel kart → ASCII kutu → dolgulu lego → tek monospace karakter tuvali oldu; Damla son hali için "çok tatlı, çok beğendim" dedi. Tuğlalar ortak duvarlı lego, kavisli girland, sarkan ışıklar, karakter yıldız, ızgarada kar var. Başlık `guest@adventcodendar:~$ tree` komut satırı, altta tmux gibi durum çubuğu. Gece yönü seçildi, font Recursive. Terminal zemini Damla'nın Terminal penceresinden ölçüldü (#1e1e1e). Masaüstü 1440 ve mobil 390 ekranları incelendi, konsol hatası yok.
+**Sonraki:** zemin kararı (lacivert / terminal), ad sorusu (YAPILMAYACAKLAR.md §0), sonra ağaç bölümünün çekimi.
+
 ## 30.10.2026 — teknik ve görsel araştırma, yapılmayacaklar listesi
 - Devir notu PROJECT.md'ye aynen kaydedildi; CLAUDE.md kuruldu.
 - 6 araştırma (research/2026-10-30/): yargıçlar (AoC, LeetCode, Polygon, ICPC, CMS, Judge0),
