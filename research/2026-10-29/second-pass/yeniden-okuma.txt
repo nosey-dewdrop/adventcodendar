@@ -1,0 +1,266 @@
+ADVENTCODENDAR — SOHBETTEN BAŞLAYAN İKİNCİ ARAŞTIRMA
+29.10.2026
+
+Durum: araştırma ve yorum. Kullanıcının görsel beğenisinin çözüldüğü iddia edilmiyor.
+İlk rapordaki tasarım teşhisleri kesin karar değildir. Bu rapor özellikle onların
+fazla dar ve reçeteci kalan taraflarını düzeltir. Ürün uygulaması başlamadı.
+
+1. Sohbetin bütünü hangi talebi oluşturuyor?
+
+“Sistemi değiştirmek istemiyorum, doğasını değiştirmek istemiyorum.”
+Yeni referansların amacı Adventcodendar'ı başka bir ürüne çevirmek değil. Gerçek
+case'ler, teknoloji serbestliği, aylık takvim, ağaç, hediyeler, üyeler, çözümler,
+puan ve katkı sahipleri ürünün temelidir. Araştırmada bulunan güzel bir ürünün
+dil kategorilerini, eğitim programını veya marka kimliğini buraya taşımayacağız.
+
+“Font çok tatlı olmalı… gayet büyük olsun… monospace istiyorum gibi.”
+Kesin font seçimi yok; karakter, okunaklı ölçek ve sıcaklık talebi var. Monospace
+eğilimi bir terminal taklidi veya küçük kod yazısı isteği olarak okunmamalı.
+GitHub'ın küçük yazısını kopyalamak kullanıcının açık büyük font isteğini karşılamaz.
+
+“Sağ sol boşluklar olmasını istemiyorum bu sefer.”
+Ekranın ortasına dar bir şablon yerleştirme alışkanlığından kaçınma talebi var.
+Bu, bütün paragraf satırlarını ekran genişliğine yayma talimatı değildir. Çalışma
+alanının doluluk ve ölçek hissi, okunacak satırın uzunluğuyla ayrı ele alınmalı.
+
+“Dünya hissi ağaç değil… fontu, büyüklükleri ve bütün uyumlar.”
+Ağaç vazgeçilmez bir öğe; ancak dünyanın görsel niteliğini tek başına taşıyamaz.
+Sayfaların sıradan alanlarında da aynı kimlik hissedilmeli. Bu cümle, daha fazla
+dekor veya ağaç animasyonu ekleyerek karşılanamaz.
+
+“GitHub profil sayfası muhteşem.”
+Asıl güçlü referans profil. Önceki yanıtın GitHub giriş formunu merkez yapması
+yanlıştı. Profilde kişisel kimlik, üretilen işler ve geçmiş birlikte görülüyor.
+Bu birleşimin görsel kompozisyonu araştırılmalı; yalnızca heatmap kopyalanmamalı.
+
+“Stitchu'da üyelik adına her şey var… ama çok çirkinler.”
+Çalışan mekanikler estetik kaliteye kanıt olarak sunulamaz. Eksik özellik arama,
+güvenlik checklist'i veya test sonucu bu itirazın cevabı değil. Aynı şekilde
+“input 496px, buton 89px” ölçüsü de estetik nedenin tek başına açıklaması değil.
+
+“Mühendislik açısından da”, “ilk defa üye… para kazanacağımız sistem”.
+Görsel kalite düzeltmesi mühendisliği iptal etmiyor. İkisi birlikte isteniyor.
+Ancak her birinin kendi incelemesi ve kabulü var; biri diğerinin yerine geçemez.
+
+“2 çekmeden hediye paketlerini vermeni istemiyorum.”
+Araştırma ve genel planlama serbest; hediye tasarımı/teslimi ağaç çekimine bağlı.
+Gelecek aşamanın iyi bir fikri olması sırayı bozmak için gerekçe değildir.
+
+Kısa katkı satırı kabul edildi. Aylık topluluk özeti reddedildi. Streak, kalan
+işe dönüş, hediye ipucu ve çözüm geçmişi olumlu karşılandı. Proje keşfi ve iOS
+ileri aşama ihtimali; kullanıcıyı öğrenen sistem ilk sürüm zorunluluğu değil.
+
+2. Önceki araştırmanın yanlış çıkarımları
+
+Birinci hata: her estetik itirazı çalışır ürün davranışına bağlamak.
+İkinci hata: ardından tam tersine gidip estetiği piksel ölçüleri toplamı yapmak.
+Üçüncü hata: tutarlılığı yeterli saymak. Çirkin bulunan bir dil de tutarlı olabilir.
+Dördüncü hata: “küçük başlık + aynı genişlikte buton = güzel” gibi bir tarif ima etmek.
+Beşinci hata: benzer ürün araştırmasını özellik kataloğuna dönüştürmek.
+Altıncı hata: kullanıcının beğenisini birkaç ekranla çözmüş gibi konuşmak.
+
+Artık ayrı bakılan üç soru:
+- Yapılan iş doğru çalışıyor mu?
+- Görsel uygulama özenli ve dengeli mi?
+- Seçilen görsel karakter bu ürüne ve kullanıcının aradığı duyguya uyuyor mu?
+Üç sorudan yalnızca ilk ikisinin olumlu olması üçüncüyü garanti etmez.
+
+3. Araştırmanın kapsamı ve kanıt türleri
+
+Yeni tarayıcı incelemeleri: kullanıcının kamuya açık GitHub profili
+(nosey-dewdrop), Primer React deposu ve issue listesi; AoC etkinlik arşivi ve
+2024 istatistik ekranı; Stitchu ana sayfası ve gerçek katalog rotası; GYMGYME
+ana ekranı; Codewars kullanıcı profili; Exercism Python track sayfası.
+İlk turdaki GitHub profil/katkı, AoC problem ve Stitchu giriş ekranlarıyla birlikte
+değerlendirildi. 1440×1000 masaüstü görüntüleri yerelde tutuldu.
+
+GitHub ilk networkidle beklemelerinde zaman aşımına uğradı; DOM hazır olduktan
+sonra ekranlar yeniden alındı. Depo ekranında bazı ek bilgiler hâlâ skeleton
+durumunda; bunu kalıcı tasarım veya performans kusuru olarak yorumlamıyoruz.
+Stitchu katalogdaki bir görsel görüntü anında yüklenmemiş; nedenini incelemeden
+bozuk veri/ürün hatası saymıyoruz. Tahmin edilen /patterns.html rotası 404 verdi;
+gerçek navbar /journal/index.html'e gidiyor. Yanlış tahmin ürün bulgusu değildir.
+GYMGYME ana sayfasında main elementi olmadığından ilk ekran denemesi alınamadı;
+ikinci denemede sayfa görüntülendi. Kamera açılmadı, hesap işlemi yapılmadı.
+LeetCode önceki turda doğrulamaya takılmıştı; yeni görsel iddia üretilmedi.
+
+Kaynak yazıları: Dan Mall / A List Apart, iA, GitHub'ın kendi tasarım anlatısı,
+Linear'ın tasarım ekibi, Figma, NN/g ve Google Research'teki bir deneysel çalışma.
+Tasarım yazıları uzman görüşüdür; deneysel psikoloji sonuçları değildir.
+Bu dosyadaki ekran yorumları araştırmacı yorumudur; kullanıcının henüz onayladığı
+görsel yön olarak kaydedilmez.
+
+4. “Dünya hissi” için daha isabetli çalışma hipotezi
+
+Burada tek bir akademik terimin birebir karşılığı yok. Daha yakın kavramlar:
+görsel yön/art direction, karakter, kompozisyon, bütünlük ve ürüne özgülük.
+Çalışma hipotezi: Kullanıcı, birbirine eklenmiş hazır ekranlar yerine, bütün
+görsel kararları aynı karakteri taşıyan ve içinde bulunmaktan hoşlanacağı bir
+ürün istiyor. Bunun görsel çekiciliği ilk bakışta hissedilmeli; ayrıntılara
+yaklaşınca da çözülmemeli. Hipotez gelecekte somut görsel örneklerle doğrulanmalı.
+
+Dan Mall, görsel yönün bir işin hangi duyguyu ve anlamı taşıyacağını belirlemesiyle,
+tasarımın bu niyeti renk, yazı ve kompozisyonla uygulamasını ayırıyor. Buradan
+çıkan ders: yalnızca hizaları düzeltmek veya bir font listesi seçmek hedeflenen
+karakteri belirlemiş olmak değildir.
+Kaynak: https://alistapart.com/article/art-direction-and-design/
+
+5. GitHub profili: kişinin işi görünümün malzemesi
+
+Kullanıcının kendi profilinde fotoğraf, adı ve kullanıcı adı bir kimlik alanı;
+README, gerçek proje adları, bağlantılar ve repo alanı başka bir ağırlık merkezi.
+Bunlar hem ayrışıyor hem de ortak çizgiler, yazı tonları ve link davranışıyla
+ilişki kuruyor. Profil görseli ve kişisel metin, ürünü kişiselleştiriyor; UI
+bunların üstüne yüksek sesli bir marka gösterisi yerleştirmiyor.
+
+Profil, depo ve issue listesi aynı yerleşimi kullanmıyor. Profil kimlik/iş
+ilişkisini, depo dosyalar/bağlam ilişkisini, issue listesi taranabilir satırları
+öne çıkarıyor. Buna rağmen yazının dokusu, kontrol ölçüleri, renklerin rolleri ve
+seçili alan işaretleri akraba. Bütünlük aynı şablonun kopyalanması değil.
+
+GitHub kendi tasarım anlatısında ürünün gerçek kullanımını ve geliştirici
+kültürünü görsel anlatıya taşıdığını açıklıyor. Bu 2021 tarihli ana sayfa yazısı
+bugünkü profilin teknik belgesi değil; ürünün kendisine özgü görsel anlatı
+üretme yaklaşımının birincil örneği olarak kullanıldı.
+
+Adventcodendar karşılığı: Profilde kullanıcının çözdüğü işler ve kişisel izi
+gerçek görsel ağırlık taşımalı. Puan, rozet ve seri eklenmiş boş bir hesap paneli
+aynı sonucu vermez. Bu, daha fazla özellik üretme teklifi değil; zaten onaylanan
+bilginin nasıl gösterileceğiyle ilgili. Az işi olan yeni profil de iyi görünmeli;
+çok içerikle tasarımı kurtarmaya güvenemeyiz.
+
+Kaynak: https://github.com/nosey-dewdrop
+Kaynak: https://github.com/primer/react
+Kaynak: https://github.com/primer/react/issues
+Kaynak: https://github.blog/news-insights/company-news/how-we-designed-and-wrote-the-narrative-for-our-homepage/
+
+6. AoC: normal sayfalar da aynı karakterde
+
+Takvim, problem, yıllar arşivi ve istatistik sayfası karşılaştırıldı.
+Arşivde yalnızca kısa açıklama ve yıl bağlantıları var. İstatistikte sayılarla
+yıldızlar aynı eşaralıklı düzen içinde grafik oluşturuyor. Problemde paragraf,
+kod ve vurgu var. Yoğunlukları farklı; hepsi aynı metinsel karakteri sürdürüyor.
+
+Önemli çıkarım: Çok boş alan dünyanın hissini otomatik olarak bozmuyor.
+Dolayısıyla kullanıcının yan boşluk isteğini “her alanı doldur” diye çevirmek
+yanlış olur. AoC'de metin, çizim ve veri gösterimi birbirinden kopuk görsel
+katmanlar değil. Yıldız hem işaret, hem vurgu, hem de istatistik malzemesi olabiliyor.
+Bizim ürün için aynı anlam bağını kuran özgün görsel dil gerekli; AoC'nin
+markası, paleti veya yıldız sistemi doğrudan kopyalanmayacak.
+
+Kaynak: https://adventofcode.com/events
+Kaynak: https://adventofcode.com/2024/stats
+Kaynak: https://adventofcode.com/2024/day/1
+
+7. Stitchu: ortak CSS zaten var, daha derin sorun var
+
+Ana sayfa, katalog ve giriş ekranında açık pembe, yuvarlatılmış beyaz yüzeyler,
+benzer fontlar ve navbar görülüyor. Bu nedenle “aynı tokenları kullanırsak
+dünya olur” açıklaması yetersiz. Ana sayfada kıyafetler ve askı çizimi konuya
+özgü görsel malzeme sunuyor. Giriş ekranında bu malzeme kaybolunca kalan form
+daha genel bir hazır ekran gibi okunuyor. Bu bir tasarım yorumudur.
+
+Çözüm, hesap ekranına rastgele elbise görseli koymak olarak çıkarılamaz. Gerekli
+olan; typographic karakter, çizgi kalitesi, yüzey kullanımı ve kompozisyonun
+konuya ait hissi sıradan ekranlarda da taşıması. Süs olmadan da kimlik sürmeli.
+46px başlık veya küçük buton tek başına suçlu ilan edilemez. Güçlü başka bir
+kompozisyonda bu kararlar işe yarayabilir. Önceki raporun ölçü karşılaştırması
+gözlemdir; estetik nedeni kanıtlayan teşhis değildir.
+
+Kaynak: https://stitchu.noseydewdrop.com/
+Kaynak: https://stitchu.noseydewdrop.com/journal/index.html
+Kaynak: https://stitchu.noseydewdrop.com/account.html
+
+8. GYMGYME ve diğer örnekler: teknik ayrıntı estetik kaliteyle aynı şey değil
+
+GYMGYME'nin incelenen ilk ekranında eklem/nokta figürü, açı ve tekrar sayısı,
+izometrik desen, mor eylemler, sans başlık ve monospace teknik etiketler var.
+Mühendislik içeriği görünür; buna rağmen kullanıcının beğenmediği bir sonuç.
+Buradan “daha çok teknik metin gösterelim” sonucu çıkaramayız. Figür, yazı,
+kontroller, arka plan ve alan kullanımı beraber bir görsel yön taşımalı.
+Kamera akışı incelenmedi; tüm uygulama hakkında hüküm verilmiyor.
+
+Codewars profili, XP/rank/istatistik gibi benzer mekanikleri farklı bir estetikte
+sunuyor. Mekanik benzerliği görsel hedefe yakınlık sağlamıyor.
+Exercism'in açık Python sayfası büyük yazı, illüstrasyon ve geniş eylemlerle
+başka bir karakter kuruyor. Büyük başlığı kategorik olarak reddetmemek için
+karşı örnek; kullanıcının bunu beğendiği varsayılmıyor.
+
+Kaynak: https://gymgyme.noseydewdrop.com/
+Kaynak: https://www.codewars.com/users/g964
+Kaynak: https://exercism.org/tracks/python
+
+9. Tipografide eksik kalan araştırma: font adı değil, metnin bütünü
+
+iA'nın makro/mikro tipografi ayrımı yararlı: harf ayrıntıları kadar metin
+blokları, sütun oranları ve hiyerarşi de tipografi. “Tatlı monospace” için sadece
+üç font seçip bırakmak yetersiz. Aynı case adı, kullanıcı adı, tarih, açıklama,
+sonuç satırı ve uzun paragraf birlikte incelenmeli.
+
+Başlıkta hoş görünen yazı uzun okumada yorabilir. Aynı px ölçüsündeki iki font
+aynı büyüklükte algılanmayabilir. Rakam, noktalama ve Türkçe karakterlerin çizimi
+ürünün dokusuna katılır. Her metni kalınlaştırmak güçlü hiyerarşi kurmak anlamına
+gelmez. Kullanıcının büyük yazı isteği korunacak; önceki rapordaki 18/24/36 gibi
+ölçüler onaylanmış tasarım sistemi sayılmayacak.
+
+Kaynak: https://ia.net/topics/the-web-is-all-about-typography-period/
+
+10. Psikoloji: burada araştırılması gereken sadece alışkanlık değil
+
+Tuch ve arkadaşlarının iki deneyinde sayfa görüntülerinin görsel karmaşıklığı
+ve kategoriye aşinalığı erken estetik değerlendirmeyi etkiliyor. Bu, kullanıcının
+işlevleri denemeden de güçlü bir estetik yargı oluşturmasını ciddiye almak için
+ilgili bir bulgu. Araştırma 2012 tarihli; belirli örnekler ve deney koşulları var.
+Sonuç “her şeyi sadeleştir” veya “hazır şablon kullan” değildir. Kullanıcının
+kişisel beğenisini açıklayan tanı olarak kullanılamaz.
+
+NN/g'nin marka niyeti/algısı ayrımı da önemli: Tasarımcı “sıcak ve mühendislik
+hissi veren” dediği için kullanıcı bunu öyle deneyimlemez. Sözcüklerle ilan edilen
+karakter, gerçek ekran örneklerinde karşılığını bulmalı. Kullanıcıya aynı
+açıklamayı tekrar ederek görüntüyü sevdirmeye çalışılmayacak.
+
+Streak araştırması önceki dosyada korunuyor; burada estetik itirazın cevabı gibi
+kullanılmıyor. Aynı şekilde güvenlik, SEO ve yükleme hedefleri ayrı geçerliliğini
+koruyor. Bu tur bunların uygulanmış veya denetlenmiş olduğunu iddia etmiyor.
+
+Kaynak: https://research.google/pubs/the-role-of-visual-complexity-and-prototypicality-regarding-first-impression-of-websites-working-towards-understanding-aesthetic-judgments/
+Kaynak: https://www.nngroup.com/articles/brand-intention-interpretation/
+
+11. Tasarım yöntemi için araştırmadan çıkan değişiklik
+
+Linear'ın ekibi tek bir bileşen yerine farklı ekranlarla görsel yön arayıp,
+sonrasında ortam, görünüş ve hiyerarşiyi sınamış. GitHub da görsel alternatifleri
+ürünün hikâyesiyle birlikte araştırmış. Bizim çıkarımımız: Önce komponent
+kütüphanesi doldurmak, aranan görünüşe ulaşmayı garanti etmiyor.
+
+Sonraki görsel aşama için öneri:
+1) İlgili aşamanın tek bir gerçek içerik örneğiyle birbirinden anlamlı biçimde
+   ayrılan az sayıda görsel yön değerlendirilir. Sadece renk değiştirmek yetmez.
+2) Aynı yönün başlık, kısa satır ve paragrafta sürüp sürmediğine bakılır.
+3) Dolu/az içerikli ve mobil örneklerde karakterin korunması incelenir.
+4) Beğenilen görünüşün nedenleri kaydedilir; sonra ortak kuralları çıkarılır.
+5) Sonraki ürün ekranı kendi aşaması geldiğinde aynı dile göre tasarlanır.
+
+Bu bir önerilen çalışma yöntemi, henüz kullanıcı tarafından kesinleştirilmiş
+tasarım veya bütün ekranları şimdiden yapma yetkisi değildir. Özellikle ağaç
+çekiminden önce hediye tasarımı yok. Araştırma atlasında yalnızca mevcut sitelerin
+görüntüleri bulunur; Adventcodendar taslak ekranı değildir.
+
+Kaynak: https://linear.app/now/how-we-redesigned-the-linear-ui
+Kaynak: https://www.figma.com/resource-library/consistency-in-design/
+
+12. Karşılaştırma ölçütleri — “dünya”yı sayısal puana indirgemeden
+
+Özgüllük: İsim değişince başka bir rastgele ürünün ekranı gibi duruyor mu?
+Karakter: Büyük yazı, sıcaklık ve mühendislik çağrışımı aynı bütünde var mı?
+İlişki: Elemanlar tek tek güzel olsa da yan yana gelince birbirlerini destekliyor mu?
+Süreklilik: Resim/mascot görünmeyen sıradan sayfada ürün hâlâ tanınabilir mi?
+İçerik: Kullanıcının işi görsel kompozisyonun gerçekten merkezinde mi?
+Ölçek: Ekran kullanımı büyük yazı talebiyle birlikte çözülmüş mü?
+Derinlik: Yakından bakıldığında ikon, rakam, çizgi, odak, boşluk aynı özeni taşıyor mu?
+Beğeni: Kullanıcı görüntüyü gerçekten beğeniyor mu? Açıklamaya ikna oldu mu sorusu
+        bunun yerine konamaz.
+
+Hiçbiri evrensel “güzel UI formülü” değil. Koyu/açık, büyük/küçük, kart/satır,
+yoğun/seyrek tercihleri içerik ve hedeflenen karakterle birlikte değerlendirilecek.
+Kullanıcının onayladığı ana mekanikler ve aşama sınırları değişmedi.

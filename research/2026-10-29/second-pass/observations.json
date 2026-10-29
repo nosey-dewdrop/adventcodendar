@@ -1,0 +1,59 @@
+[
+  {
+    "name": "github-repo",
+    "url": "https://github.com/primer/react",
+    "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://github.com/primer/react\", waiting until \"networkidle\"\u001b[22m\n"
+  },
+  {
+    "name": "github-issues",
+    "url": "https://github.com/primer/react/issues",
+    "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://github.com/primer/react/issues\", waiting until \"networkidle\"\u001b[22m\n"
+  },
+  {
+    "name": "github-own-profile",
+    "url": "https://github.com/nosey-dewdrop",
+    "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://github.com/nosey-dewdrop\", waiting until \"networkidle\"\u001b[22m\n"
+  },
+  {
+    "name": "stitchu-home",
+    "url": "https://stitchu.noseydewdrop.com/",
+    "actual": "https://stitchu.noseydewdrop.com/",
+    "title": "Stitchu | Free PDF Dress Sewing Patterns & Sewing Guides",
+    "excerpt": "skip to content\nstitchu\nblog\npatterns\npatch notes\nguides\nworkshop\nsearch\nsign in\ncreate account\nen\ntr\nfree dress sewing patterns, drafted from photos and shared with their story.\ndescribe your dress\ndesign it\n\nstart with your own words. choose the size in the workshop.\n\nblue and pink plaid belted mini\nfeatured EU 36 PDF\nnavy gingham off-centre button mini\nfree EU 36 PDF\npink bow keyhole mini\nfree EU 36 PDF\nred gingham button-front mini\nfree EU 36 PDF\nyellow shoulder-tie maxi\npink bow wrap mini\nfree EU 36 PDF\npink pinstripe back-bow mini (back)\nall 20 designs →\nromantic blouses from a written description\npink gingham petite-ruffle blouse\n\npink gingham, an open square neck with two fine ruffle layers, a shaped waist and short puff sleeves. concealed back zip.\n\nlilac petite-bow blouse\n\nlilac dots, an open v neck with a fine ruffle, three functional bow ties, a shaped waist and short puff sleeves.\n\nrose square-neck peplum blouse\n\nrose pink with tiny dots, an open square neck, fitted waist and a short flared peplum. short sleeves and concealed side zip.\n\nall new designs →\n\nworkshop\n\nsign in to use the workshop\nsign in\ncreate account\nthree ways to a dress\n\ncoming later: a community where designs are shared, and each week damla sews and wears the most-liked dress. about the community\n\nsew it yourself\nopen now\n\nfive dresses, free in EU 36, with no account.\n\nchoose a pattern →\ndesign it\nworkshop\n\ndescribe your design, choose a size and review the result.\n\nopen the workshop →\nhave it s"
+  },
+  {
+    "name": "aoc-stats",
+    "url": "https://adventofcode.com/2024/stats",
+    "actual": "https://adventofcode.com/2024/stats",
+    "title": "Stats - Advent of Code 2024",
+    "excerpt": "Advent of Code[About][Events][Shop][Log In]\n      /*2024*/[Calendar][AoC++][Sponsors][Leaderboards][Stats]\nOur sponsors help make Advent of Code possible:\nEPILOG - Join the SW development team conquering the world from Slovenia.\n\nHere are the current completion statistics for each day; the stats on this page update every few minutes. Gold indicates users that have completed both parts of a puzzle, while silver indicates users that have completed only the first half. Each * or * represents up to 7650 users.\n\n25   17595   9372  *****\n24   19537   8703  *****\n23   25583   2854  *****\n22   25815   4000  *****\n21   20503   3568  ****\n20   27040   4070  *****\n19   32516   3058  ******\n18   35060    853  ******\n17   29127  10901  ******\n16   32669   6534  ******\n15   37521  10590  *******\n14   47914   5723  ********\n13   50415   5837  ********\n12   48430  12346  *********\n11   63896   9603  ***********\n10   69084   1689  ***********\n 9   67184  12502  ***********\n 8   78235   3500  ************\n 7   90467   5023  *************\n 6   85622  30045  ****************\n 5  114784  15230  ******************\n 4  139503  12465  *********************\n 3  172417  19287  **************************\n 2  190606  48006  ********************************\n 1  268570  22099  ***************************************\n"
+  },
+  {
+    "name": "aoc-events",
+    "url": "https://adventofcode.com/events",
+    "actual": "https://adventofcode.com/events",
+    "title": "Events - Advent of Code 2026",
+    "excerpt": "Advent of Code[About][Events][Shop][Log In]\n   0x0000|2026[Calendar][AoC++][Sponsors][Leaderboards][Stats]\n\nFrom here, you can access all of the events (and the corresponding puzzles, leaderboards, stats, etc) ever run on Advent of Code:\n\n[2026]          \n[2025]          \n[2024]          \n[2023]          \n[2022]          \n[2021]          \n[2020]          \n[2019]          \n[2018]          \n[2017]          \n[2016]          \n[2015]          "
+  },
+  {
+    "name": "stitchu-patterns",
+    "url": "https://stitchu.noseydewdrop.com/patterns.html",
+    "actual": "https://stitchu.noseydewdrop.com/patterns.html",
+    "title": "404: NOT_FOUND",
+    "excerpt": "This page doesn’t exist\n\nIt may have been moved, removed, or never existed.\n\n404 NOT_FOUND\n\nfra1::jfslt-1793277010083-83e18cd1d579\n\nVIEW DOCUMENTATION\nCOPY DEBUG PROMPT"
+  },
+  {
+    "name": "codewars",
+    "url": "https://www.codewars.com/users/g964",
+    "actual": "https://www.codewars.com/users/g964",
+    "title": "g964 | Codewars",
+    "excerpt": "Sign Up\nTime to claim your honor\nTRAINING\nPractice\nComplete challenging Kata to earn honor and ranks. Re-train to hone technique\nFreestyle Sparring\nTake turns remixing and refactoring others code through Kumite\nCOMMUNITY\nLeaderboards\nAchieve honor and move up the global leaderboards\nChat\nJoin our Discord server and chat with your fellow code warriors\nDiscussions\nView our Github Discussions board to discuss general Codewars topics\nABOUT\nDocs\nLearn about all of the different aspects of Codewars\nBlog\nRead the latest news from Codewars and the community\nLog In\nSIGN UP\nmod\nName:Unknown\nClan:None\nMember Since:Oct 2014\nLast Seen:Feb 2025\nProfiles:\nFollowing:1,699\nFollowers:8,182\nAllies:1,627\nView Profile Badges\n8 Reasons Why Codewarriors Practice Coding with Codewars\nNot everyone trains the same. Discover new ways to leverage Codewars in your education and career.\nStats\nKata\nCollections\nKumite\nSocial\nDiscourse\nNext stats refresh now\nProgress\nRank:1 kyu\nHonor:489,534\nLeaderboard Position:#1\nHonor Percentile:Top 0.000%\nTotal Completed Kata:2,644\nLanguages:\nTotal Languages Trained:51\nHighest Trained:JavaScript (1 kyu)\nMost Recent:OCaml\nContributions\nCommunity:\nComments:8,145 (388 replies)\nCollections:0\nKumite:671 (750 Started)\nTranslations:4,569 (4,425 approved)\nContributed Kata:81\nKata Approvals:61\nAuthored Kata:\nCreated:142 (2 in beta)\nTotal Completions:2,765,177\nTotal Stars:109,390\nTotal Collected:21,347\nAvg. Rank:5 kyu\nAvg. Satisfaction Rating:84%\nTop Tags:\nFundamentals:108\nMathema"
+  },
+  {
+    "name": "exercism",
+    "url": "https://exercism.org/tracks/python",
+    "actual": "https://exercism.org/tracks/python",
+    "title": "Python on Exercism",
+    "excerpt": "👋\nLearning to code? Check out our new dedicated beginners platform -\nJiki!\nLearn\nDiscover\nContribute\nMore\nSign up\nLog in\nPython\n848,745 students\nAbout Python\nLearn\nPractice\n3409 contributors\n6712 mentors\nWant to learn and master Python?\n\nJoin Exercism’s Python Track for access to 146 exercises grouped into 17 Python Concepts, with automatic analysis of your code and personal mentoring, all 100% free.\n\nJoin the Python Track\nExplore concepts\nAbout Python\n\nPython is a dynamic and strongly typed object-oriented programming language. It employs both duck typing and gradual typing (via type hints). It supports multiple programming paradigms including imperative (object-oriented, procedural) and declarative (functional, concurrent) flavors. But do not be fooled: while programming across paradigms is fully supported, everything in Python is an object.\n\nPython was created by Guido van Rossum and first released in 1991. The Python Software Foundation manages and directs resources for Python and CPython development and receives proposals for changes to the language from members of the community via Python Enhancement Proposals (PEPs). It is considered a strong language for programmers starting their journey, with a welcoming community and many resources available to learners of all levels and interests.\n\nPython puts a strong emphasis on code readability and (similar to Haskell) uses significant indentation to denote function, method, and class definitions. Code can be written and execu"
+  }
+]

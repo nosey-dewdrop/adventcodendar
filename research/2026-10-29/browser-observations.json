@@ -1,0 +1,686 @@
+[
+  {
+    "name": "github-profile",
+    "url": "https://github.com/sindresorhus",
+    "actual": "https://github.com/sindresorhus",
+    "data": {
+      "title": "sindresorhus (Sindre Sorhus) · GitHub",
+      "body": {
+        "font": "\"Mona Sans VF\", -apple-system, \"system-ui\", \"Segoe UI\", \"Noto Sans Backtick Fix\", \"Noto Sans\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+        "size": "14px",
+        "lineHeight": "21px",
+        "color": "rgb(240, 246, 252)",
+        "background": "rgb(13, 17, 23)"
+      },
+      "samples": [
+        {
+          "tag": "H2",
+          "text": "Navigation Menu",
+          "font": "\"Mona Sans VF\", -apple-system, \"system-ui\", \"Segoe UI\", \"Noto Sans Backtick Fix\", \"Noto Sans\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "24px",
+          "line": "36px",
+          "weight": "600",
+          "x": 0,
+          "y": 0,
+          "w": 1,
+          "h": 1
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Products",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "14px",
+          "line": "21px",
+          "weight": "400",
+          "x": 64,
+          "y": 20,
+          "w": 96,
+          "h": 28
+        },
+        {
+          "tag": "A",
+          "text": "GitHubRepository hosting, code review, and collaboration",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 84,
+          "y": 97,
+          "w": 480,
+          "h": 174
+        },
+        {
+          "tag": "A",
+          "text": "CopilotAI coding agent for tasks, projects and automated work",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 84,
+          "y": 279,
+          "w": 480,
+          "h": 174
+        },
+        {
+          "tag": "A",
+          "text": "ActionsCI/CD and automation",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 644,
+          "y": 142,
+          "w": 295,
+          "h": 62
+        },
+        {
+          "tag": "A",
+          "text": "Code QualityQuality analysis, fixes, and enforcement",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 644,
+          "y": 212,
+          "w": 295,
+          "h": 83
+        },
+        {
+          "tag": "A",
+          "text": "CodespacesCloud development environments",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 644,
+          "y": 304,
+          "w": 295,
+          "h": 62
+        },
+        {
+          "tag": "A",
+          "text": "Code SecurityVulnerability detection and remediation",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 1008,
+          "y": 142,
+          "w": 295,
+          "h": 83
+        },
+        {
+          "tag": "A",
+          "text": "Secret ProtectionSecret scanning and leak prevention",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 1008,
+          "y": 233,
+          "w": 295,
+          "h": 83
+        },
+        {
+          "tag": "A",
+          "text": "All Features",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 644,
+          "y": 431,
+          "w": 128,
+          "h": 36
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Developers",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "14px",
+          "line": "21px",
+          "weight": "400",
+          "x": 160,
+          "y": 20,
+          "w": 111,
+          "h": 28
+        },
+        {
+          "tag": "A",
+          "text": "Documentation",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 84,
+          "y": 142,
+          "w": 285,
+          "h": 36
+        },
+        {
+          "tag": "A",
+          "text": "Training",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 84,
+          "y": 186,
+          "w": 285,
+          "h": 36
+        },
+        {
+          "tag": "A",
+          "text": "Certifications",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 84,
+          "y": 230,
+          "w": 285,
+          "h": 36
+        },
+        {
+          "tag": "A",
+          "text": "Build with Copilot",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 420,
+          "y": 142,
+          "w": 285,
+          "h": 35
+        },
+        {
+          "tag": "A",
+          "text": "Customize Copilot",
+          "font": "\"Mona Sans\", MonaSansFallback, -apple-system, \"system-ui\", \"Segoe UI\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "24px",
+          "weight": "400",
+          "x": 420,
+          "y": 185,
+          "w": 285,
+          "h": 36
+        }
+      ]
+    }
+  },
+  {
+    "name": "aoc-calendar",
+    "url": "https://adventofcode.com/2024",
+    "actual": "https://adventofcode.com/2024",
+    "data": {
+      "title": "Advent of Code 2024",
+      "body": {
+        "font": "\"Source Code Pro\", monospace",
+        "size": "18.6667px",
+        "lineHeight": "normal",
+        "color": "rgb(204, 204, 204)",
+        "background": "rgb(15, 15, 35)"
+      },
+      "samples": [
+        {
+          "tag": "H1",
+          "text": "Advent of Code",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "400",
+          "x": 8,
+          "y": 8,
+          "w": 175,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[About]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 195,
+          "y": 8,
+          "w": 78,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Events]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 295,
+          "y": 8,
+          "w": 90,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Shop]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 407,
+          "y": 8,
+          "w": 67,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Log In]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 497,
+          "y": 8,
+          "w": 90,
+          "h": 23
+        },
+        {
+          "tag": "H1",
+          "text": "int y=2024;",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "400",
+          "x": 8,
+          "y": 31,
+          "w": 175,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Calendar]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 195,
+          "y": 31,
+          "w": 112,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[AoC++]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 329,
+          "y": 31,
+          "w": 78,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Sponsors]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 430,
+          "y": 31,
+          "w": 112,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Leaderboards]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 564,
+          "y": 31,
+          "w": 157,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Stats]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 743,
+          "y": 31,
+          "w": 78,
+          "h": 23
+        }
+      ]
+    }
+  },
+  {
+    "name": "aoc-problem",
+    "url": "https://adventofcode.com/2024/day/1",
+    "actual": "https://adventofcode.com/2024/day/1",
+    "data": {
+      "title": "Day 1 - Advent of Code 2024",
+      "body": {
+        "font": "\"Source Code Pro\", monospace",
+        "size": "18.6667px",
+        "lineHeight": "normal",
+        "color": "rgb(204, 204, 204)",
+        "background": "rgb(15, 15, 35)"
+      },
+      "samples": [
+        {
+          "tag": "H1",
+          "text": "Advent of Code",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "400",
+          "x": 8,
+          "y": 8,
+          "w": 175,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[About]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 195,
+          "y": 8,
+          "w": 78,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Events]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 295,
+          "y": 8,
+          "w": 90,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Shop]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 407,
+          "y": 8,
+          "w": 67,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Log In]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 497,
+          "y": 8,
+          "w": 90,
+          "h": 23
+        },
+        {
+          "tag": "H1",
+          "text": "<y>2024</y>",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "400",
+          "x": 8,
+          "y": 31,
+          "w": 175,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Calendar]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 195,
+          "y": 31,
+          "w": 112,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[AoC++]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 329,
+          "y": 31,
+          "w": 78,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Sponsors]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 430,
+          "y": 31,
+          "w": 112,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Leaderboards]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 564,
+          "y": 31,
+          "w": 157,
+          "h": 23
+        },
+        {
+          "tag": "A",
+          "text": "[Stats]",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 743,
+          "y": 31,
+          "w": 78,
+          "h": 23
+        },
+        {
+          "tag": "H2",
+          "text": "--- Day 1: Historian Hysteria ---",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "400",
+          "x": 8,
+          "y": 91,
+          "w": 840,
+          "h": 23
+        },
+        {
+          "tag": "P",
+          "text": "The Chief Historian is always present for the big Christmas sleigh launch, but n",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 8,
+          "y": 133,
+          "w": 840,
+          "h": 115
+        },
+        {
+          "tag": "P",
+          "text": "As each location is checked, they will mark it on their list with a star. They f",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 8,
+          "y": 267,
+          "w": 840,
+          "h": 92
+        },
+        {
+          "tag": "P",
+          "text": "Collect stars by solving puzzles.  Two puzzles will be made available on each da",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 8,
+          "y": 377,
+          "w": 840,
+          "h": 69
+        },
+        {
+          "tag": "P",
+          "text": "You haven't even left yet and the group of Elvish Senior Historians has already ",
+          "font": "\"Source Code Pro\", monospace",
+          "size": "18.6667px",
+          "line": "normal",
+          "weight": "300",
+          "x": 8,
+          "y": 465,
+          "w": 840,
+          "h": 92
+        }
+      ]
+    }
+  },
+  {
+    "name": "github-login",
+    "url": "https://github.com/login",
+    "actual": "https://github.com/login",
+    "data": {
+      "title": "Sign in to GitHub · GitHub",
+      "body": {
+        "font": "\"Mona Sans VF\", -apple-system, \"system-ui\", \"Segoe UI\", \"Noto Sans Backtick Fix\", \"Noto Sans\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+        "size": "14px",
+        "lineHeight": "21px",
+        "color": "rgb(240, 246, 252)",
+        "background": "rgb(13, 17, 23)"
+      },
+      "samples": [
+        {
+          "tag": "H1",
+          "text": "Sign in to GitHub",
+          "font": "\"Mona Sans VF\", -apple-system, \"system-ui\", \"Segoe UI\", \"Noto Sans Backtick Fix\", \"Noto Sans\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "20px",
+          "line": "30px",
+          "weight": "600",
+          "x": 643,
+          "y": 108,
+          "w": 154,
+          "h": 30
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "font": "\"Mona Sans VF\", -apple-system, \"system-ui\", \"Segoe UI\", \"Noto Sans Backtick Fix\", \"Noto Sans\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "20px",
+          "weight": "400",
+          "x": 544,
+          "y": 187,
+          "w": 352,
+          "h": 40
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "font": "\"Mona Sans VF\", -apple-system, \"system-ui\", \"Segoe UI\", \"Noto Sans Backtick Fix\", \"Noto Sans\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "16px",
+          "line": "20px",
+          "weight": "400",
+          "x": 544,
+          "y": 268,
+          "w": 352,
+          "h": 40
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "font": "\"Mona Sans VF\", -apple-system, \"system-ui\", \"Segoe UI\", \"Noto Sans Backtick Fix\", \"Noto Sans\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "14px",
+          "line": "20px",
+          "weight": "500",
+          "x": 544,
+          "y": 324,
+          "w": 352,
+          "h": 40
+        },
+        {
+          "tag": "P",
+          "text": "New to GitHub?\n              Create an account",
+          "font": "\"Mona Sans VF\", -apple-system, \"system-ui\", \"Segoe UI\", \"Noto Sans Backtick Fix\", \"Noto Sans\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "14px",
+          "line": "21px",
+          "weight": "400",
+          "x": 608,
+          "y": 392,
+          "w": 224,
+          "h": 21
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Manage cookies",
+          "font": "\"Mona Sans VF\", -apple-system, \"system-ui\", \"Segoe UI\", \"Noto Sans Backtick Fix\", \"Noto Sans\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "12px",
+          "line": "18px",
+          "weight": "400",
+          "x": 729,
+          "y": 966,
+          "w": 92,
+          "h": 18
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Do not share my personal information",
+          "font": "\"Mona Sans VF\", -apple-system, \"system-ui\", \"Segoe UI\", \"Noto Sans Backtick Fix\", \"Noto Sans\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\"",
+          "size": "12px",
+          "line": "18px",
+          "weight": "400",
+          "x": 869,
+          "y": 966,
+          "w": 212,
+          "h": 18
+        }
+      ]
+    }
+  },
+  {
+    "name": "leetcode",
+    "url": "https://leetcode.com/problemset/",
+    "actual": "https://leetcode.com/problemset/?__cf_chl_rt_tk=I1dphYKinTCNjZPp7mVQmXmqLdq_C6q1RRi7Sx79rhU-1793275970-1.0.1.1-IqQfnvuwJdRY2SxDXQk.KzEyOEEZchkZydFxxqfAABE",
+    "data": {
+      "title": "Just a moment...",
+      "body": {
+        "font": "system-ui, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+        "size": "16px",
+        "lineHeight": "18.4px",
+        "color": "rgb(49, 49, 49)",
+        "background": "rgba(0, 0, 0, 0)"
+      },
+      "samples": []
+    }
+  }
+]

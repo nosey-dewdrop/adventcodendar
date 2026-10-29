@@ -1,0 +1,293 @@
+ADVENTCODENDAR — ARAŞTIRMA VE GÖRSEL YÖN NOTLARI
+29.10.2026 · Araştırma çıktısı; uygulama veya kesinleşmiş tasarım değildir.
+
+GÜNCELLEME: Kullanıcı bu ilk yorumun kendisini karşılamadığını söyledi.
+Önce second-pass/yeniden-okuma.txt ve second-pass/gorsel-arastirma.html okunmalı.
+Aşağıdaki ölçü teşhisleri ve font ölçekleri onaylanmış tasarım kararı değildir.
+GYMGYME ikinci turda incelendi; aşağıdaki inceleme sınırları ilk tura aittir.
+
+En önemli düzeltme
+
+Kullanıcının “dünya hissi” öncelikle doğrudan görsel kaliteyi anlatıyor. Çalışan
+üyelik, streak, kaydetme ve hata ekranları bu kaliteyi kanıtlamıyor. Fontun çizimi,
+boyutlar arasındaki oran, satır uzunluğu, boşluk ritmi, hizalama, yüzeyler, çizgi
+ağırlıkları ve renklerin birlikte oluşturduğu kompozisyon ayrı değerlendirilmelidir.
+Yeni bir özellik eklemek, çirkin bir kompozisyonu çözmez. Kullanıcı bu ayrımı iki
+kez açıkça düzeltti. Sonraki çalışmalar bunu tekrar mekaniklere çevirmemeli.
+
+Yöntem ve sınırlar
+
+GitHub profili (sindresorhus), GitHub giriş ekranı, Advent of Code 2024 takvimi ve
+ilk problem sayfası, Stitchu canlı giriş ekranı Chromium'da açıldı; ekran görüntüsü
+ve computed style kayıtları alındı. Masaüstü 1440×1000, mobil 390×844 kullanıldı.
+Giriş yapılmadı, hesap oluşturulmadı, form gönderilmedi. GitHub katkı bölümü ayrıca
+görüntülendi. Görsellerin aşağıdaki değerlendirmeleri tasarım yorumudur; ölçüler
+ise bu oturumun gözlemidir, tüm cihazlar için sabit ürün özellikleri değildir.
+İlk GitHub masaüstü kaydında README görselleri henüz tam yerleşmemiş olabilir;
+geç yüklenen görsellerden kaynaklanan boşluklar GitHub tasarım kuralı sayılmadı.
+İlk DOM örnekleri görünmeyen menü öğeleri de içeriyor; bu öğelerin ölçüleri görsel
+karşılaştırmada kullanılmadı. LeetCode güvenlik doğrulamasına takıldı; oradan
+güvenilir görsel sonuç çıkarılmadı. GYMGYM incelenmedi. Stitchu'nun oturum açılmış
+hesap ekranı incelenmedi. Rabadon ağacı ve Ladybug kodu henüz incelenmedi.
+
+GitHub Primer, Linear'ın kendi tasarım açıklaması, Codewars, Exercism,
+CodeCrafters, Duolingo'nun deney raporları, bir streak araştırması, OWASP,
+Google Search ve web.dev birincil kaynakları incelendi. Araştırma, bu ürünlerde
+bulunan her özelliğin Adventcodendar'a alınması anlamına gelmiyor.
+
+1. GitHub profilinde gözlemlenen görsel ilişkiler
+
+Kimlik solda; üretimler, sekmeler ve geçmiş sağda belirgin bir hiyerarşi oluşturuyor.
+Profil adı ile kullanıcı adı aynı ağırlıkta değil. Link, açıklama ve metadata
+farklı tonlarda. İnce sınırlar içerik alanlarını tarif ediyor. Her bölüm büyük,
+dolgulu ve gölgeli ayrı bir kutuya dönüştürülmemiş. Proje adları ve eylemler renk
+alırken, çevresindeki bilgi daha sessiz kalıyor. Katkı grafiği kompakt bir ritim
+kuruyor; komşu başlık ve çizgilerle hizalanıyor. Sekmeler, sayılar ve ikonlar aynı
+metrik aileye ait görünüyor.
+
+Bu oturumda body 14px / 21px, sans-serif stack Mona Sans VF ile başlıyor.
+Bu, bütün profil metninin 14px olduğu veya GitHub'ın monospace kullandığı anlamına
+gelmez. Kullanıcının büyük monospace tercihini koruyarak bu oran disiplininden
+yararlanabiliriz. GitHub'ın birebir yoğunluğunu almak zorunda değiliz.
+
+Mobil profilde avatar küçülüp isimle yan yana geliyor; kimlik ve açıklama yeniden
+yerleşiyor. Masaüstünü küçülterek sığdırmak yerine kompozisyon yeniden kurulmuş.
+Adventcodendar'ın mobil hali de ayrıca tasarlanmalı.
+
+Kaynak: https://github.com/sindresorhus
+Kaynak: https://primer.style/product/primitives/typography/
+
+2. Advent of Code'da görsel karakter
+
+Ölçülen body: Source Code Pro, yaklaşık 18.67px. Koyu lacivert zemin, açık gri
+metin, sınırlı yeşil bağlantılar ve yer yer sarı vurgu kullanılıyor. Menü ve
+problem yazısı ortak bir tipografik dilde. Başlıklar büyük bir afişe dönüşmeden
+ayrışıyor. Köşeli parantezler ve metin karakterleri bu dile katılıyor. İlk problem
+ekranında çizim yokken bile karakter sürüyor: dünya hissi ağaca bağımlı değil.
+
+Adventcodendar için çıkarım: Görsel kimliğin yalnızca ana sayfada değil, sıradan
+bir problem paragrafında, tarihte ve formda da hissedilmesi gerekiyor. Büyük font
+talebi tutarlı bir ölçü sistemiyle mümkün. AoC'nin renklerini ve biçimini birebir
+taşımak yerine özgün kimlik oluşturulmalı; kendi About sayfası da kopyalamamayı
+istiyor. İsim ve marka araştırması henüz yapılmadı.
+
+Kaynak: https://adventofcode.com/2024
+Kaynak: https://adventofcode.com/2024/day/1
+Kaynak: https://adventofcode.com/2025/about
+
+3. Stitchu giriş ekranı: somut görsel karşılaştırma
+
+Canlı adres: https://stitchu.noseydewdrop.com/account.html
+Masaüstünde başlık 46px, label 14px. Input genişliği 496px; ana buton yaklaşık
+89px. Form beyaz, yuvarlatılmış bir panel içinde; input sınırları çok silik.
+Navbar yatayda yoğun; form ortada tek başına ve çok daha seyrek. Alt bölümde
+geniş boşluk ve ardından çok sayıda footer bağlantısı var. Mobilde iki yardımcı
+eylem ayrı satırlara bölünerek paneli uzatıyor.
+
+Tasarım yorumu: başlığın kütlesi, alanların genişliği ve ana butonun küçüklüğü
+birbirini desteklemiyor. Pembe arka plan, serif logo, gündelik sans form yazısı,
+pill buton ve yumuşak panel birbirini yeterince tamamlamıyor. Bu öğeler tek tek
+yanlış değil; bu birleşimde ürünün belirgin bir görsel karakterini kuramıyorlar.
+İki alanın çevresindeki boşluk dağılımı zayıf; input şekilleri zemine karışıyor.
+İşlevsel olarak gereken bağlantılar bulunsa bile görüntü tatmin edici olmayabilir.
+
+GitHub girişinde bu oturumda başlık 20px, inputlar 352×40px ve ana buton aynı
+genişlikte. Başlık, alanlar, buton ve yardımcı satır daha sıkı bir bütün oluşturuyor.
+Bu oranlar bizim için kopyalanacak reçete değil, karşılaştırma kanıtı. Ortalanmış
+formun veya boş alanın kendisi sorun değil; parçaların ilişkisi belirleyici.
+
+Kaynak: https://github.com/login
+Yerel kanıtlar: screenshots/stitchu-account.png, screenshots/stitchu-account-mobile.png,
+screenshots/github-login.png, stitchu-observations.json.
+
+4. Tasarım yönü: henüz onaylanmamış başlangıç hipotezi
+
+Öncelik büyük, karakterli monospace; kullanıcıya teknolojik ama sıcak gelen bir
+tipografi. İlk karşılaştırma adayları Recursive Mono, Monaspace Argon ve Source
+Code Pro olabilir. Bunlar seçilmiş fontlar değil. Recursive'in değişken karakteri
+ve Monaspace'in eşaralıklı harflerde yoğunluğu düzenleme yaklaşımı incelenmeye
+değer. Türkçe harfler, 0/O, 1/l/I, rakamlar ve uzun problem paragrafları gerçek
+metinlerle karşılaştırılmalı. Font lisansı ve seçilen dosyanın kapsamı ayrıca
+doğrulanmalı. GitHub'daki sans görünümüyle kullanıcının monospace isteğini aynı
+şey saymamak gerekiyor.
+
+Başlangıç deneme ölçeği: ana içerik 18–20px, ikincil bilgi 15–16px, bölüm başlığı
+24–28px, sayfa başlığı 30–36px; normal ağırlık 400–450, vurgu 550–600. Bunlar
+standart veya kesin karar değil. Fontun gerçek x-height'ına göre değiştirilecek.
+Bütün başlıkları büyütmek yerine ölçü ve ağırlık ilişkisine bakılacak.
+
+Geniş çalışma alanı, dar ve kontrollü dış kenarlar. Uzun metin için ayrı okunabilir
+satır uzunluğu. Kullanıcının istemediği geniş boş yan kolonlar eklenmeyecek;
+uzun bir paragraf da ekranın bütün enine yayılmayacak. Kimlik, problem ve liste
+ekranları aynı kenar/hizalama mantığını paylaşacak. Her şeyi kart içine koymak
+yerine satır, ince ayraç ve gerçek gruplama kullanılabilecek.
+
+Kaynak: https://www.recursive.design/
+Kaynak: https://monaspace.githubnext.com/
+Kaynak: https://linear.app/now/behind-the-latest-design-refresh
+
+5. Görsel kalite için kabul yöntemi
+
+Renk ve font listesi tasarımın bittiğini göstermiyor. Görsel aşamaya gelince aynı
+gerçek içerik, aynı pencere ölçüsü ve aynı durumla referans karşılaştırması yapılmalı.
+İnceleme soruları: İlk bakışta odak nereye gidiyor? Başlık ana işi eziyor mu?
+Yazı büyüklükleri akraba mı? Sol kenarlar rastlantısal mı? Buton ve inputlar aynı
+ürüne mi ait? Dolu ve boş alanlar bir ritim kuruyor mu? Mobilde karakter korunuyor
+mu? Logo kaldırıldığında sayfa hâlâ bu ürüne ait hissediliyor mu?
+
+Teknik testlerin geçmesi estetik onay değildir. Kullanıcının görsel kararı
+karşılanmadan “tamamlandı” denmemeli. Önce küçük bir tipografi ve kompozisyon
+karşılaştırması, sonra ilgili aşamanın ekranı; bütün siteyi ilk seferde üretmek yok.
+Örnekler gerçek problem metni ve uzun kullanıcı adı içermeli; lorem ipsum ile
+kolaylaştırılmış ekran onay için yeterli değil. Henüz bu görsel örnekler üretilmedi.
+
+6. Kesinleşen ürün tercihleri
+
+Korunacak: aylık açılma fikri, ağaç, hediyeler, problem seçme/kaydetme, üyelik,
+maillist, çözüm teslimi, değerlendirme, XP/tier, topluluk önerileri; dil veya
+teknolojiye göre zorunlu ana kategoriler yok.
+Olumlu karşılananlar: ağaç seni hatırlasın; hediye üzerinde ipucu; kaldığın yer;
+çözüm geçmişi; GitHub benzeri katkı takvimi ve streak.
+Katkı satırı kısa: “damumya · 29.10.2026 · sewing engine”. Uzun köken hikâyesi yok.
+Çıkarılan: aylık topluluk özeti/ayın izi özelliği.
+İleri aşama: projelere göz atma, kişiselleştirilmiş öneri; olası iOS uygulaması.
+İşe alım uzun vadeli ihtimal. Ücretlendirme, açılma sıklığı, font, renk ve XP
+formülü henüz kesinleşmedi. Para karşılığı satın alınan hakların başarı tier'ı ile
+ilişkisi ayrıca kararlaştırılmalı.
+
+7. Streak ve insan motivasyonu — görsel konudan ayrı araştırma
+
+GitHub katkı grafiği aktivite kaydıdır; kendi başına bir günlük seri sayacı değildir.
+Bizde katkı takvimi, güncel/en uzun seri ve doğrulanmış başarı farklı anlamlar
+taşıyabilir. Günlük proje bitirme şartı, uzun case'leri cezalandırabilir. Aday kural:
+anlamlı yeni çözüm sürümü veya doğrulanabilir ilerleme katkı sayılır; XP ise
+başarı koşullarına bağlanır. Sadece giriş yapmak veya aynı dosyayı tekrar yollamak
+başarı puanı üretmemeli. “Anlamlı ilerleme”nin uygulama kuralı henüz çözülmedi;
+otomatik kalite tahmini varmış gibi davranılmamalı.
+
+Duolingo kendi A/B testinde günlük hedef ile streak koşulunu ayırınca 14. gün
+retention artışı raporluyor. Bu sonuç bizim üründe aynı artışı garanti etmez.
+Journal of Consumer Research çalışması devam eden ve kırılmış serilerin sonraki
+davranışı etkileyebildiğini; onarma imkânının bazı olumsuz etkileri azaltabildiğini
+buluyor. Ürün önerisi: seri kırılırsa eski katkı ve başarılı işler silinmez;
+geri dönüş yolu açık kalır. Sistem kesintisinden dolayı kullanıcı cezalandırılmaz.
+Saat dilimi ve gece yarısından önce gönderilip sonra işlenen teslimlerin tarihi
+sunucu tarafında açıkça tanımlanmalı. Dondurma/telafi henüz alınmış karar değil.
+
+Kaynak: https://docs.github.com/en/account-and-profile/reference/profile-contributions-reference
+Kaynak: https://blog.duolingo.com/improving-the-streak/
+Kaynak: https://blog.duolingo.com/protecting-streaks-from-site-issues/
+Kaynak: https://academic.oup.com/jcr/article/49/6/1095/6623414
+
+8. Doğayı koruyan küçük öneriler
+
+Ağaçtaki kişisel izlerle profil geçmişi aynı gerçek ilerlemeyi yansıtsın.
+Hediye ipucu kısa olsun; kullanıcı belirsiz bir kutuya büyük emek bağlamasın.
+Kaldığın yer bağlantısı son çözüm sürümünü açsın; gerekiyorsa kullanıcı kendine
+tek satırlık bir sonraki adım notu bırakabilsin. Bu son not yeni bir öneridir.
+Profilde kullanıcı seçtiği az sayıda çalışmayı öne çıkarabilsin; kendi üretimini
+sunma özgürlüğü verir. Bu da öneridir, kapsamı kesinleşmedi.
+
+Özerklik, yeterlik ve ilişki kurma, self-determination theory'nin temel kavramları.
+Teknoloji seçimi, anlaşılır geri bildirim ve kısa katkı imzası bunlarla uyumlu
+tasarım hipotezleri. Bu teori belirli bir arayüzün güzel olduğunu veya kullanıcı
+tutacağını ispatlamaz. İlk kullanıcılarla geri dönme, gerçekten çalışma ve proje
+tamamlama ayrı gözlenmeli. İlk küçük grupta sahte kesinlikte A/B sonuçları çıkarılmaz.
+
+Kaynak: https://www.selfdeterminationtheory.org/theory
+
+9. Benzer ürünlerden alınabilecek sınırlı dersler
+
+Codewars: aynı problemi tekrar tamamlayarak genel rank'ı tekrar tekrar artırmama;
+katkı ve çözüm başarısının farklı anlamları. Sayısal formülünü kopyalamak gerekmiyor.
+Exercism: test çalıştırıcı ve analiz araçlarının ayrı rolleri. Kullanıcıya dili
+ana keşif kategorisi yapmadan arka planda farklı çalışma ortamları sağlanabilir.
+CodeCrafters: yerel geliştirme ortamından teslim edip geri bildirim alma döngüsü.
+Ladybug için aynı sadelik hedeflenebilir; mevcut kod incelenmeden yetenek sözü yok.
+Codewars topluluk içerik incelemesi: üye önerisi otomatik yayınla eşanlamlı değil.
+AI yardımcı değerlendirme yapabilir; ilk dönemde yayın incelemesi gerekli.
+
+Kaynak: https://docs.codewars.com/gamification/ranks/
+Kaynak: https://docs.codewars.com/curation/
+Kaynak: https://exercism.org/docs/building/tooling/test-runners
+Kaynak: https://exercism.org/docs/building/tooling.md
+Kaynak: https://codecrafters.io/
+
+10. Değerlendirme ve güvenlik tasarım girdileri
+
+Her case: sürümlü problem tanımı, teslim biçimi, kabul ölçütleri, kaynak ve
+değerlendirme sürümü. Bir uygulamanın açılması, problemi çözdüğünü tek başına
+göstermez. Ortak girdi/çıktı, API davranışı, tarayıcı senaryosu veya insan
+incelemesi case'e göre seçilmeli. AI görüşü ile doğrulanmış test sonucu ayrılmalı.
+Case bağımsız yöntem seçimine izin verse de test adaptörlerinin geliştirme maliyeti
+var. İlk case'lerde desteklenen teslim biçimi açık olmalı.
+
+Teslim durumları: alındı, kuyrukta, çalışıyor, sonuçlandı; altyapı hatası ayrı.
+Aynı teslimin yeniden işlenmesi çift XP üretmemeli. Test sürümü ve teslim sürümü
+saklanmalı. Puanın hangi başarıdan geldiği geriye izlenebilmeli.
+
+Kullanıcı kodu üretim sunucusundan ve sırlarından ayrılmış geçici ortamda çalışır.
+CPU, RAM, süre, süreç sayısı ve log boyutu sınırları gerekir. Ağ erişimi varsayılan
+kapalı, gerektiğinde kontrollü olmalı. Sadece “Docker kullanıyoruz” güvenlik
+garantisi değildir. Gönderilen URL'leri alan sistemde iç ağ erişimi ve yönlendirme
+kontrolleri, yüklenen HTML/demo için ayrı origin ve güvenli gösterim gerekir.
+Üyelikte her özel kaynağa erişim sunucuda yetkilendirilir. OAuth dönüşü, oturum
+iptali, hesap kurtarma ve kimlik birleştirme ayrıca modellenir. Maillist ayrı tercih.
+Bu kontroller estetik eleştirinin yanıtı değildir; ayrı mühendislik gereksinimleridir.
+
+Kaynak: https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
+Kaynak: https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
+Kaynak: https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html
+Kaynak: https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html
+
+11. Ölçek, SEO/GEO ve görsel istikrar
+
+Case sayfaları ve gerçek koleksiyonlar ortak içerik modelinden üretilmeli.
+Kalıcı URL, sürüm/değişiklik tarihi, erişilebilir metin, kaynak bağlantıları,
+tarayıcının takip edebildiği gezinme ve bölünmüş sitemap gerekli tasarım girdileri.
+Her filtre birleşimi indekslenecek yeni bir sayfa olmaz. Arama ve kişisel kayıtlar
+ile kamusal case sayfalarının indeks politikaları ayrı tanımlanır. robots.txt bir
+gizlilik mekanizması değildir. Büyük içerik sayısına küçük bir çalışma örneğinden
+hareketle “ölçekleniyor” denmez; örnek büyük katalogla sorgu, önbellek, sitemap,
+build süresi ve sayfalama doğrulanır.
+
+Google, AI arama özelliklerinde temel SEO uygulamalarının geçerli olduğunu
+söylüyor. GEO için garanti veya özel sihirli schema yok. Diğer arama sağlayıcıları
+ayrı incelenmeli. Bu turda Google dışı AI crawler politikaları incelenmedi.
+
+Font değişimi, avatar ve giriş durumu navbarı zıplatmamalı. Ayrılan alan, eşleşen
+fallback font ölçüleri ve yerleşim bu amaçla tasarlanır. Yalnızca CLS sayısı yeterli
+değil; giriş sonrası ve etkileşimle oluşan hareketler de görsel olarak kontrol edilir.
+Başlangıç saha hedefleri: 75. yüzdelikte LCP ≤2.5s, INP ≤200ms, CLS ≤0.1.
+Klavye, 200% büyütme, Türkçe karakter ve mobil hedef boyutları ayrıca değerlendirilir.
+
+Kaynak: https://developers.google.com/crawling/docs/faceted-navigation
+Kaynak: https://developers.google.com/crawling/docs/crawl-budget
+Kaynak: https://developers.google.com/search/docs/appearance/ai-features
+Kaynak: https://web.dev/articles/optimize-cls
+Kaynak: https://web.dev/articles/defining-core-web-vitals-thresholds
+Kaynak: https://www.w3.org/TR/WCAG22/
+
+12. İleri aşamadaki proje keşfi
+
+“Başka çözümleri gezmek” ilk olarak basit bir kamusal proje akışı olabilir.
+En yeni, kaydedilenler, aynı case'in çözümleri gibi açık filtreler kişiselleştirme
+modeli gerektirmez. Kullanıcıyı öğrenen öneri sistemi ve iOS daha sonraki aşamalar.
+Önce yeterli paylaşılabilir çalışma, görünürlük tercihleri ve moderasyon gerekir.
+Instagram benzetmesi keşif davranışını anlatıyor; ana ürünün problem çözme doğası
+korunmalı. Bu bölüm henüz uygulama kapsamına alınmadı.
+
+13. Build in public bağımlılıkları
+
+Fikir anlatımı → görsel kimlik/ağaç → ağaç çekimi tamam → hediye tasarımı ve açılış
+→ üyelik/maillist → case teslimi → Ladybug/puan → topluluk → ileri keşif.
+Kesin kullanıcı kuralı: ağaç bölümü çekilmeden hediyeleri üretip teslim etmek yok.
+Görsel plan aşamaları birlikte kararlaştırılacak. “Ağaç seni hatırlıyor”,
+“hediyenin ipucu”, “kaldığın yer” ve “çözüm geçmişi” ayrı reels adayları.
+Bu araştırma sırasında hediye, ağaç, üyelik tasarımı veya ürün kodu üretilmedi.
+Repo yalnızca araştırma ve gözlem kanıtlarıyla yerelde başlatıldı; uzak repo veya
+yayın oluşturulmadı.
+
+Sonraki tasarım çalışmasının teslim ölçütü: Kullanıcının ilgili aşama için
+görsel olarak beğendiği, gerçek içerikle ve ekran ölçülerinde incelenmiş bir
+kompozisyon. Teknik doğrulama bunun yanına gelir; yerine geçmez.

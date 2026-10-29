@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-29",
+  "phase": "research_only",
+  "latest_research": "second-pass/yeniden-okuma.txt",
+  "visual_atlas": "second-pass/gorsel-arastirma.html",
+  "interpretation_status": "User rejected the first interpretation. Second-pass art-direction and cohesion findings are hypotheses, not user-approved design decisions.",
+  "priority": "Visual quality: typography, scale, proportions, spacing, alignment, color and composition. Working features do not establish visual quality.",
+  "approved_direction": ["large characterful typography, likely monospace", "use screen width without excessive outer gutters", "Rabadon tree reference", "monthly calendar and gifts", "tree remembers user", "gift hints", "resume work", "solution history", "contribution calendar and streak", "technology-independent problem discovery", "membership and separate mailing preference", "XP and earned tiers", "community case suggestions"],
+  "attribution_example": "damumya · 29.10.2026 · sewing engine",
+  "removed": ["monthly community recap"],
+  "later_options": ["project browsing", "personalized recommendations", "iOS", "hiring"],
+  "hard_dependency": "Do not create or deliver gift designs before the tree episode has been recorded.",
+  "not_decided": ["font", "palette", "exact sizes", "release cadence", "streak qualification and repair rules", "XP formula", "paid benefits", "infrastructure", "Ladybug integration details"],
+  "visual_references_inspected": ["GitHub public profile desktop and mobile", "GitHub public contribution graph", "GitHub login", "Advent of Code calendar and problem", "Stitchu live logged-out account desktop and mobile"],
+  "limitations": ["LeetCode blocked by security verification", "GYMGYME homepage inspected in second pass; camera flow not tested", "authenticated account screens not inspected", "Ladybug code not inspected", "Rabadon tree code not inspected"],
+  "repository": "local only; no remote or deployment"
+}
