@@ -4,14 +4,15 @@
 
 ## Faz
 Araştırma + ağaç prototipi (`agac/index.html`, tek dosya). Çam ağacı kalıyor: farklı boyda tuğlalar
-ortak duvarlarla lego gibi geniş ağaç, 30 kutu, dal ucu ampulleri, karakter yıldız, omuzlarda kar,
-ızgarada düşen kar (Damla 30.10: "AoC'yi çalmıyoruz, ilham alıyoruz").
-Tasarım dili (Damla 1.11): dewguard ve portfolyo bahçesi (`3010-portfolio-garden`) gibi. Zemin siyah
-#0b0b0c, tek sans yazı, her şey küçük harf, yazı yalnız beyaz/gri, renk yalnız çizimde (bahçe paleti),
-monospace yalnız çizim. Işıklar bahçedeki gibi parlar (text-shadow), yavaş yanıp söner, pause düğmesi var.
-Geniş ekranda başlık solda gökte, ağaç ortada, ay sağ üstte; zeminde karlı kulübe (yanan pencereler,
-saçak ışıkları), lamba, kardan adam, tavşan, küçük çam; gökte bulut. Dar ekranda başlık üstte, ağaç altında.
-Eski terminal çerçevesi (komut satırı, tmux çubuğu, Recursive, lacivert/terminal/mor seçici) kaldırıldı.
+ortak duvarlarla lego gibi geniş ağaç, 30 kutu (Damla 30.10: "AoC'yi çalmıyoruz, ilham alıyoruz").
+Süsler 30 Eki'dekiler, fazlası yok: kavisli girland, kenarlarda sarkan ışık dizileri, dal ucu ampulleri,
+karakter yıldız, omuzlarda kar, ızgarada düşen kar, karlı zemin. Köy/ay/bulut eklemek reddedildi (1.11).
+Terminal çerçevesi karakteristik, kalır: `guest@adventcodendar:~$ tree` yazılır, ağaç satır satır basılır,
+altta tmux çubuğu (mod, gerçek sayım, saat).
+Yazı ve renk dewguard / portfolyo bahçesi gibi (1.11): siyah #0b0b0c, başlık tek sans ve küçük harf
+(geniş ekranda solda, dar ekranda üstte), yazı beyaz/gri, renk çizimde (bahçe paleti), monospace
+komut satırı/çizim/çubukta. Parlama durduk yere yok: yalnız üstüne gelinen kutunun kenarında ve açılan
+kutuda (bahçedeki hover gibi); ampuller parlamadan yanıp söner. Pause düğmesi var.
 Kutu içi yalnız parıltı + numara: hediye/case içeriği yok (hediye tasarımı ağaç çekiminden sonra).
 
 ## Kesin sınırlar (Damla'nın sözü)

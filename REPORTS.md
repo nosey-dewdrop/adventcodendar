@@ -3,7 +3,7 @@
 En yeni üstte. Yalnız eklenir.
 
 ## 01.11.2026 — ağaç dewguard / bahçe diline çekildi
-**Yapıldı:** Damla "tasarımı dewguard ve bahçe gibi yap, çam ağacı kalsın, parlamalar güzel" dedi. Lego ağaç ve 30 kutu aynı; zemin siyah, başlık sans ve küçük harf, renk yalnız çizimde, ışıklar parlıyor. Ağacın etrafına karlı köy geldi (kulübe, lamba, kardan adam, tavşan, çam, ay, bulut). Terminal çerçevesi ve zemin seçici kalktı. 1280, 1440, 1512, 1920 ve 390 ekranları incelendi; kutu açma, hover, pause çalışıyor, konsol hatası yok.
+**Yapıldı:** Damla "tasarımı dewguard ve bahçe gibi yap, çam ağacı kalsın" dedi. İlk turda köy, ay, bulut ekledim, terminal çerçevesini kaldırdım, her şeyi parlattım; Damla düzeltti: süs fazlaydı, terminal karakteristikti, dediği "durduk yere parlama"ydı. Son hal: 30 Eki süsleri ve terminal çerçevesi aynen, zemin siyah, başlık sans küçük harf, bahçe paleti, parlama yalnız hover ve açılan kutuda. 1280, 1440, 1512, 1920 ve 390 ekranları incelendi; kutu açma, hover, pause çalışıyor, konsol hatası yok.
 **Sonraki:** ad sorusu (YAPILMAYACAKLAR.md §0), sonra ağaç bölümünün çekimi.
 
 ## 30.10.2026 — ağaç prototipi (agac/index.html)
