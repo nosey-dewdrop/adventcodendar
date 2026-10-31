@@ -2,6 +2,10 @@
 
 En yeni üstte. Yalnız eklenir.
 
+## 01.11.2026 — ağaç dewguard / bahçe diline çekildi
+**Yapıldı:** Damla "tasarımı dewguard ve bahçe gibi yap, çam ağacı kalsın, parlamalar güzel" dedi. Lego ağaç ve 30 kutu aynı; zemin siyah, başlık sans ve küçük harf, renk yalnız çizimde, ışıklar parlıyor. Ağacın etrafına karlı köy geldi (kulübe, lamba, kardan adam, tavşan, çam, ay, bulut). Terminal çerçevesi ve zemin seçici kalktı. 1280, 1440, 1512, 1920 ve 390 ekranları incelendi; kutu açma, hover, pause çalışıyor, konsol hatası yok.
+**Sonraki:** ad sorusu (YAPILMAYACAKLAR.md §0), sonra ağaç bölümünün çekimi.
+
 ## 30.10.2026 — ağaç prototipi (agac/index.html)
 **Yapıldı:** Damla'nın tarifiyle 30 kutulu advent ağacı. Pastel kart → ASCII kutu → dolgulu lego → tek monospace karakter tuvali oldu; Damla son hali için "çok tatlı, çok beğendim" dedi. Tuğlalar ortak duvarlı lego, kavisli girland, sarkan ışıklar, karakter yıldız, ızgarada kar var. Başlık `guest@adventcodendar:~$ tree` komut satırı, altta tmux gibi durum çubuğu. Gece yönü seçildi, font Recursive. Terminal zemini Damla'nın Terminal penceresinden ölçüldü (#1e1e1e). Masaüstü 1440 ve mobil 390 ekranları incelendi, konsol hatası yok.
 **Sonraki:** zemin kararı (lacivert / terminal), ad sorusu (YAPILMAYACAKLAR.md §0), sonra ağaç bölümünün çekimi.
