@@ -27,10 +27,18 @@ Kutu içi yalnız parıltı + numara: hediye/case içeriği yok (hediye tasarım
 - Çalışan mekanik, token listesi, tutarlılık veya test sonucu görsel kaliteye cevap değildir.
 - Sıradan uygulama hataları (çift XP, yetki, veri kaybı, erken açılma) araştırmanın merkezi değil.
 
+## Karar verildi (3 Kas, Damla)
+- Ad kalıyor: "adventcodendar gayet unique". AoC benzerlik notu YAPILMAYACAKLAR.md §0'da duruyor.
+- Hosting Vercel. Ağaç slopware video 2'de localhost'tan Vercel'e çıkar.
+- Build in public = slopware YouTube serisi. Proje seri boyunca adım adım kurulur:
+  video 0 fikir + ağaç, video 2 ağaç localhost → Vercel, video 3 kutu açılması
+  (sunucu saati karar verir, açılan kutu önce localStorage sonra veritabanı). Plan
+  ~/damla_projects_2026/writings_rework/taslaklar/0311-slopware-videolar.txt.
+- Slop parodi sayfası önce slopware bölüm 1'de yaşar, sonra ilk case olur (ağaç çekilmeden case yok).
+
 ## Karar verilmemiş (uygulama, Damla'ya sormadan seçme)
-Önce: ad ("adventcodendar" AoC'ye benziyor, YAPILMAYACAKLAR.md §0), ağaç çekiminden önce.
 Yayın ritmi, ilk case kapsamı, teslim biçimi, Ladybug'ın ilk sorumluluğu,
-streak/katkı kuralı, XP formülü, ücretli özellikler, framework/hosting/db.
+streak/katkı kuralı, XP formülü, ücretli özellikler, framework/db (video 3'ten önce sorulacak).
 
 ## Repo
 - github.com/nosey-dewdrop/adventcodendar (public), github.com/nosey-dewdrop/ladybug (public, README).
